@@ -1,0 +1,109 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+<div th:replace="snippets.html :: toast_box"></div>
+
+<div class="container">
+	<h3>Channel</h3>
+		<form class="form-inline" id="channel-form">
+			<div class="form-group">
+			    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" name="name" id="inputName" placeholder="enter name">
+			    </div>
+			  </div>
+			  Type of Invoice   
+			<div class="custom-control custom-radio custom-control-inline">
+			  &nbsp;
+			  <input type="radio" id="customRadioInline1" name="invoiceType"  value="CHANNEL" class="custom-control-input">
+			  <label class="custom-control-label" for="customRadioInline1" checked>CHANNEL</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+			  <input type="radio" id="customRadioInline2" name="invoiceType" value="SELF" class="custom-control-input">
+			  <label class="custom-control-label" for="customRadioInline2">SELF</label>
+			</div>		
+			<button type="button" class="btn btn-primary" id="add-channel">Add</button>
+	</form>
+
+<!-- Blank Row -->
+<div class="row">
+	&nbsp;
+</div>
+
+<h3>Upload Channel Listing</h3>
+<div class="row">
+	 <div class="col-12">
+	 	<div class="form-row">
+				  <div class="form-group col-md-4" id="client-DropDown">
+				      Select the Client
+						<select class="form-control"  id="selectClient" name='clientId'>
+							<option selected hidden disabled>select client</option>
+						</select>
+					  </div>
+
+				 <div class="form-group col-md-4" id="channel-Dropdown">
+				      Select the Channel
+						<select class="form-control" id="selectChannel" name="channelId">
+							<option selected hidden disabled>select channel</option>
+						</select>
+				  </div>
+				  <div class="col-md-2">
+				  	<div class="row">
+						&nbsp;
+					</div>
+
+			 <button type="button" class="btn btn-primary" id="upload-channels">Upload</button>   
+		</div>
+		</div>
+	</div>
+</div>
+
+
+<!--upload Modal-->
+<div class="modal" tabindex="-1" role="dialog" id="upload-channel-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">Upload Channel Listing</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+      	<div class="channel-file">
+		  <input type="file" class="custom-file-input" id="channelFile">
+		  <label class="custom-file-label" for="channelFile" id="channelFileName">Choose file</label>
+		</div>
+		<a th:href="@{/sample/channel.csv}" target="_blank">Download Sample</a> 
+		<br>
+		Rows: <span id="rowCount">0</span>, 
+		Processed: <span id="processCount">0</span>, 
+		Errors: <span id="errorCount">0</span>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="process-data">Upload</button>
+        <button type="button" class="btn btn-warning" id="download-errors">Download Errors</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div> <!-- Container end-->
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+<script th:src="@{/static/channel.js}"/></script>
+
+</body>	
+
+</html>

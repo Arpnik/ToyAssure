@@ -1,0 +1,10 @@
+com/increff/assure/Controller/AbstractAppRestControllerAdvice.class
+com/increff/assure/model/form/ChannelItemCheckForm.class
+com/increff/assure/model/form/ChannelOrderForm.class
+com/increff/assure/spring/AbstractWebInitializer.class
+com/increff/assure/model/data/MessageData.class
+com/increff/assure/service/ApiException.class
+com/increff/assure/model/data/ChannelItemCheckData.class
+util/ConvertGeneric.class
+com/increff/assure/model/form/ChannelOrderLineItem.class
+com/increff/assure/spring/AbstractControllerConfig.class

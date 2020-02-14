@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Server</a> &gt; <a href="index.source.html" class="el_package">com.increff.assure.dto</a> &gt; <span class="el_source">OrderDto.java</span></div><h1>OrderDto.java</h1><pre class="source lang-java linenums">package com.increff.assure.dto;
+
+import com.increff.assure.service.ApiException;
+import com.increff.assure.model.form.ChannelOrderForm;
+import com.increff.assure.model.form.ChannelOrderLineItem;
+import com.increff.assure.model.forms.OrderForm;
+import com.increff.assure.model.forms.OrderLineItemForm;
+import com.increff.assure.pojo.ChannelPojo;
+import com.increff.assure.pojo.OrderItemPojo;
+import com.increff.assure.pojo.OrderPojo;
+import com.increff.assure.pojo.ProductPojo;
+import com.increff.assure.service.*;
+import com.increff.assure.util.ConvertGeneric;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Service
+<span class="fc" id="L23">public class OrderDto {</span>
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private MemberService memberService;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private ChannelService channelService;
+
+
+    public void placeOrder(OrderForm form) throws Exception {
+<span class="nc" id="L38">        memberService.checkPresenceOfClientById(form.getClientId());</span>
+<span class="nc" id="L39">        memberService.checkPresenceOfCustomerById(form.getCustomerId());</span>
+<span class="nc" id="L40">        OrderPojo orderPojo= ConvertGeneric.convert(form,OrderPojo.class);</span>
+<span class="nc" id="L41">        orderPojo.setChannelId(channelService.getDefaultChannel().getId());</span>
+<span class="nc" id="L42">        long sno=0;</span>
+<span class="nc" id="L43">        Set&lt;String&gt; hash_Set = new HashSet&lt;String&gt;();</span>
+<span class="nc" id="L44">        List&lt;OrderItemPojo&gt; itemPojoList=new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L45">        String errors=&quot;&quot;;</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        for(OrderLineItemForm item:form.getItems())</span>
+        {
+            try{
+<span class="nc bnc" id="L49" title="All 2 branches missed.">                if(hash_Set.contains(item.getClientSkuId()))</span>
+                {
+<span class="nc" id="L51">                    throw new ApiException(&quot;Duplicate ClientSkuID:&quot;+item.getClientSkuId());</span>
+                }
+<span class="nc" id="L53">                hash_Set.add(item.getClientSkuId());</span>
+<span class="nc" id="L54">                OrderItemPojo itemPojo=ConvertGeneric.convert(item,OrderItemPojo.class);</span>
+<span class="nc" id="L55">                ProductPojo productPojo= productService.getByClientIdAndClientSku(orderPojo.getClientId(),item.getClientSkuId());</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                if(productPojo==null)</span>
+                {
+<span class="nc" id="L58">                    throw new ApiException(&quot;ClientSKu:&quot;+item.getClientSkuId()+&quot; is not valid&quot;);</span>
+                }
+<span class="nc" id="L60">                itemPojo.setGlobalSkuId(productPojo.getGlobalSkuId());</span>
+<span class="nc" id="L61">                itemPojoList.add(itemPojo);</span>
+             }
+<span class="nc" id="L63">            catch(Exception e)</span>
+            {
+<span class="nc" id="L65">                errors=errors+&quot;\n&quot;+sno+&quot;:&quot;+e.getMessage();</span>
+<span class="nc" id="L66">            }</span>
+<span class="nc" id="L67">            sno+=1;</span>
+<span class="nc" id="L68">        }</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if(!errors.isEmpty())</span>
+        {
+<span class="nc" id="L71">            throw new ApiException(errors);</span>
+        }
+<span class="nc" id="L73">        orderService.placeOrder(orderPojo,itemPojoList);</span>
+
+<span class="nc" id="L75">    }</span>
+
+    public void placeOrderByChannel(ChannelOrderForm form) throws Exception {
+<span class="nc" id="L78">        memberService.checkPresenceOfCustomerById(form.getCustomerId());</span>
+<span class="nc" id="L79">        memberService.checkPresenceOfClientById(form.getClientId());</span>
+<span class="nc" id="L80">        ChannelPojo channelPojo=channelService.getChannelByName(form.getChannelName());</span>
+<span class="nc" id="L81">        OrderPojo orderPojo= ConvertGeneric.convert(form, OrderPojo.class);</span>
+<span class="nc" id="L82">        orderPojo.setChannelId(channelPojo.getId());</span>
+<span class="nc" id="L83">        List&lt;OrderItemPojo&gt; itemPojoList=new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        for(ChannelOrderLineItem item: form.getItems())</span>
+        {
+<span class="nc" id="L86">            OrderItemPojo pojo=new OrderItemPojo();</span>
+<span class="nc" id="L87">            pojo.setOrderedQuantity(item.getQuantity());</span>
+<span class="nc" id="L88">            pojo.setGlobalSkuId(channelService.getByChannelIdAndSku(channelPojo.getId(),item.getChannelSkuId()).getGlobalSkuId());</span>
+<span class="nc" id="L89">            itemPojoList.add(pojo);</span>
+<span class="nc" id="L90">        }</span>
+<span class="nc" id="L91">        orderService.placeOrder(orderPojo,itemPojoList);;</span>
+<span class="nc" id="L92">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

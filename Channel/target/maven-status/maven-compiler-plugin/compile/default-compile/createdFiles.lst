@@ -1,0 +1,6 @@
+com/increff/assure/spring/ControllerConfigurationChannel.class
+com/increff/assure/controller/AppRestControllerAdvice.class
+com/increff/assure/dto/ChannelOrderDto.class
+com/increff/assure/controller/ChannelOrderController.class
+com/increff/assure/spring/SpringConfig.class
+com/increff/assure/spring/WebInitializerChannel.class

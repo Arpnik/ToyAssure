@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Server</a> &gt; <a href="index.source.html" class="el_package">com.increff.assure.controller</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package com.increff.assure.controller;
+
+import com.increff.assure.dto.ProductDto;
+import com.increff.assure.model.data.ProductData;
+import com.increff.assure.model.forms.ProductForm;
+import com.increff.assure.model.forms.UpdateProductForm;
+import com.increff.assure.util.ValidateRequestBodyList;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
+import java.util.List;
+
+@Api
+@RestController
+<span class="fc" id="L19">public class ProductController {</span>
+
+    @Autowired
+    private ProductDto dto;
+
+    @ApiOperation(value = &quot;Add Product information&quot;)
+    @RequestMapping(path = &quot;/api/product/{clientId}&quot;, method = RequestMethod.POST)
+    public void add(@PathVariable long clientId,@Size(min=1,max=2,message = &quot;Number of rows needs to be between 1 and 5,000&quot;) @Valid @RequestBody  ValidateRequestBodyList&lt;ProductForm&gt; requestBodyList) throws Exception {
+<span class="nc" id="L27">        List&lt;ProductForm&gt; formList= requestBodyList.getRequestBody();</span>
+<span class="nc" id="L28">        dto.add(formList,clientId);</span>
+<span class="nc" id="L29">    }</span>
+
+    @ApiOperation(value = &quot;Get all Product information with Client Id&quot;)
+    @RequestMapping(path = &quot;/api/product/client/{clientId}&quot;, method = RequestMethod.GET)
+    public List&lt;ProductData&gt; getAllProductsByClientId(@PathVariable long clientId) throws Exception {
+<span class="nc" id="L34">       return dto.getAllByClientId(clientId);</span>
+    }
+
+    @ApiOperation(value = &quot;Get Product information by Global SkuId&quot;)
+    @RequestMapping(path = &quot;/api/product/{id}&quot;, method = RequestMethod.GET)
+    public ProductData getProduct(@PathVariable long id) throws Exception {
+<span class="nc" id="L40">        return dto.get(id);</span>
+    }
+
+    @ApiOperation(value=&quot;Update Product Information by global SkuId&quot;)
+    @RequestMapping(path=&quot;/api/product/{id}&quot;,method = RequestMethod.PUT)
+    public void updateProduct(@PathVariable long id,@Valid @RequestBody UpdateProductForm form) throws Exception {
+<span class="nc" id="L46">        dto.update(id,form);</span>
+<span class="nc" id="L47">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

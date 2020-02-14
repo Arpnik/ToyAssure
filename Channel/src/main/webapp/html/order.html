@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+
+<div class="container">
+
+<h3>Order Details</h3>
+
+
+<form id="order-form">
+  <div class="row">
+  	  <div class="col-3">
+      <label class="sr-only" for="inlineFormInput">Channel SKU ID</label>
+      <input type="text" class="form-control col-md-3" id="inlineFormInput" name="channelSkuId" placeholder="Enter product Channel SKU ID">
+      </div>
+      <div class="col-3">
+      <label class="sr-only" for="inlineFormInputGroup">Enter Quantity</label>
+      <input type="text" class="form-control col-md-3" id="inlineForminput" name="quantity" placeholder="Enter Quantity">
+      </div>
+      <div class="col-3">
+      <label class="sr-only" for="inlineFormInputGroup">Enter Selling Price</label>
+      <input type="text" class="form-control col-md-3" id="inlineForminput" name="sellingPricePerUnit" placeholder="Enter Price">
+      </div>
+      <button type="button" class="btn btn-primary col-md-3" id="add-order">Add</button>
+    </div>
+</form>
+
+ </div>
