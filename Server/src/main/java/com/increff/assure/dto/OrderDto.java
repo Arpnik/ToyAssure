@@ -1,6 +1,8 @@
 package com.increff.assure.dto;
 
 import com.increff.assure.model.data.ChannelItemCheckData;
+import com.increff.assure.model.data.OrderDetailsData;
+import com.increff.assure.model.data.OrderDisplayData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
 import com.increff.assure.pojo.*;
 import com.increff.assure.service.ApiException;
@@ -9,7 +11,7 @@ import com.increff.assure.model.form.ChannelOrderLineItem;
 import com.increff.assure.model.forms.OrderForm;
 import com.increff.assure.model.forms.OrderLineItemForm;
 import com.increff.assure.service.*;
-import util.ConvertGeneric;
+import com.increff.assure.util.ConvertGeneric;
 import com.increff.assure.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +44,9 @@ public class OrderDto {
         memberService.checkPresenceOfClientById(form.getClientId());
         memberService.checkPresenceOfCustomerById(form.getCustomerId());
         OrderPojo orderPojo= ConvertGeneric.convert(form,OrderPojo.class);
-        orderPojo.setChannelId(channelService.getDefaultChannel().getId());
+        ChannelPojo channelPojo=channelService.getDefaultChannel();
+        validateChannelIdAndChannelOrderId(channelPojo.getId(),form.getChannelOrderId());
+        orderPojo.setChannelId(channelPojo.getId());
         long sno=0;
         Set<String> hash_Set = new HashSet<String>();
         List<OrderItemPojo> itemPojoList=new ArrayList<>();
@@ -83,6 +87,7 @@ public class OrderDto {
         memberService.checkPresenceOfCustomerById(form.getCustomerId());
         memberService.checkPresenceOfClientById(form.getClientId());
         ChannelPojo channelPojo=channelService.getDefaultChannel();
+        validateChannelIdAndChannelOrderId(channelPojo.getId(),form.getChannelOrderId());
         OrderPojo orderPojo= ConvertGeneric.convert(form, OrderPojo.class);
         orderPojo.setChannelId(channelPojo.getId());
         List<OrderItemPojo> itemPojoList=new ArrayList<>();
@@ -115,16 +120,37 @@ public class OrderDto {
             throw new ApiException(errors);
         }
 
-        orderService.placeOrder(orderPojo,itemPojoList);
-        System.out.println("outside dto");
+        orderService.placeOrder(orderPojo, itemPojoList);
+    }
+
+    public List<OrderDisplayData> getAll() throws Exception {
+        List<OrderDisplayData> dataList = new ArrayList<>();
+        List<OrderPojo> pojoList = orderService.getAll();
+        for(OrderPojo pojo: pojoList)
+        {
+            OrderDisplayData data = ConvertGeneric.convert(pojo, OrderDisplayData.class);
+            dataList.add(data);
+        }
+        return dataList;
+    }
+
+    public List<OrderDetailsData> getOrderDetails(long orderId){
+        List<OrderDetailsData> dataList = new ArrayList<>();
+        List<OrderDetailsResult> resultList = orderService.getOrderDetails(orderId);
+        for(OrderDetailsResult res : resultList)
+        {
+            OrderDetailsData data = ConvertGeneric.convert(res, OrderDetailsData.class);
+            dataList.add(data);
+        }
+        return dataList;
     }
 
     public ChannelItemCheckData checkOrderedItem(ChannelItemCheckForm form) throws ApiException {
         normalize(form);
-        ChannelListingPojo pojo=channelService.getByChannelIdAndChannelSkuAndClientId(channelService.getDefaultChannel().getId(),form.getChannelSkuId(),form.getClientId());
-        ChannelItemCheckData data=new ChannelItemCheckData();
-        InventoryPojo inventoryPojo=inventoryService.getByGlobalSkuId(pojo.getGlobalSkuId());
-        if(inventoryPojo.getAvailableQuantity()<=0)
+        ChannelListingPojo pojo = channelService.getByChannelIdAndChannelSkuAndClientId(channelService.getDefaultChannel().getId(),form.getChannelSkuId(),form.getClientId());
+        ChannelItemCheckData data = new ChannelItemCheckData();
+        InventoryPojo inventoryPojo = inventoryService.getByGlobalSkuId(pojo.getGlobalSkuId());
+        if(inventoryPojo.getAvailableQuantity() <= 0)
         {
             data.setQuantity(0);
             return data;
@@ -141,10 +167,14 @@ public class OrderDto {
        }
     }
 
+    public void allocateOrder(long orderId) throws ApiException {
+        orderService.allocateOrder(orderId);
+    }
+
     protected static void normalize(ChannelOrderForm form) {
         form.setChannelName(StringUtil.toUpperCase(form.getChannelName()));
         form.setChannelOrderId(form.getChannelOrderId().trim());
-        for(ChannelOrderLineItem item:form.getItems())
+        for(ChannelOrderLineItem item: form.getItems())
         {
             item.setChannelSkuId(item.getChannelSkuId().trim());
         }
@@ -152,5 +182,13 @@ public class OrderDto {
     protected static void normalize(ChannelItemCheckForm form)
     {
         form.setChannelSkuId(form.getChannelSkuId().trim());
+    }
+
+    protected void validateChannelIdAndChannelOrderId(long channelId, String channelOrderId) throws ApiException {
+        OrderPojo pojo = orderService.getByParams(channelId, channelOrderId);
+        if(pojo != null)
+        {
+            throw new ApiException("ChannelOrderId:"+channelOrderId+" for this channel is not unique");
+        }
     }
 }

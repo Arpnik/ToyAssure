@@ -6,18 +6,17 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Table(
-        indexes = { @Index(name=&quot;uniqueConstraintChannelListing1&quot;,columnList = &quot;channelId,channelSkuId&quot;,unique = true),
-        @Index(name=&quot;uniqueConstraintChannelListing2&quot;,columnList = &quot;channelId,globalSkuId&quot;,unique = true)}
+        indexes = @Index(name=&quot;uniqueConstraintChannelListing1&quot;,columnList = &quot;channelId,channelSkuId,clientId&quot;,unique = true)
 )
-<span class="nc" id="L12">@Getter @Setter @Entity</span>
-<span class="fc" id="L13">public class ChannelListingPojo extends AbstractEntity {</span>
+<span class="nc" id="L11">@Getter @Setter @Entity</span>
+<span class="fc" id="L12">public class ChannelListingPojo extends AbstractEntity {</span>
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<span class="nc" id="L16">    private long id;</span>
-<span class="nc" id="L17">    private long channelId;</span>
-<span class="nc" id="L18">    private String channelSkuId;</span>
-<span class="nc" id="L19">    private long globalSkuId;</span>
-<span class="nc" id="L20">    private long clientId;</span>
+<span class="nc" id="L15">    private long id;</span>
+<span class="nc" id="L16">    private long channelId;</span>
+<span class="nc" id="L17">    private String channelSkuId;</span>
+<span class="nc" id="L18">    private long globalSkuId;</span>
+<span class="nc" id="L19">    private long clientId;</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

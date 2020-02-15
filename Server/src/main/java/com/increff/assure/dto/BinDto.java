@@ -11,7 +11,7 @@ import com.increff.assure.pojo.BinSkuPojo;
 import com.increff.assure.pojo.InventoryPojo;
 import com.increff.assure.pojo.ProductPojo;
 import com.increff.assure.service.*;
-import util.ConvertGeneric;
+import com.increff.assure.util.ConvertGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -36,6 +36,7 @@
         <validation.version>2.0.0.Final</validation.version>
         <validator.version>6.0.2.Final</validator.version>
         <dbcp2.version>2.7.0</dbcp2.version>
+        <fop.version>2.3</fop.version>
         <!-- Jetty configuration -->
         <jetty.version>9.4.21.v20190926</jetty.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>

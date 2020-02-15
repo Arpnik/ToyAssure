@@ -10,7 +10,7 @@ import com.increff.assure.pojo.ProductPojo;
 import com.increff.assure.service.ApiException;
 import com.increff.assure.service.ProductService;
 import com.increff.assure.util.AbstractUnitTest;
-import util.ConvertGeneric;
+import com.increff.assure.util.ConvertGeneric;
 import com.increff.assure.util.dataUtil;
 import org.junit.Before;
 import org.junit.Test;

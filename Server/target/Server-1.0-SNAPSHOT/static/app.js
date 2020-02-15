@@ -94,6 +94,7 @@ function CsvHandlError(response,fileData)
 {
     let res=JSON.parse(response.responseText)["message"];
     callAlertToast("Download Errors");
+    console.log(res);
     if(!res.includes("requestBody"))
     {
         errorData.push(JSON.parse(response.responseText));

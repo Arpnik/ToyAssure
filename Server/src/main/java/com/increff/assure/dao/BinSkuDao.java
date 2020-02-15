@@ -15,9 +15,9 @@ public class BinSkuDao extends AbstractDao<BinSkuPojo> {
     private static String select_product_info_by_binId ="select new com.increff.assure.pojo.BinFilter(m.id,m.name,p.clientSkuId,b.quantity,b.binId,b.id) from BinSkuPojo b,ProductPojo p,MemberPojo m where b.binId=:binId and m.id=p.clientId and p.globalSkuId=b.globalSkuId";
     private static String select_product_info_by_binId_global ="select new com.increff.assure.pojo.BinFilter(m.id,m.name,p.clientSkuId,b.quantity,b.binId,b.id) from BinSkuPojo b,ProductPojo p,MemberPojo m where b.binId=:binId and p.globalSkuId=b.globalSkuId and m.id=p.clientId and b.globalSkuId=:globalSkuId";
     private static String select_product_info_by_global="select new com.increff.assure.pojo.BinFilter(b.id,b.binId,b.quantity) from BinSkuPojo b where b.globalSkuId=:globalSkuId";
+    private static String select_globalSkuId="select p from BinSkuPojo p where p.globalSkuId=:globalSkuId order by p.quantity";
 
-
-    public BinSkuPojo checkPresenceByBinIdAndGlobalSku(long binId,long globalSkuId) {
+    public BinSkuPojo checkPresenceByParams(long binId, long globalSkuId) {
         TypedQuery<BinSkuPojo> query=getQuery(select_binId_globalSkuId);
         query.setParameter("globalSkuId",globalSkuId);
         query.setParameter("binId",binId);
@@ -48,6 +48,13 @@ public class BinSkuDao extends AbstractDao<BinSkuPojo> {
         return query.getResultList();
     }
 
+    public List<BinSkuPojo> selectByGlobalSku(long globalSkuId)
+    {
+        TypedQuery<BinSkuPojo> query = getQuery(select_globalSkuId);
+        query.setParameter("globalSkuId", globalSkuId);
+        return query.getResultList();
+
+    }
 
     public void update(BinSkuPojo updated)
     {

@@ -34,4 +34,15 @@ public class InventoryService {
         return pojo;
     }
 
+//    @Transactional
+//    public void update(long id,InventoryPojo pojo)
+//    {
+//        InventoryPojo existing = dao.select(id);
+//        if(existing==null)
+//        {
+//            throw
+//        }
+//        existing
+//    }
+
 }

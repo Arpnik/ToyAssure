@@ -12,7 +12,7 @@ import com.increff.assure.service.ApiException;
 import com.increff.assure.service.ChannelService;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
-import com.increff.assure.util.ConvertGeneric;
+import util.ConvertGeneric;
 import com.increff.assure.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,55 +61,62 @@ import java.util.Optional;
             try
             {
 <span class="nc" id="L63">                ChannelListingPojo pojo=ConvertGeneric.convert(form,ChannelListingPojo.class);</span>
-<span class="nc" id="L64">                pojo.setChannelSkuId(sku.getChannelSku());</span>
-<span class="nc" id="L65">                ProductPojo product=getProduct(form.getClientId(),sku.getClientSku());</span>
-<span class="nc" id="L66">                pojo.setGlobalSkuId(product.getGlobalSkuId());</span>
-<span class="nc" id="L67">                channelService.addChannelListing(pojo,callDbPersist);</span>
+<span class="nc" id="L64">                normalizeSku(sku);</span>
+<span class="nc" id="L65">                pojo.setChannelSkuId(sku.getChannelSku());</span>
+<span class="nc" id="L66">                ProductPojo product=getProduct(form.getClientId(),sku.getClientSku());</span>
+<span class="nc" id="L67">                pojo.setGlobalSkuId(product.getGlobalSkuId());</span>
+<span class="nc" id="L68">                channelService.addChannelListing(pojo,callDbPersist);</span>
             }
-<span class="nc" id="L69">            catch(Exception e)</span>
+<span class="nc" id="L70">            catch(Exception e)</span>
             {
-<span class="nc" id="L71">                callDbPersist=false;</span>
-<span class="nc" id="L72">                errors=errors+&quot;\n&quot;+index+&quot;:&quot;+e.getMessage();</span>
-<span class="nc" id="L73">            }</span>
-<span class="nc" id="L74">            index+=1;</span>
-<span class="nc" id="L75">        }</span>
-<span class="nc bnc" id="L76" title="All 2 branches missed.">        if(!callDbPersist)</span>
+<span class="nc" id="L72">                callDbPersist=false;</span>
+<span class="nc" id="L73">                errors=errors+&quot;\n&quot;+index+&quot;:&quot;+e.getMessage();</span>
+<span class="nc" id="L74">            }</span>
+<span class="nc" id="L75">            index+=1;</span>
+<span class="nc" id="L76">        }</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        if(!callDbPersist)</span>
         {
-<span class="nc" id="L78">            throw new ApiException(errors);</span>
+<span class="nc" id="L79">            throw new ApiException(errors);</span>
         }
-<span class="nc" id="L80">    }</span>
+<span class="nc" id="L81">    }</span>
 
     public List&lt;ChannelData&gt; getAllChannels() throws Exception
     {
-<span class="nc" id="L84">        List&lt;ChannelPojo&gt; pojoList=channelService.getAllChannels();</span>
-<span class="nc" id="L85">        List&lt;ChannelData&gt; dataList=new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L86" title="All 2 branches missed.">        for(ChannelPojo pojo:pojoList)</span>
+<span class="nc" id="L85">        List&lt;ChannelPojo&gt; pojoList=channelService.getAllChannels();</span>
+<span class="nc" id="L86">        List&lt;ChannelData&gt; dataList=new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        for(ChannelPojo pojo:pojoList)</span>
         {
-<span class="nc" id="L88">            ChannelData data=ConvertGeneric.convert(pojo,ChannelData.class);</span>
-<span class="nc" id="L89">            dataList.add(data);</span>
-<span class="nc" id="L90">        }</span>
-<span class="nc" id="L91">        return dataList;</span>
+<span class="nc" id="L89">            ChannelData data=ConvertGeneric.convert(pojo,ChannelData.class);</span>
+<span class="nc" id="L90">            dataList.add(data);</span>
+<span class="nc" id="L91">        }</span>
+<span class="nc" id="L92">        return dataList;</span>
     }
 
 
     protected void normalizeAndSetDefaults(ChannelForm form)
     {
-<span class="nc" id="L97">        form.setName(Optional.ofNullable(StringUtil.toUpperCase(form.getName())).orElse(defaultName));</span>
+<span class="nc" id="L98">        form.setName(Optional.ofNullable(StringUtil.toUpperCase(form.getName())).orElse(defaultName));</span>
 
-<span class="nc bnc" id="L99" title="All 2 branches missed.">        if(form.getName().isEmpty())</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        if(form.getName().isEmpty())</span>
         {
-<span class="nc" id="L101">            form.setName(defaultName);</span>
+<span class="nc" id="L102">            form.setName(defaultName);</span>
         }
-<span class="nc" id="L103">        form.setInvoiceType(Optional.ofNullable(form.getInvoiceType()).orElse(defaultType));</span>
-<span class="nc" id="L104">    }</span>
+<span class="nc" id="L104">        form.setInvoiceType(Optional.ofNullable(form.getInvoiceType()).orElse(defaultType));</span>
+<span class="nc" id="L105">    }</span>
+
+    protected void normalizeSku(ClientAndChannelSku sku)
+    {
+<span class="nc" id="L109">        sku.setChannelSku(sku.getChannelSku().trim());</span>
+<span class="nc" id="L110">        sku.setClientSku(sku.getClientSku().trim());</span>
+<span class="nc" id="L111">    }</span>
 
     protected ProductPojo getProduct(long clientId,String clientSkuId) throws ApiException {
-<span class="nc" id="L107">        ProductPojo product=productService.getByClientIdAndClientSku(clientId,clientSkuId);</span>
-<span class="nc bnc" id="L108" title="All 2 branches missed.">        if(product==null)</span>
+<span class="nc" id="L114">        ProductPojo product=productService.getByClientIdAndClientSku(clientId,clientSkuId);</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">        if(product==null)</span>
         {
-<span class="nc" id="L110">            throw new ApiException(&quot;Client SKu:&quot;+clientSkuId+&quot; doesn't belong to specified client&quot;);</span>
+<span class="nc" id="L117">            throw new ApiException(&quot;Client SKu:&quot;+clientSkuId+&quot; doesn't belong to specified client&quot;);</span>
         }
-<span class="nc" id="L112">        return product;</span>
+<span class="nc" id="L119">        return product;</span>
     }
 
 }

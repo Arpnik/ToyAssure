@@ -23,5 +23,16 @@ import org.springframework.transaction.annotation.Transactional;
         }
 <span class="nc" id="L24">        dao.insert(pojo);</span>
 <span class="nc" id="L25">    }</span>
+
+    @Transactional
+    public InventoryPojo getByGlobalSkuId(long globalSkuId) throws ApiException {
+<span class="nc" id="L29">        InventoryPojo pojo=dao.getInventoryPojoFromGlobalSkuId(globalSkuId);</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if(pojo==null)</span>
+        {
+<span class="nc" id="L32">            throw new ApiException(&quot;Product is unavaliable / out of stock&quot;);</span>
+        }
+<span class="nc" id="L34">        return pojo;</span>
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

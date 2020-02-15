@@ -43,7 +43,7 @@ public class ChannelService {
 
     @Transactional(rollbackFor = ApiException.class)
     public void addChannelListing(ChannelListingPojo pojo,boolean callDbPersist) throws ApiException {
-        ChannelListingPojo existingChannel=channelListingDao.getListingPojoFromChannelIdAndSkuAndClientId(pojo.getChannelSkuId(),pojo.getChannelId(),pojo.getClientId());
+        ChannelListingPojo existingChannel=channelListingDao.getListingPojoByParams(pojo.getChannelSkuId(),pojo.getChannelId(),pojo.getClientId());
         if(existingChannel!=null)
         {
             if(existingChannel.getGlobalSkuId()==pojo.getGlobalSkuId())
@@ -80,7 +80,7 @@ public class ChannelService {
 
 
     public ChannelListingPojo getByChannelIdAndChannelSkuAndClientId(long channelId, String channelSkuId, long clientId) throws ApiException {
-        ChannelListingPojo pojo=channelListingDao.getListingPojoFromChannelIdAndSkuAndClientId(channelSkuId,channelId,clientId);
+        ChannelListingPojo pojo=channelListingDao.getListingPojoByParams(channelSkuId,channelId,clientId);
         if(pojo==null)
         {
             throw new ApiException("Channel SKu:"+channelSkuId+" is not valid.");

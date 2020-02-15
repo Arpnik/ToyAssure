@@ -2,8 +2,8 @@
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/service/ApiException.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/ChannelItemCheckData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/spring/AbstractControllerConfig.java
-/home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/util/ConvertGeneric.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/MessageData.java
+/home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/util/ConvertGeneric.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/form/ChannelOrderLineItem.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/form/ChannelItemCheckForm.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/spring/AbstractWebInitializer.java

@@ -2,18 +2,19 @@ package com.increff.assure.controller;
 
 import com.increff.assure.dto.OrderDto;
 import com.increff.assure.model.data.ChannelItemCheckData;
+import com.increff.assure.model.data.OrderDetailsData;
+import com.increff.assure.model.data.OrderDisplayData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
 import com.increff.assure.model.form.ChannelOrderForm;
 import com.increff.assure.model.forms.OrderForm;
+import com.increff.assure.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @Api
@@ -37,6 +38,32 @@ public class OrderController {
     @RequestMapping(path="/api/order/product",method = RequestMethod.POST)
     public ChannelItemCheckData checkOrderedItem(@Valid @RequestBody ChannelItemCheckForm form) throws Exception {
         return dto.checkOrderedItem(form);
+    }
+
+    @ApiOperation(value = "Show All Orders")
+    @RequestMapping(path = "/api/order",method = RequestMethod.GET)
+    public List<OrderDisplayData> getAllOrders() throws Exception {
+        return dto.getAll();
+    }
+
+    @ApiOperation(value="Get order Details from Order ID")
+    @RequestMapping(path = "/api/order/{orderId}",method = RequestMethod.GET)
+    public List<OrderDetailsData> getOrderDetails(@PathVariable long orderId)
+    {
+        return dto.getOrderDetails(orderId);
+    }
+
+    @ApiOperation(value="Allocate order from Order ID")
+    @RequestMapping(path = "/api/order/{orderId}",method = RequestMethod.PUT)
+    public void allocateOrder(@PathVariable long orderId) throws ApiException {
+         dto.allocateOrder(orderId);
+    }
+
+    @ApiOperation(value = "Generate Invoice")
+    @RequestMapping(path="api/order/invoice/{orderId}",method = RequestMethod.GET)
+    public void createInvoice(@PathVariable long orderId)
+    {
+
     }
 
 }

@@ -56,7 +56,6 @@
 /home/lenovo/Desktop/Toy_Assure/Server/src/main/java/com/increff/assure/dao/BinSkuDao.java
 /home/lenovo/Desktop/Toy_Assure/Server/src/main/java/com/increff/assure/pojo/BinSkuPojo.java
 /home/lenovo/Desktop/Toy_Assure/Server/src/main/java/com/increff/assure/service/InventoryService.java
-/home/lenovo/Desktop/Toy_Assure/Server/src/main/java/com/increff/assure/util/ConvertGeneric.java
 /home/lenovo/Desktop/Toy_Assure/Server/src/main/java/com/increff/assure/spring/DbConfig.java
 /home/lenovo/Desktop/Toy_Assure/Server/src/main/java/com/increff/assure/spring/ControllerConfiguration.java
 /home/lenovo/Desktop/Toy_Assure/Server/src/main/java/com/increff/assure/model/forms/BinWiseInventoryForm.java

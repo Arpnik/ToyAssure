@@ -7,6 +7,9 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity @Getter @Setter
+@Table(
+        indexes = @Index(name="uniqueConstraintOrder",columnList = "channelId,channelOrderId",unique = true)
+)
 public class OrderPojo extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

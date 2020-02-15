@@ -7,7 +7,7 @@ import com.increff.assure.pojo.ProductPojo;
 import com.increff.assure.service.ApiException;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
-import com.increff.assure.util.ConvertGeneric;
+import util.ConvertGeneric;
 import com.increff.assure.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ import java.util.List;
 <span class="fc" id="L30">        memberService.checkPresenceOfClientById(clientId);</span>
 <span class="fc" id="L31">        List&lt;ProductPojo&gt; pojoList=new ArrayList&lt;&gt;();</span>
 <span class="fc bfc" id="L32" title="All 2 branches covered.">        for(ProductForm form:formList){</span>
-<span class="fc" id="L33">            normalize(form);</span>
+<span class="fc" id="L33">            normalizeProductForm(form);</span>
 <span class="fc" id="L34">            ProductPojo pojo=ConvertGeneric.convert(form,ProductPojo.class);</span>
 <span class="fc" id="L35">            pojo.setClientId(clientId);</span>
 <span class="fc" id="L36">            checkClientIdAndClientSku(pojo);</span>
@@ -80,5 +80,11 @@ import java.util.List;
 <span class="fc" id="L80">        form.setName(StringUtil.toLowerCase(form.getName()));</span>
 <span class="fc" id="L81">        form.setBrandId(StringUtil.toLowerCase(form.getBrandId()));</span>
 <span class="fc" id="L82">    }</span>
+
+    protected void normalizeProductForm(ProductForm form)
+    {
+<span class="fc" id="L86">        normalize(form);</span>
+<span class="fc" id="L87">        form.setClientSkuId(form.getClientSkuId().trim());</span>
+<span class="fc" id="L88">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

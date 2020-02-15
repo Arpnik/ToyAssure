@@ -10,6 +10,7 @@ com/increff/assure/dto/ChannelDto.class
 com/increff/assure/service/AboutAppService.class
 com/increff/assure/controller/ChannelController.class
 com/increff/assure/pojo/ProductPojo.class
+com/increff/assure/pojo/OrderDetailsResult.class
 com/increff/assure/model/data/ProductData.class
 com/increff/assure/pojo/InventoryPojo.class
 com/increff/assure/model/forms/OrderLineItemForm.class
@@ -22,6 +23,7 @@ com/increff/assure/controller/MemberController.class
 com/increff/assure/service/MemberService.class
 com/increff/assure/model/data/BinData.class
 com/increff/assure/model/forms/CreateBinForm.class
+com/increff/assure/model/data/OrderDetailsData.class
 com/increff/assure/dao/ChannelDao.class
 com/increff/assure/spring/DbConfig.class
 com/increff/assure/service/OrderService.class
@@ -54,6 +56,7 @@ com/increff/assure/pojo/OrderItemPojo.class
 com/increff/assure/controller/AppRestControllerAdvice.class
 com/increff/assure/controller/OrderController.class
 com/increff/assure/service/ProductService.class
+com/increff/assure/model/data/OrderDisplayData.class
 com/increff/assure/dao/AbstractDao.class
 com/increff/assure/pojo/AbstractEntity.class
 com/increff/assure/model/constants/InvoiceType.class

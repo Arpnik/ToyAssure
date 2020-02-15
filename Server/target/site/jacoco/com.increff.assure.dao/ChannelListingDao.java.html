@@ -7,23 +7,24 @@ import javax.persistence.TypedQuery;
 
 @Repository
 <span class="fc" id="L9">public class ChannelListingDao extends AbstractDao&lt;ChannelListingPojo&gt; {</span>
-<span class="fc" id="L10">    private static String select_channelId_channelSku=&quot;select p from ChannelListingPojo p where p.channelId=:channelId and p.channelSkuId=:channelSkuId&quot;;</span>
+<span class="fc" id="L10">    private static String select_channelId_channelSku_clientId=&quot;select p from ChannelListingPojo p where p.channelId=:channelId and p.channelSkuId=:channelSkuId and p.clientId=:clientId&quot;;</span>
 <span class="fc" id="L11">    private static String select_channelId_globalSkuId=&quot;select p from ChannelListingPojo p where p.channelId=:channelId and p.globalSkuId=:globalSkuId&quot;;</span>
 
-    public ChannelListingPojo getListingPojoFromChannelIdAndSku(String channelSkuId,long channelId)
+    public ChannelListingPojo getListingPojoFromChannelIdAndSkuAndClientId(String channelSkuId,long channelId,long clientId)
     {
-<span class="nc" id="L15">        TypedQuery&lt;ChannelListingPojo&gt; query=getQuery(select_channelId_channelSku);</span>
+<span class="nc" id="L15">        TypedQuery&lt;ChannelListingPojo&gt; query=getQuery(select_channelId_channelSku_clientId);</span>
 <span class="nc" id="L16">        query.setParameter(&quot;channelId&quot;,channelId);</span>
 <span class="nc" id="L17">        query.setParameter(&quot;channelSkuId&quot;,channelSkuId);</span>
-<span class="nc" id="L18">        return getSingle(query);</span>
+<span class="nc" id="L18">        query.setParameter(&quot;clientId&quot;,clientId);</span>
+<span class="nc" id="L19">        return getSingle(query);</span>
     }
 
     public ChannelListingPojo getListingPojoFromChannelIdAndGlobalSku(long globalSkuId,long channelId)
     {
-<span class="nc" id="L23">        TypedQuery&lt;ChannelListingPojo&gt; query=getQuery(select_channelId_globalSkuId);</span>
-<span class="nc" id="L24">        query.setParameter(&quot;channelId&quot;,channelId);</span>
-<span class="nc" id="L25">        query.setParameter(&quot;globalSkuId&quot;,globalSkuId);</span>
-<span class="nc" id="L26">        return getSingle(query);</span>
+<span class="nc" id="L24">        TypedQuery&lt;ChannelListingPojo&gt; query=getQuery(select_channelId_globalSkuId);</span>
+<span class="nc" id="L25">        query.setParameter(&quot;channelId&quot;,channelId);</span>
+<span class="nc" id="L26">        query.setParameter(&quot;globalSkuId&quot;,globalSkuId);</span>
+<span class="nc" id="L27">        return getSingle(query);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

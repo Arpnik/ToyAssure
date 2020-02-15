@@ -36,16 +36,14 @@ public class BinService {
     {
         for(BinSkuPojo pojo:pojoList)
         {
-            BinSkuPojo existing= binSkuDao.checkPresenceByBinIdAndGlobalSku(pojo.getBinId(),pojo.getGlobalSkuId());
+            BinSkuPojo existing = binSkuDao.checkPresenceByParams(pojo.getBinId(), pojo.getGlobalSkuId());
             if(existing!=null)
             {
-                existing.setQuantity(pojo.getQuantity()+existing.getQuantity());
+                existing.setQuantity(pojo.getQuantity() + existing.getQuantity());
                 binSkuDao.update(existing);
+                continue;
             }
-            else
-            {
-                binSkuDao.insert(pojo);
-            }
+            binSkuDao.insert(pojo);
         }
     }
 
@@ -61,13 +59,13 @@ public class BinService {
             return binSkuDao.selectProductInfoByGlobalSku(globalSkuId);
         }
         checkBinId(binId);
-        List<BinFilter> result= binSkuDao.selectProductInfoByBinAndGlobalSku(binId,globalSkuId);
+        List<BinFilter> result = binSkuDao.selectProductInfoByBinAndGlobalSku(binId,globalSkuId);
         return result;
     }
 
     @Transactional(rollbackFor = ApiException.class)
     public void update(long binSkuId,long quantity) throws ApiException {
-        BinSkuPojo existing=binSkuDao.select(binSkuId);
+        BinSkuPojo existing = binSkuDao.select(binSkuId);
         if(existing==null)
         {
             throw new ApiException("The BinSkuId doesn't exist");
@@ -78,7 +76,7 @@ public class BinService {
 
     @Transactional(readOnly = true,rollbackFor = ApiException.class)
     public void checkBinId(long binId) throws ApiException {
-        BinPojo existing=binDao.select(binId);
+        BinPojo existing = binDao.select(binId);
         if(existing==null)
         {
             throw new ApiException("Bin ID:"+binId+" doesn't exists.");
@@ -91,10 +89,17 @@ public class BinService {
        return binSkuDao.select(binSkuId);
     }
 
+    @Transactional
     public BinSkuPojo getCheck(long binSkuId) throws ApiException {
         BinSkuPojo pojo=get(binSkuId);
         if(pojo==null)
             throw new ApiException("BinSKuId is not valid");
         return pojo;
+    }
+
+    @Transactional
+    public List<BinSkuPojo> getBins(long globalSkuId)
+    {
+        return binSkuDao.selectByGlobalSku(globalSkuId);
     }
 }

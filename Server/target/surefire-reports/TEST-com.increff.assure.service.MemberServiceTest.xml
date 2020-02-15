@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="com.increff.assure.service.MemberServiceTest" time="0.033" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="com.increff.assure.service.MemberServiceTest" time="0.03" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/bin/jdk1.8.0_231/jre/lib/amd64"/>
@@ -62,9 +62,9 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.increff.assure.service.MemberServiceTest" name="testGet" time="0.005"/>
-  <testcase classname="com.increff.assure.service.MemberServiceTest" name="testAddInvalid" time="0.006"/>
+  <testcase classname="com.increff.assure.service.MemberServiceTest" name="testGet" time="0.004"/>
+  <testcase classname="com.increff.assure.service.MemberServiceTest" name="testAddInvalid" time="0.005"/>
   <testcase classname="com.increff.assure.service.MemberServiceTest" name="testAddValid" time="0.009"/>
-  <testcase classname="com.increff.assure.service.MemberServiceTest" name="testGetClients" time="0.008"/>
-  <testcase classname="com.increff.assure.service.MemberServiceTest" name="testGetAll" time="0.005"/>
+  <testcase classname="com.increff.assure.service.MemberServiceTest" name="testGetClients" time="0.006"/>
+  <testcase classname="com.increff.assure.service.MemberServiceTest" name="testGetAll" time="0.006"/>
 </testsuite>

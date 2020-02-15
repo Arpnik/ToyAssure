@@ -12,7 +12,7 @@ import com.increff.assure.service.ApiException;
 import com.increff.assure.service.ChannelService;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
-import util.ConvertGeneric;
+import com.increff.assure.util.ConvertGeneric;
 import com.increff.assure.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

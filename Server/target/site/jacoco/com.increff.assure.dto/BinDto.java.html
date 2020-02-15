@@ -11,7 +11,7 @@ import com.increff.assure.pojo.BinSkuPojo;
 import com.increff.assure.pojo.InventoryPojo;
 import com.increff.assure.pojo.ProductPojo;
 import com.increff.assure.service.*;
-import com.increff.assure.util.ConvertGeneric;
+import util.ConvertGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +43,7 @@ import java.util.List;
         //todo keep boolean flag instead of sending hardcoded values.
 <span class="nc" id="L44">        long globalSkuId=-1;</span>
 <span class="nc bnc" id="L45" title="All 2 branches missed.">        if(!form.getClientSkuId().isEmpty())</span>
-        {
+<span class="nc" id="L46">        { normalize(form);</span>
 <span class="nc" id="L47">           ProductPojo productPojo= getCheckClientIdAndClientSku(form.getClientId(),form.getClientSkuId());</span>
 <span class="nc" id="L48">           globalSkuId=productPojo.getGlobalSkuId();</span>
         }
@@ -63,52 +63,58 @@ import java.util.List;
 <span class="nc" id="L63">        List&lt;BinSkuPojo&gt; pojoList=new ArrayList&lt;&gt;();</span>
 <span class="nc bnc" id="L64" title="All 2 branches missed.">        for(BinWiseInventoryForm form:formList)</span>
         {
-<span class="nc" id="L66">            ProductPojo product= getCheckClientIdAndClientSku(clientId,form.getClientSkuId());</span>
-<span class="nc" id="L67">            binService.checkBinId(form.getBinId());</span>
-<span class="nc" id="L68">            BinSkuPojo binSkuPojo=ConvertGeneric.convert(form,BinSkuPojo.class);</span>
-<span class="nc" id="L69">            binSkuPojo.setGlobalSkuId(product.getGlobalSkuId());</span>
-<span class="nc" id="L70">            InventoryPojo inventoryPojo=createInventory(product.getGlobalSkuId(),form.getQuantity());</span>
-<span class="nc" id="L71">            inventoryService.addOrUpdateInventory(inventoryPojo);</span>
-<span class="nc" id="L72">            pojoList.add(binSkuPojo);</span>
-<span class="nc" id="L73">        }</span>
-<span class="nc" id="L74">        binService.AddOrUpdateInventory(pojoList);</span>
+<span class="nc" id="L66">            form.setClientSkuId(form.getClientSkuId().trim());</span>
+<span class="nc" id="L67">            ProductPojo product= getCheckClientIdAndClientSku(clientId,form.getClientSkuId());</span>
+<span class="nc" id="L68">            binService.checkBinId(form.getBinId());</span>
+<span class="nc" id="L69">            BinSkuPojo binSkuPojo=ConvertGeneric.convert(form,BinSkuPojo.class);</span>
+<span class="nc" id="L70">            binSkuPojo.setGlobalSkuId(product.getGlobalSkuId());</span>
+<span class="nc" id="L71">            InventoryPojo inventoryPojo=createInventory(product.getGlobalSkuId(),form.getQuantity());</span>
+<span class="nc" id="L72">            inventoryService.addOrUpdateInventory(inventoryPojo);</span>
+<span class="nc" id="L73">            pojoList.add(binSkuPojo);</span>
+<span class="nc" id="L74">        }</span>
+<span class="nc" id="L75">        binService.AddOrUpdateInventory(pojoList);</span>
 
-<span class="nc" id="L76">    }</span>
+<span class="nc" id="L77">    }</span>
 
     public ProductPojo getCheckClientIdAndClientSku(long clientId, String clientSkuId) throws ApiException {
-<span class="nc" id="L79">        ProductPojo product=productService.getByClientIdAndClientSku(clientId,clientSkuId);</span>
-<span class="nc bnc" id="L80" title="All 2 branches missed.">        if(product==null)</span>
+<span class="nc" id="L80">        ProductPojo product=productService.getByClientIdAndClientSku(clientId,clientSkuId);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        if(product==null)</span>
         {
-<span class="nc" id="L82">            throw new ApiException(&quot;No Product with Client SKU ID: &quot;+clientSkuId+&quot; and Client Name:&quot; +memberService.get(clientId).getName()+&quot; exists.&quot;);</span>
+<span class="nc" id="L83">            throw new ApiException(&quot;No Product with Client SKU ID: &quot;+clientSkuId+&quot; and Client Name:&quot; +memberService.get(clientId).getName()+&quot; exists.&quot;);</span>
         }
-<span class="nc" id="L84">        return product;</span>
+<span class="nc" id="L85">        return product;</span>
     }
 
     public void updateBin(long binSkuId, UpdateBinForm form) throws ApiException {
-<span class="nc" id="L88">        BinSkuPojo existing=binService.getCheck(binSkuId);</span>
-<span class="nc" id="L89">        binService.update(binSkuId,form.getQuantity());</span>
-<span class="nc" id="L90">        InventoryPojo inventoryPojo=createInventory(existing.getGlobalSkuId(),form.getQuantity()-existing.getQuantity());</span>
-<span class="nc" id="L91">        inventoryService.addOrUpdateInventory(inventoryPojo);</span>
-<span class="nc" id="L92">    }</span>
+<span class="nc" id="L89">        BinSkuPojo existing=binService.getCheck(binSkuId);</span>
+<span class="nc" id="L90">        binService.update(binSkuId,form.getQuantity());</span>
+<span class="nc" id="L91">        InventoryPojo inventoryPojo=createInventory(existing.getGlobalSkuId(),form.getQuantity()-existing.getQuantity());</span>
+<span class="nc" id="L92">        inventoryService.addOrUpdateInventory(inventoryPojo);</span>
+<span class="nc" id="L93">    }</span>
 
     public void validateForm(BinFilterForm form) throws ApiException {
-<span class="pc bpc" id="L95" title="4 of 8 branches missed.">        if((form.getBinId() == 0) &amp;&amp; form.getClientId()==0 &amp;&amp; (form.getClientSkuId()==null||form.getClientSkuId().isEmpty()))</span>
+<span class="pc bpc" id="L96" title="4 of 8 branches missed.">        if((form.getBinId() == 0) &amp;&amp; form.getClientId()==0 &amp;&amp; (form.getClientSkuId()==null||form.getClientSkuId().isEmpty()))</span>
         {
-<span class="fc" id="L97">            throw new ApiException(&quot;Please set some values in the  filter form&quot;);</span>
+<span class="fc" id="L98">            throw new ApiException(&quot;Please set some values in the  filter form&quot;);</span>
         }
-<span class="pc bpc" id="L99" title="3 of 12 branches missed.">        if((!(form.getClientSkuId()==null||form.getClientSkuId().isEmpty())&amp;&amp; form.getClientId()==0)|| ((form.getClientSkuId()==null||form.getClientSkuId().isEmpty())&amp;&amp;form.getClientId()&gt;0))</span>
+<span class="pc bpc" id="L100" title="3 of 12 branches missed.">        if((!(form.getClientSkuId()==null||form.getClientSkuId().isEmpty())&amp;&amp; form.getClientId()==0)|| ((form.getClientSkuId()==null||form.getClientSkuId().isEmpty())&amp;&amp;form.getClientId()&gt;0))</span>
         {
-<span class="fc" id="L101">            throw new ApiException(&quot;PLease select appropriate client Name and Client SKU&quot;);</span>
+<span class="fc" id="L102">            throw new ApiException(&quot;PLease select appropriate client Name and Client SKU&quot;);</span>
         }
-<span class="fc" id="L103">    }</span>
+<span class="fc" id="L104">    }</span>
 
     protected InventoryPojo createInventory(long globalSkuId,long quantity)
     {
-<span class="nc" id="L107">        InventoryPojo pojo=new InventoryPojo();</span>
-<span class="nc" id="L108">        pojo.setAvailableQuantity(quantity);</span>
-<span class="nc" id="L109">        pojo.setGlobalSkuId(globalSkuId);</span>
-<span class="nc" id="L110">        return pojo;</span>
+<span class="nc" id="L108">        InventoryPojo pojo=new InventoryPojo();</span>
+<span class="nc" id="L109">        pojo.setAvailableQuantity(quantity);</span>
+<span class="nc" id="L110">        pojo.setGlobalSkuId(globalSkuId);</span>
+<span class="nc" id="L111">        return pojo;</span>
     }
+
+    protected void normalize(BinFilterForm form)
+    {
+<span class="nc" id="L116">        form.setClientSkuId(form.getClientSkuId().trim());</span>
+<span class="nc" id="L117">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
