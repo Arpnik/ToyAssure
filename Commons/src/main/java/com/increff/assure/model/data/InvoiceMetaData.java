@@ -8,10 +8,8 @@ import java.time.ZonedDateTime;
 @Getter @Setter
 public class InvoiceMetaData {
 
-    private long orderId;
+    private long id;//orderId
     private String channelOrderId;
-    private long clientId;
-    private long customerId;
     private String customerName;
     private String clientName;
     private String channelName;

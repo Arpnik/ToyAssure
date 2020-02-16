@@ -1,6 +1,7 @@
 package com.increff.assure.dto;
 
 import com.increff.assure.model.data.ChannelItemCheckData;
+import com.increff.assure.model.data.InvoiceMetaData;
 import com.increff.assure.model.data.OrderDetailsData;
 import com.increff.assure.model.data.OrderDisplayData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
@@ -12,9 +13,11 @@ import com.increff.assure.model.forms.OrderForm;
 import com.increff.assure.model.forms.OrderLineItemForm;
 import com.increff.assure.service.*;
 import com.increff.assure.util.ConvertGeneric;
+import com.increff.assure.util.PDFUtility;
 import com.increff.assure.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -123,12 +126,27 @@ public class OrderDto {
         orderService.placeOrder(orderPojo, itemPojoList);
     }
 
+    @Transactional(rollbackFor = ApiException.class)
+    public byte[] createInvoice(long orderId) throws Exception {
+        OrderPojo order=orderService.fullFillOrder(orderId);
+
+        InvoiceMetaData invoice=ConvertGeneric.convert(order,InvoiceMetaData.class);
+        invoice.setClientName( memberService.get( order.getClientId()).getName());
+        invoice.setCustomerName( memberService.get( order.getCustomerId()).getName());
+        invoice.setChannelName( channelService.getCheck( order.getChannelId()).getName());
+
+        List<OrderDetailsData> items= getOrderDetails(orderId);
+
+        return PDFUtility.createPdfForInvoice(invoice,items);
+    }
+
     public List<OrderDisplayData> getAll() throws Exception {
         List<OrderDisplayData> dataList = new ArrayList<>();
         List<OrderPojo> pojoList = orderService.getAll();
         for(OrderPojo pojo: pojoList)
         {
             OrderDisplayData data = ConvertGeneric.convert(pojo, OrderDisplayData.class);
+            data.setOrderId(pojo.getId());
             dataList.add(data);
         }
         return dataList;
@@ -159,6 +177,11 @@ public class OrderDto {
         return data;
     }
 
+    public void allocateOrder(long orderId) throws ApiException {
+        orderService.allocateOrder(orderId);
+    }
+
+
     protected static void normalize(OrderForm form) {
        form.setChannelOrderId(form.getChannelOrderId().trim());
        for(OrderLineItemForm item:form.getItems())
@@ -167,9 +190,6 @@ public class OrderDto {
        }
     }
 
-    public void allocateOrder(long orderId) throws ApiException {
-        orderService.allocateOrder(orderId);
-    }
 
     protected static void normalize(ChannelOrderForm form) {
         form.setChannelName(StringUtil.toUpperCase(form.getChannelName()));

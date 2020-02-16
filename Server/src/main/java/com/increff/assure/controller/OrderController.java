@@ -61,9 +61,8 @@ public class OrderController {
 
     @ApiOperation(value = "Generate Invoice")
     @RequestMapping(path="api/order/invoice/{orderId}",method = RequestMethod.GET)
-    public void createInvoice(@PathVariable long orderId)
-    {
-
+    public byte[] createInvoice(@PathVariable long orderId) throws Exception {
+        return dto.createInvoice(orderId);
     }
 
 }

@@ -11,7 +11,32 @@
 <div class="container">
 
 <h3>Order Details</h3>
+<div class="row">
+	 <div class="col-12">
+	 	<div class="form-row">
+				  <div class="form-group col-md-4" id="client-DropDown">
+				      Select the Client
+						<select class="form-control"  id="selectClient" name='clientId'>
+							<option selected hidden disabled>select client</option>
+						</select>
+					  </div>
 
+				 <div class="form-group col-md-4" id="channel-Dropdown">
+				      Select the Channel
+						<select class="form-control" id="selectChannel" name="channelId">
+							<option selected hidden disabled>select channel</option>
+						</select>
+				  </div>
+				  <div class="col-md-2">
+				  	<div class="row">
+						&nbsp;
+					</div>
+
+			 <button type="button" class="btn btn-primary" id="upload-channels">Upload</button>   
+		</div>
+		</div>
+	</div>
+</div>
 
 <form id="order-form">
   <div class="row">

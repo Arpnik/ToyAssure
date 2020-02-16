@@ -10,7 +10,7 @@
 	<div th:replace="snippets.html :: toast_box"></div>
 
 <div class="container">
-<h3>Order Details</h3>
+<h3>Upload Order</h3>
 <div class="row">
 	 <form class="col-12">
 	 	<div class="form-row">
@@ -41,6 +41,72 @@
 		</div>
 	</form>
 </div>
+
+<h3>Past Orders  <button type="button" class="btn btn-primary" id="refresh">Refresh</button></h3>
+
+<div class="row">
+
+ <!-- Table -->
+ <div class="col-12">
+	<table class="table table-striped" id="order-table">
+	  <thead>
+	    <tr>
+	      <th scope="col">ORDER ID</th>
+	      <th scope="col">CHANNEL ORDER ID</th>
+	      <th scope="col">STATUS</th>
+	      <th scope="col">CREATION DATE</th>
+	      <th scope="col" colspan="3">ACTIONS</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <!--dynamically generate-->
+	  </tbody>
+	</table>
+
+</div>
+</div>
+
+
+<!-- order details Modal-->
+ <div class="modal" tabindex="-1" role="dialog" id="order-details-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="invoiceNumber"> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<table class="table table-striped" id="item-table">
+	  <thead>
+	    <tr>
+	      <th scope="col">Product</th>
+	      <th scope="col">Brand</th>
+	      <th scope="col">Quantity</th>
+	      <th scope="col">Unit Price</th>
+	      <th scope="col">Amount</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <!--dynamically generate-->
+	  </tbody>
+	</table>
+
+      </div>
+      <div class="modal-footer" >
+      	<h5 id="totalBill" style="margin-right:10rem;"> </h5>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 </div>
 
 	<footer th:replace="snippets.html :: name_footer"></footer>

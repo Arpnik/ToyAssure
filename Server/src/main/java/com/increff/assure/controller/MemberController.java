@@ -38,4 +38,9 @@ public class MemberController {
         return dto.getClients();
     }
 
+    @ApiOperation(value="Get all Customer Information")
+    @RequestMapping(path="/api/member/customer",method = RequestMethod.GET)
+    public List<MemberData> getCustomers() throws Exception {
+        return dto.getCustomers();
+    }
 }

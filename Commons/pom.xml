@@ -115,11 +115,13 @@
             <version>${javax.servlet.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/fop -->
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop</artifactId>
-            <version>${fop.version}</version>
+            <version>2.3</version>
         </dependency>
+
 
 
 

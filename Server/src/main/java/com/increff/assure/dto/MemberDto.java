@@ -1,5 +1,6 @@
 package com.increff.assure.dto;
 
+import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.MemberData;
 import com.increff.assure.model.forms.MemberForm;
 import com.increff.assure.pojo.MemberPojo;
@@ -37,7 +38,7 @@ public class MemberDto {
     }
 
     public List<MemberData> getClients() throws Exception{
-        List<MemberPojo> pojoList = service.getClients();
+        List<MemberPojo> pojoList = service.getByType(MemberTypes.CLIENT);
         List<MemberData> dataList = new ArrayList<>();
         for(MemberPojo pojo: pojoList)
         {
@@ -47,7 +48,16 @@ public class MemberDto {
         return dataList;
     }
 
-
+    public List<MemberData> getCustomers() throws Exception{
+        List<MemberPojo> pojoList = service.getByType(MemberTypes.CUSTOMER);
+        List<MemberData> dataList = new ArrayList<>();
+        for(MemberPojo pojo: pojoList)
+        {
+            MemberData data = ConvertGeneric.convert(pojo, MemberData.class);
+            dataList.add(data);
+        }
+        return dataList;
+    }
 
     protected static void normalize(MemberForm form)
     {

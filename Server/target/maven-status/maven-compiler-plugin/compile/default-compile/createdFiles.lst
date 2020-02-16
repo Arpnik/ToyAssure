@@ -63,6 +63,7 @@ com/increff/assure/model/constants/InvoiceType.class
 com/increff/assure/pojo/BinPojo.class
 com/increff/assure/model/forms/BinFilterForm.class
 com/increff/assure/util/ValidateRequestBodyList.class
+com/increff/assure/util/PDFUtility.class
 com/increff/assure/util/StringUtil.class
 com/increff/assure/util/PrefixPhysicalNamingStrategy.class
 com/increff/assure/dto/OrderDto.class

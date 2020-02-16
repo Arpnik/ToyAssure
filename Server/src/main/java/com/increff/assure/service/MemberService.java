@@ -54,9 +54,10 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public List<MemberPojo> getClients(){
-        return dao.selectAllClients();
+    public List<MemberPojo> getByType(MemberTypes type){
+        return dao.selectAllByType(type);
     }
+
 
 
 }

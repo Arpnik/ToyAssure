@@ -4,6 +4,7 @@ import com.increff.assure.dao.BinSkuDao;
 import com.increff.assure.dao.OrderDao;
 import com.increff.assure.dao.OrderItemDao;
 import com.increff.assure.model.constants.OrderStatusType;
+import com.increff.assure.model.data.OrderDetailsData;
 import com.increff.assure.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,11 +40,9 @@ public class OrderService {
 
     @Transactional(rollbackFor = ApiException.class)
     public void allocateOrder(long orderId) throws ApiException {
+
+        validate(orderId);
         List<OrderItemPojo> itemList = itemDao.getOrderedItems(orderId);
-
-        if(itemList.size()==0)
-            throw new ApiException("Order Doesn't exist");
-
         boolean allocated = true;
         for(OrderItemPojo item: itemList)
         {
@@ -74,6 +73,48 @@ public class OrderService {
         return itemDao.getDetailsByOrderId( orderId);
     }
 
+    @Transactional(rollbackFor = ApiException.class)
+    public OrderPojo fullFillOrder(long orderId) throws ApiException {
+        OrderPojo order = getOrder(orderId);
+        if(order.getStatus() == OrderStatusType.FULFILLED)
+            return order;
+
+        updateStatus(order);
+
+        List<OrderItemPojo> itemList = itemDao.getOrderedItems(orderId);
+        for(OrderItemPojo item: itemList)
+        {
+            InventoryPojo inventory = invService.getByGlobalSkuId(item.getGlobalSkuId());
+            inventory.setAllocatedQuantity( inventory.getAllocatedQuantity() - item.getOrderedQuantity());
+            inventory.setFulfilledQuantity( inventory.getFulfilledQuantity() + item.getOrderedQuantity());
+
+            item.setAllocatedQuantity(0);
+            item.setFulfilledQuantity( item.getOrderedQuantity());
+        }
+
+        return order;
+
+    }
+
+    @Transactional(rollbackFor = ApiException.class)
+    public void updateStatus(OrderPojo order) throws ApiException {
+
+        if(order.getStatus() == OrderStatusType.CREATED)
+            throw new ApiException("Order cannot be fullfilled");
+
+        order.setStatus(OrderStatusType.FULFILLED);
+    }
+
+    protected void validate(long orderId) throws ApiException {
+        OrderPojo pojo=dao.select(orderId);
+
+        if(pojo == null)
+            throw new ApiException("Order doesn't exist");
+
+        if(pojo.getStatus() != OrderStatusType.CREATED)
+            throw new ApiException("Order is already allocate");
+    }
+
     @Transactional(readOnly = true)
     public List<OrderPojo> getAll()
     {
@@ -84,6 +125,17 @@ public class OrderService {
     public OrderPojo getByParams( long channelId, String channelOrderId)
     {
         return dao.getBychannelIdAndChannelOrderId( channelId, channelOrderId);
+    }
+
+    @Transactional(rollbackFor = ApiException.class)
+    public OrderPojo getOrder(long orderId) throws ApiException {
+        OrderPojo pojo = dao.select(orderId);
+
+        if(pojo == null)
+        {
+            throw new ApiException("Order doesn't exist");
+        }
+        return pojo;
     }
 
     private void allocateItems( List<BinSkuPojo> bins, long qty)

@@ -64,9 +64,17 @@ public class ChannelService {
 
     @Transactional(readOnly = true)
     public ChannelPojo getDefaultChannel() throws ApiException {
-        ChannelPojo pojo=getChannelByName(defaultName);
+        return getChannelByName(defaultName);
+    }
+
+    @Transactional(readOnly = true)
+    public ChannelPojo getCheck(long channelId) throws ApiException {
+        ChannelPojo pojo = channelDao.select(channelId);
+        if(pojo == null)
+            throw new ApiException("Channel doesn't exist for Channel ID:"+channelId);
         return pojo;
     }
+
 
     @Transactional(rollbackFor = ApiException.class,readOnly = true)
     public ChannelPojo getChannelByName(String name) throws ApiException {
