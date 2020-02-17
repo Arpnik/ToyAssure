@@ -1,5 +1,8 @@
 package com.increff.assure.dto;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.increff.assure.model.constants.MemberTypes;
+import com.increff.assure.model.data.ErrorData;
 import com.increff.assure.model.data.ProductData;
 import com.increff.assure.model.forms.ProductForm;
 import com.increff.assure.model.forms.UpdateProductForm;
@@ -8,13 +11,15 @@ import com.increff.assure.service.ApiException;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
 import com.increff.assure.util.ConvertGeneric;
-import com.increff.assure.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.increff.assure.util.Normalize.normalize;
+import static com.increff.assure.util.Normalize.normalizeProductForm;
 
 @Service
 public class ProductDto {
@@ -26,22 +31,39 @@ public class ProductDto {
     MemberService memberService;
 
     @Transactional(rollbackFor = ApiException.class)
-    public void add(List<ProductForm> formList,long clientId) throws Exception {
-        memberService.checkPresenceOfClientById(clientId);
-        List<ProductPojo> pojoList=new ArrayList<>();
-        for(ProductForm form:formList){
+    public void add(List<ProductForm> formList,long clientId) throws ApiException {
+        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);
+
+        List<ProductPojo> pojoList = new ArrayList<>();
+        List<ErrorData> errorList = new ArrayList<>();
+
+        int sno = 0;
+        for(ProductForm form: formList){
+
             normalizeProductForm(form);
-            ProductPojo pojo=ConvertGeneric.convert(form,ProductPojo.class);
-            pojo.setClientId(clientId);
-            checkClientIdAndClientSku(pojo);
-            pojoList.add(pojo);
+            ProductPojo pojo = ConvertGeneric.convert(form,ProductPojo.class);
+            pojo.setClientId( clientId);
+            try {
+                checkClientIdAndSku(pojo);
+            }
+            catch (ApiException e)
+            {
+                ErrorData data=new ErrorData(sno,e.getMessage());
+                errorList.add(data);
+            }
+                pojoList.add(pojo);
+                sno+=1;
         }
+
+        if(errorList.size()!=0)
+            throw new ApiException(ErrorData.convert(errorList));
+
         productService.add(pojoList);
     }
 
-    public List<ProductData> getAllByClientId(long clientId) throws Exception {
-        memberService.checkPresenceOfClientById(clientId);
-        List<ProductPojo> pojoList= productService.getAllByClientId(clientId);
+    public List<ProductData> getAllByClientId(long clientId) throws ApiException {
+        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);
+        List<ProductPojo> pojoList= productService.getAllById(clientId);
         List<ProductData> dataList=new ArrayList<>();
         for(ProductPojo pojo:pojoList)
         {
@@ -51,39 +73,24 @@ public class ProductDto {
         return dataList;
     }
 
-    public void update(long id, UpdateProductForm form) throws Exception {
+    public void update(long id, UpdateProductForm form) throws ApiException {
         normalize(form);
-        ProductPojo pojo=ConvertGeneric.convert(form,ProductPojo.class);
-        productService.update(id,pojo);
+        ProductPojo pojo = ConvertGeneric.convert(form,ProductPojo.class);
+        productService.update(id, pojo);
     }
 
-    public ProductData get(long globalSkuId)throws Exception
-    {
-        ProductPojo pojo= productService.getCheck(globalSkuId);
-        ProductData data=ConvertGeneric.convert(pojo,ProductData.class);
+    public ProductData get(long globalSkuId) throws ApiException {
+        ProductPojo pojo = productService.getCheck(globalSkuId);
+        ProductData data = ConvertGeneric.convert(pojo, ProductData.class);
         return data;
     }
 
-
-
-    protected void checkClientIdAndClientSku(ProductPojo pojo) throws ApiException {
+    protected void checkClientIdAndSku(ProductPojo pojo) throws ApiException {
         ProductPojo existing=productService.getByClientIdAndClientSku(pojo.getClientId(),pojo.getClientSkuId());
         if(existing!=null)
         {
-            throw new ApiException("Client SKU ID:"+pojo.getClientSkuId()+" for Client,"+memberService.get(pojo.getClientId()).getName()+" are not unique, Product Name:"+pojo.getName());
+            throw new ApiException("Client SKU ID:"+pojo.getClientSkuId()+" for Client:"+memberService.get(pojo.getClientId()).getName()+" are not unique");
         }
     }
 
-    protected void normalize(UpdateProductForm form)
-    {
-        form.setDescription(StringUtil.toLowerCase(form.getDescription()));
-        form.setName(StringUtil.toLowerCase(form.getName()));
-        form.setBrandId(StringUtil.toLowerCase(form.getBrandId()));
-    }
-
-    protected void normalizeProductForm(ProductForm form)
-    {
-        normalize(form);
-        form.setClientSkuId(form.getClientSkuId().trim());
-    }
 }

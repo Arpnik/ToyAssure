@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public class ProductDao extends AbstractDao<ProductPojo> {
 
-    private static String select_clientId_clientSku="select p from ProductPojo p where p.clientId=:clientId and p.clientSkuId=:clientSkuId";
-    private static String select_clientId="select p from ProductPojo p where p.clientId=:clientId";
+    private static String select_clientId_clientSku="select p from ProductPojo p where p.clientId = :clientId and p.clientSkuId = :clientSkuId";
+    private static String select_clientId="select p from ProductPojo p where p.clientId = :clientId";
 
     public ProductPojo selectByClientIdAndClientSku(long clientId, String clientSkuId) {
         TypedQuery<ProductPojo> query = getQuery(select_clientId_clientSku);
@@ -24,11 +24,6 @@ public class ProductDao extends AbstractDao<ProductPojo> {
         TypedQuery<ProductPojo> query = getQuery(select_clientId);
         query.setParameter("clientId", clientId);
         return query.getResultList();
-    }
-
-    public void update(ProductPojo pojo)
-    {
-
     }
 
 

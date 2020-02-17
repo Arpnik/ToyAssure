@@ -1,16 +1,16 @@
 package com.increff.assure.dto;
 
+import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.ChannelItemCheckData;
 import com.increff.assure.model.data.InvoiceMetaData;
 import com.increff.assure.model.data.OrderDetailsData;
 import com.increff.assure.model.data.OrderDisplayData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
-import com.increff.assure.pojo.*;
-import com.increff.assure.service.ApiException;
 import com.increff.assure.model.form.ChannelOrderForm;
 import com.increff.assure.model.form.ChannelOrderLineItem;
 import com.increff.assure.model.forms.OrderForm;
 import com.increff.assure.model.forms.OrderLineItemForm;
+import com.increff.assure.pojo.*;
 import com.increff.assure.service.*;
 import com.increff.assure.util.ConvertGeneric;
 import com.increff.assure.util.PDFUtility;
@@ -44,8 +44,8 @@ public class OrderDto {
 
     public void placeOrder(OrderForm form) throws Exception {
         normalize(form);
-        memberService.checkPresenceOfClientById(form.getClientId());
-        memberService.checkPresenceOfCustomerById(form.getCustomerId());
+        memberService.checkMemberAndType(form.getClientId(), MemberTypes.CLIENT);
+        memberService.checkMemberAndType(form.getCustomerId(),MemberTypes.CUSTOMER);
         OrderPojo orderPojo= ConvertGeneric.convert(form,OrderPojo.class);
         ChannelPojo channelPojo=channelService.getDefaultChannel();
         validateChannelIdAndChannelOrderId(channelPojo.getId(),form.getChannelOrderId());
@@ -87,8 +87,8 @@ public class OrderDto {
 
     public void placeOrderByChannel(ChannelOrderForm form) throws Exception {
         normalize(form);
-        memberService.checkPresenceOfCustomerById(form.getCustomerId());
-        memberService.checkPresenceOfClientById(form.getClientId());
+        memberService.checkMemberAndType(form.getCustomerId(),MemberTypes.CUSTOMER);
+        memberService.checkMemberAndType(form.getClientId(),MemberTypes.CLIENT);
         ChannelPojo channelPojo=channelService.getDefaultChannel();
         validateChannelIdAndChannelOrderId(channelPojo.getId(),form.getChannelOrderId());
         OrderPojo orderPojo= ConvertGeneric.convert(form, OrderPojo.class);

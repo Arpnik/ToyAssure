@@ -1,6 +1,5 @@
 package com.increff.assure.dao;
 
-import com.increff.assure.pojo.ChannelListingPojo;
 import com.increff.assure.pojo.OrderDetailsResult;
 import com.increff.assure.pojo.OrderItemPojo;
 import org.springframework.stereotype.Repository;

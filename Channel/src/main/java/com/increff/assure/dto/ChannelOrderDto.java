@@ -20,7 +20,6 @@ public class ChannelOrderDto  {
 
     public void placeOrder(ChannelOrderForm form)
     {
-        System.out.println("DTO");
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.postForObject(placeOrderUri,form,ChannelOrderForm.class);
     }

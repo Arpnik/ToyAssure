@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(
-        indexes = @Index(name="uniqueConstraintProduct",columnList = "clientId,clientSkuId",unique = true)
+        indexes = @Index(name = "uniqueConstraintProduct", columnList = "clientId, clientSkuId", unique = true)
 )
 @Getter @Setter
 public class ProductPojo extends AbstractEntity {

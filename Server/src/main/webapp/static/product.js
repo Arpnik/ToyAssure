@@ -51,7 +51,7 @@ function uploadProducts()
 		callWarnToast("Select an appropriate client name before uploading");
 		return false;
 	}
-
+	resetTable();
 	resetUploadDialog(); 	
 	$('#upload-product-modal').modal('toggle');
 }
@@ -128,7 +128,13 @@ function uploadRows(){
 	});
 }
 
-
+function resetTable()
+{
+	var $thead = $('#product-table').find('thead');
+	$thead.empty();
+	var $tbody = $('#product-table').find('tbody');
+	$tbody.empty();
+}
 
 function downloadErrors(){
 	writeFileData(errorData);
@@ -141,7 +147,7 @@ function getProductsById()
 	var clientId= $('#selectClient option:selected').val();
 	if(clientId=="")
 	{
-		callWarnToast("Select an appropriate client name before uploading");
+		callWarnToast("Select an appropriate client name to view products");
 		return false;
 	}
 
@@ -167,6 +173,7 @@ function getProductsById()
        },	   
 	   success: function(response) {
 	   displayProductList(response);
+	   callConfirmToast('Successfully fetched');
 	   },
 	   error: handleAjaxError
 	});
@@ -178,7 +185,7 @@ function displayProductList(data){
 	$tbody.empty();
 	for(var i in data){
 		var e = data[i];
-		var buttonHtml = ' <button onclick="displayEditProduct(' + e.globalSkuId + ')">edit</button>'
+		var buttonHtml = ' <button class="btn btn-primary" onclick="displayEditProduct(' + e.globalSkuId + ')">edit</button>'
 		var row = '<tr>'
 		+ '<td>' + e.clientSkuId + '</td>'
 		+ '<td>' + e.name + '</td>'

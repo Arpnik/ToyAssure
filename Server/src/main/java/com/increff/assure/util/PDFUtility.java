@@ -10,7 +10,10 @@ import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.*;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
@@ -52,19 +55,19 @@ public class PDFUtility {
             barcode.appendChild(document.createTextNode(item.getBrandId()));
             product.appendChild(barcode);
             Element mrp = document.createElement("mrp");
-            mrp.appendChild(document.createTextNode(Double.toString( item.getSellingPricePerUnit())));
+            mrp.appendChild(document.createTextNode(Double.toString(Math.round(item.getSellingPricePerUnit()*100)/100)));
             product.appendChild(mrp);
             Element qty = document.createElement("qty");
             qty.appendChild(document.createTextNode(Long.toString(item.getOrderedQuantity())));
             product.appendChild(qty);
             Element totalPrice = document.createElement("amount");
-            totalPrice.appendChild(document.createTextNode( Double.toString(item.getOrderedQuantity() * item.getSellingPricePerUnit())));
+            totalPrice.appendChild(document.createTextNode( Double.toString(Math.round(item.getOrderedQuantity() * item.getSellingPricePerUnit()*100)/100)));
             product.appendChild(totalPrice);
             sum+=( item.getOrderedQuantity() * item.getSellingPricePerUnit());
             sno+=1;
         }
         Element totalPrice=document.createElement("totalBill");
-        totalPrice.appendChild(document.createTextNode(Double.toString(sum)));
+        totalPrice.appendChild(document.createTextNode(Double.toString(Math.round(sum*100)/100)));
         root.appendChild(totalPrice);
 
         Element orderId=document.createElement("Id");

@@ -30,7 +30,7 @@ public class BinController {
 
     @ApiOperation(value="Get information of Product depending upon BinId, ClientId and ClientSku")
     @RequestMapping(path="/api/bin/product",method = RequestMethod.POST)
-    public List<BinFilterData> getProductInfo(@RequestBody BinFilterForm form) throws Exception {
+    public List<BinFilterData> getProductInfo(@RequestBody BinFilterForm form) throws ApiException {
         return dto.getProductInfo(form);
     }
 
@@ -42,9 +42,8 @@ public class BinController {
 
     @ApiOperation(value="Upload bin wise inventory")
     @RequestMapping(path = "/api/bin/client/{clientId}",method = RequestMethod.POST)
-    public void uploadBinWiseInventory(@PathVariable long clientId,@Valid @RequestBody ValidateRequestBodyList<BinWiseInventoryForm> requestBodyList) throws Exception {
-        List<BinWiseInventoryForm> formList=requestBodyList.getRequestBody();
-        dto.uploadBinWiseInventory(clientId,formList);
+    public void uploadBinWiseInventory(@PathVariable long clientId,@Valid @RequestBody ValidateRequestBodyList<BinWiseInventoryForm> requestBodyList) throws ApiException {
+        dto.uploadBinWiseInventory(clientId,requestBodyList.getRequestBody());
     }
 
 

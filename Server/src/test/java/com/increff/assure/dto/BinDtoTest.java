@@ -33,7 +33,7 @@ public class BinDtoTest extends AbstractUnitTest {
 
     @Test
     public void testCreateBin(){
-        dto.createBins(form);
+      //  dto.createBins(form);
        assertEquals(form.getNumberOfBins(),binDao.selectAll().size());
     }
 

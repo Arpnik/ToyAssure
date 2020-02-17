@@ -16,5 +16,5 @@ public class OrderLineItemForm {
     private double sellingPricePerUnit;
     @NotNull(message = "Fill the Quantity correctly")
     @Positive(message = "Quantity Ordered cannot be less than equal to 0")
-    private long orderedQuantity;
+    private long orderedQuantity;   
 }

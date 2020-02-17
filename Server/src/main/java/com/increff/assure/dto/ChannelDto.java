@@ -1,10 +1,12 @@
 package com.increff.assure.dto;
 
-import com.increff.assure.model.forms.ClientAndChannelSku;
 import com.increff.assure.model.constants.InvoiceType;
+import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.ChannelData;
+import com.increff.assure.model.data.ErrorData;
 import com.increff.assure.model.forms.ChannelForm;
 import com.increff.assure.model.forms.ChannelListingForm;
+import com.increff.assure.model.forms.ClientAndChannelSku;
 import com.increff.assure.pojo.ChannelListingPojo;
 import com.increff.assure.pojo.ChannelPojo;
 import com.increff.assure.pojo.ProductPojo;
@@ -22,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static com.increff.assure.util.Normalize.normalizeSku;
 
 @Service
 public class ChannelDto {
@@ -43,44 +47,45 @@ public class ChannelDto {
     private ProductService productService;
 
 
-    public void addChannel(ChannelForm form) throws Exception {
+    public void addChannel(ChannelForm form) throws ApiException {
         normalizeAndSetDefaults(form);
         ChannelPojo pojo= ConvertGeneric.convert(form, ChannelPojo.class);
         channelService.addChannel(pojo);
     }
 
     @Transactional(rollbackFor = ApiException.class)
-    public void addChannelListing(ChannelListingForm form) throws Exception {
-        memberService.checkPresenceOfClientById(form.getClientId());
+    public void addChannelListing(ChannelListingForm form) throws ApiException {
+        memberService.checkMemberAndType(form.getClientId(), MemberTypes.CLIENT);
         channelService.checkPresenceOfChannel(form.getChannelId());
         Boolean callDbPersist=true;
-        String errors="";
+        List<ErrorData> errorList=new ArrayList<>();
         long index=0;
         for(ClientAndChannelSku sku:form.getClientAndChannelSkuList())
         {
+            ChannelListingPojo pojo=ConvertGeneric.convert(form,ChannelListingPojo.class);
+            normalizeSku(sku);
+            pojo.setChannelSkuId(sku.getChannelSku());
             try
             {
-                ChannelListingPojo pojo=ConvertGeneric.convert(form,ChannelListingPojo.class);
-                normalizeSku(sku);
-                pojo.setChannelSkuId(sku.getChannelSku());
                 ProductPojo product=getProduct(form.getClientId(),sku.getClientSku());
                 pojo.setGlobalSkuId(product.getGlobalSkuId());
                 channelService.addChannelListing(pojo,callDbPersist);
             }
-            catch(Exception e)
+            catch(ApiException e)
             {
                 callDbPersist=false;
-                errors=errors+"\n"+index+":"+e.getMessage();
+                errorList.add(new ErrorData(index,e.getMessage()));
             }
             index+=1;
         }
+
         if(!callDbPersist)
         {
-            throw new ApiException(errors);
+            throw new ApiException(ErrorData.convert(errorList));
         }
     }
 
-    public List<ChannelData> getAllChannels() throws Exception
+    public List<ChannelData> getAllChannels()
     {
         List<ChannelPojo> pojoList=channelService.getAllChannels();
         List<ChannelData> dataList=new ArrayList<>();
@@ -102,12 +107,6 @@ public class ChannelDto {
             form.setName(defaultName);
         }
         form.setInvoiceType(Optional.ofNullable(form.getInvoiceType()).orElse(defaultType));
-    }
-
-    protected void normalizeSku(ClientAndChannelSku sku)
-    {
-        sku.setChannelSku(sku.getChannelSku().trim());
-        sku.setClientSku(sku.getClientSku().trim());
     }
 
     protected ProductPojo getProduct(long clientId,String clientSkuId) throws ApiException {

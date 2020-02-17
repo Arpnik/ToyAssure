@@ -70,7 +70,7 @@ public class ProductServiceTest extends AbstractUnitTest {
         productDao.insert(pojoList.get(0));
         productDao.insert(pojoList.get(1));
         productDao.insert(dataUtil.createProductPojo("high end watch","golden","jidsak","golden dial watch",1256,memberPojo2.getId()));
-        List<ProductPojo> returnedList=service.getAllByClientId(memberPojo1.getId());
+        List<ProductPojo> returnedList=service.getAllById(memberPojo1.getId());
         assertEquals(pojoList.size(),returnedList.size());
     }
 

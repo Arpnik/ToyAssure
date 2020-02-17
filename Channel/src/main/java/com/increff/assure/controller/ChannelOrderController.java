@@ -23,7 +23,6 @@ public class ChannelOrderController {
     @ApiOperation(value = "Place order through channel")
     @RequestMapping(path = "/api/channel/order", method = RequestMethod.POST)
     public void placeOrder(@Valid @RequestBody ChannelOrderForm form){
-        System.out.println("Controller");
         dto.placeOrder(form);
     }
 
@@ -31,7 +30,6 @@ public class ChannelOrderController {
     @RequestMapping(path = "/api/channel/product", method = RequestMethod.POST)
     public void checkOrderFulFillable(@Valid @RequestBody ChannelItemCheckForm item) throws Exception {
         dto.checkOrderItem(item);
-        System.out.println("Order Fullfillable");
     }
 
 }

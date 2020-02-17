@@ -3,6 +3,7 @@ package com.increff.assure.controller;
 import com.increff.assure.dto.MemberDto;
 import com.increff.assure.model.data.MemberData;
 import com.increff.assure.model.forms.MemberForm;
+import com.increff.assure.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,27 +21,27 @@ public class MemberController {
     @Autowired
     private MemberDto dto;
 
-    @ApiOperation(value = "Add Member information")
-    @RequestMapping(path = "/api/member", method = RequestMethod.POST)
-    public void add(@Valid @RequestBody MemberForm form) throws Exception {
-        dto.add(form);
+    @ApiOperation( value = "Add member information")
+    @RequestMapping( path = "/api/member", method = RequestMethod.POST)
+    public void add( @Valid @RequestBody MemberForm form) throws ApiException {
+        dto.add( form);
     }
 
-    @ApiOperation(value = "Get information of all members")
-    @RequestMapping(path = "/api/member", method = RequestMethod.GET)
-    public List<MemberData> getAll() throws Exception {
+    @ApiOperation( value = "Get information of all members")
+    @RequestMapping( path = "/api/member", method = RequestMethod.GET)
+    public List<MemberData> getAll(){
         return dto.getAll();
     }
 
-    @ApiOperation(value="Get all Client Information")
+    @ApiOperation(value="Get all client information")
     @RequestMapping(path="/api/member/client",method = RequestMethod.GET)
-    public List<MemberData> getClients() throws Exception {
+    public List<MemberData> getClients(){
         return dto.getClients();
     }
 
-    @ApiOperation(value="Get all Customer Information")
+    @ApiOperation(value="Get all customer information")
     @RequestMapping(path="/api/member/customer",method = RequestMethod.GET)
-    public List<MemberData> getCustomers() throws Exception {
+    public List<MemberData> getCustomers(){
         return dto.getCustomers();
     }
 }

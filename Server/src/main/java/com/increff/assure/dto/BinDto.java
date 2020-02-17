@@ -1,11 +1,12 @@
 package com.increff.assure.dto;
 
+import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.BinFilterData;
-import com.increff.assure.service.ApiException;
-import com.increff.assure.model.forms.BinWiseInventoryForm;
+import com.increff.assure.model.data.ErrorData;
 import com.increff.assure.model.forms.BinFilterForm;
-import com.increff.assure.model.forms.UpdateBinForm;
+import com.increff.assure.model.forms.BinWiseInventoryForm;
 import com.increff.assure.model.forms.CreateBinForm;
+import com.increff.assure.model.forms.UpdateBinForm;
 import com.increff.assure.pojo.BinFilter;
 import com.increff.assure.pojo.BinSkuPojo;
 import com.increff.assure.pojo.InventoryPojo;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.increff.assure.util.Normalize.normalize;
 
 @Service
 public class BinDto {
@@ -38,12 +41,13 @@ public class BinDto {
         binService.createBins(form.getNumberOfBins());
     }
 
-    public List<BinFilterData> getProductInfo(BinFilterForm form) throws Exception {
+    public List<BinFilterData> getProductInfo(BinFilterForm form) throws ApiException {
         validateForm(form);
         //todo keep boolean flag instead of sending hardcoded values.
         long globalSkuId=-1;
         if(!form.getClientSkuId().isEmpty())
-        { normalize(form);
+        {
+            normalize(form);
            ProductPojo productPojo= getCheckClientIdAndClientSku(form.getClientId(),form.getClientSkuId());
            globalSkuId=productPojo.getGlobalSkuId();
         }
@@ -58,20 +62,38 @@ public class BinDto {
         return dataList;
     }
 
-    public void uploadBinWiseInventory(long clientId, List<BinWiseInventoryForm> formList) throws ApiException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        memberService.checkPresenceOfClientById(clientId);
-        List<BinSkuPojo> pojoList=new ArrayList<>();
+    public void uploadBinWiseInventory(long clientId, List<BinWiseInventoryForm> formList) throws ApiException {
+        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);
+
+        List<BinSkuPojo> pojoList = new ArrayList<>();
+        List<ErrorData> errorList = new ArrayList<>();
+
+        int sno=-1;
         for(BinWiseInventoryForm form:formList)
         {
+            sno+=1;
             form.setClientSkuId(form.getClientSkuId().trim());
-            ProductPojo product= getCheckClientIdAndClientSku(clientId,form.getClientSkuId());
-            binService.checkBinId(form.getBinId());
-            BinSkuPojo binSkuPojo=ConvertGeneric.convert(form,BinSkuPojo.class);
+            ProductPojo product=null;
+            try {
+                product = getCheckClientIdAndClientSku(clientId, form.getClientSkuId());
+                binService.checkBinId(form.getBinId());
+            }
+            catch (ApiException e)
+            {
+                ErrorData data=new ErrorData(sno,e.getMessage());
+                errorList.add(data);
+                continue;
+            }
+            BinSkuPojo binSkuPojo = ConvertGeneric.convert(form,BinSkuPojo.class);
             binSkuPojo.setGlobalSkuId(product.getGlobalSkuId());
-            InventoryPojo inventoryPojo=createInventory(product.getGlobalSkuId(),form.getQuantity());
+            InventoryPojo inventoryPojo = createInventory(product.getGlobalSkuId(),form.getQuantity());
             inventoryService.addOrUpdateInventory(inventoryPojo);
             pojoList.add(binSkuPojo);
         }
+
+        if(errorList.size() != 0)
+            throw new ApiException(ErrorData.convert(errorList));
+
         binService.AddOrUpdateInventory(pojoList);
 
     }
@@ -111,9 +133,5 @@ public class BinDto {
         return pojo;
     }
 
-    protected void normalize(BinFilterForm form)
-    {
-        form.setClientSkuId(form.getClientSkuId().trim());
-    }
 
 }

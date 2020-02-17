@@ -1,10 +1,8 @@
 package com.increff.assure.service;
 
-import com.increff.assure.dao.BinSkuDao;
 import com.increff.assure.dao.OrderDao;
 import com.increff.assure.dao.OrderItemDao;
 import com.increff.assure.model.constants.OrderStatusType;
-import com.increff.assure.model.data.OrderDetailsData;
 import com.increff.assure.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -100,7 +98,7 @@ public class OrderService {
     public void updateStatus(OrderPojo order) throws ApiException {
 
         if(order.getStatus() == OrderStatusType.CREATED)
-            throw new ApiException("Order cannot be fullfilled");
+            throw new ApiException("Order cannot be fulfilled since it is not allocated");
 
         order.setStatus(OrderStatusType.FULFILLED);
     }

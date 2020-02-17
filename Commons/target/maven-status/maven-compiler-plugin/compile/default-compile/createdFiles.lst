@@ -1,3 +1,4 @@
+com/increff/assure/model/data/ErrorData.class
 com/increff/assure/model/data/InvoiceMetaData.class
 com/increff/assure/Controller/AbstractAppRestControllerAdvice.class
 com/increff/assure/model/form/ChannelItemCheckForm.class

@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(
-        indexes = @Index(name="uniqueConstraintMember",columnList = "name,type",unique = true)
+        indexes = @Index(name="uniqueConstraintMember", columnList = "name, type", unique = true)
 )
 @Getter @Setter
 public class MemberPojo extends AbstractEntity{

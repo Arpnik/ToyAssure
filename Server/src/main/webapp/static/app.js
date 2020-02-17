@@ -15,13 +15,14 @@ function toJson($form){
 function handleAjaxError(response){
 	var response = JSON.parse(response.responseText);
 	var error=response.message
+    error=error.split(',').join(' and ');
     console.log(error);
-    if(error.startsWith('\n'))
-    {
-        error=error.split(':');
-        error=error.slice(1).join();
-        console.log(error);
-    }
+    // if(error.startsWith('\n'))
+    // {
+    //     error=error.split(':');
+    //     error=error.slice(1).join();
+    //     console.log(error);
+    // }
     callAlertToast(error);
 }
 
@@ -93,42 +94,41 @@ function readFileData(file, callback){
 function CsvHandlError(response,fileData)
 {
     let res=JSON.parse(response.responseText)["message"];
+    console.log(res);
     callAlertToast("Download Errors");
     console.log(res);
-    if(!res.includes("requestBody"))
+    console.log(typeof(res));
+    if(!(res.startsWith("[") || res.startsWith('{')))
     {
         errorData.push(JSON.parse(response.responseText));
         updateUploadDialog();
         return false;
     }
-    res=res.split("\n")
+    res=JSON.parse(res);
     for(row in res)
+    {
+        console.log(res[row].index);
+        var createdError=fileData[Number(res[row].index)];
+        console.log(res[row].message);
+        if(createdError.hasOwnProperty("message"))
         {
-            if(res[row].trim().length!=0)
-            {
-                var result=res[row].split(":");
-                var index=(JSON.stringify(result[0].split(".")[0].match("\\[[^\\]]*]")[0]).slice(2,-2))
-                var createdError=fileData[Number(index)];
-                if(createdError.hasOwnProperty("message"))
-                {
-                    var newMessage=createdError["message"].concat("\t",result[1]);
-                    createdError["message"]=newMessage;
-                }
-                else
-                createdError["message"]=result[1];
-            }
+            var newMessage=createdError["message"].concat(",",res[row].message);
+            createdError["message"]=newMessage;
         }
-        for(let row=0;row<fileData.length;row++)
+        else
+        createdError["message"]=res[row].message;
+    }
+    for(let row=0;row<fileData.length;row++)
+    {
+        var error=fileData[row];
+        if(error.hasOwnProperty("message"))
         {
-            var error=fileData[row];
-            if(error.hasOwnProperty("message"))
-            {
-                errorCount++;
-                errorData.push(error);
-                console.log(error);
-            }
+            errorCount++;
+            errorData.push(error);
+            console.log(error);
         }
-        updateUploadDialog();
+    }
+    updateUploadDialog();
 }
 
 function writeFileData(arr){

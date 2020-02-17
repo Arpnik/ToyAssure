@@ -2,9 +2,9 @@ package com.increff.assure.util;
 
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.forms.BinFilterForm;
+import com.increff.assure.model.forms.CreateBinForm;
 import com.increff.assure.model.forms.MemberForm;
 import com.increff.assure.model.forms.ProductForm;
-import com.increff.assure.model.forms.CreateBinForm;
 import com.increff.assure.pojo.BinSkuPojo;
 import com.increff.assure.pojo.MemberPojo;
 import com.increff.assure.pojo.ProductPojo;

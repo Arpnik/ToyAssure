@@ -1,6 +1,5 @@
 package com.increff.assure.dao;
 
-import com.increff.assure.pojo.InventoryPojo;
 import com.increff.assure.pojo.OrderPojo;
 import org.springframework.stereotype.Repository;
 

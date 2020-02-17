@@ -15,30 +15,21 @@ public class MemberService {
     @Autowired
     MemberDao dao;
 
-    @Transactional(rollbackFor = ApiException.class)
-    public void add(MemberPojo pojo) throws ApiException {
-        MemberPojo existing = dao.selectByNameType(pojo.getName(), pojo.getType());
-        if(existing!=null){
-            throw new ApiException("Member with same name and Type already exists");
+    @Transactional( rollbackFor = ApiException.class)
+    public void add( MemberPojo pojo) throws ApiException {
+        MemberPojo existing = dao.selectByParams( pojo.getName(), pojo.getType());
+        if( existing != null){
+            throw new ApiException( "Member with same name and Type already exists");
         }
-        dao.insert(pojo);
+        dao.insert( pojo);
     }
 
-    @Transactional(rollbackFor = ApiException.class,readOnly = true)
-    public void checkPresenceOfClientById(long id) throws ApiException {
+    @Transactional(readOnly = true)
+    public void checkMemberAndType(long id, MemberTypes type) throws ApiException {
         MemberPojo pojo=get(id);
-        if(pojo==null || pojo.getType()!= MemberTypes.CLIENT)
+        if(pojo == null || pojo.getType() != type)
         {
-            throw new ApiException("Client ID doesn't exist");
-        }
-    }
-
-    @Transactional(rollbackFor = ApiException.class,readOnly = true)
-    public void checkPresenceOfCustomerById(long id) throws ApiException {
-        MemberPojo pojo=get(id);
-        if(pojo==null || pojo.getType()!= MemberTypes.CUSTOMER)
-        {
-            throw new ApiException("Customer ID doesn't exist");
+            throw new ApiException("Member with ID: "+id+" and Type: "+type+" doesn't exist");
         }
     }
 

@@ -4,6 +4,7 @@
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/spring/AbstractControllerConfig.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/MessageData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/util/ConvertGeneric.java
+/home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/ErrorData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/form/ChannelOrderLineItem.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/InvoiceMetaData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/form/ChannelItemCheckForm.java

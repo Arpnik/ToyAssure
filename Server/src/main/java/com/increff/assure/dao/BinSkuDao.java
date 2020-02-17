@@ -1,7 +1,7 @@
 package com.increff.assure.dao;
 
-import com.increff.assure.pojo.BinSkuPojo;
 import com.increff.assure.pojo.BinFilter;
+import com.increff.assure.pojo.BinSkuPojo;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;

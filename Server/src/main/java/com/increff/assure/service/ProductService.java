@@ -22,7 +22,7 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public List<ProductPojo> getAllByClientId(long clientId)
+    public List<ProductPojo> getAllById(long clientId)
     {
         return dao.selectByClientId(clientId);
     }
@@ -34,15 +34,15 @@ public class ProductService {
     }
 
     @Transactional(rollbackFor = ApiException.class)
-    public void update(long id,ProductPojo updatedPojo) throws ApiException {
-        ProductPojo existing=getCheck(id);
-        existing.setDescription(updatedPojo.getDescription());
-        existing.setBrandId(updatedPojo.getBrandId());
-        existing.setMrp(updatedPojo.getMrp());
-        existing.setName(updatedPojo.getName());
-        dao.update(existing);
+    public void update(long id,ProductPojo updated) throws ApiException {
+        ProductPojo existing = getCheck(id);
+        existing.setDescription(updated.getDescription());
+        existing.setBrandId(updated.getBrandId());
+        existing.setMrp(updated.getMrp());
+        existing.setName(updated.getName());
     }
 
+    @Transactional(readOnly = true)
     public ProductPojo getCheck(long id) throws ApiException {
         ProductPojo pojo=get(id);
         if(pojo==null)

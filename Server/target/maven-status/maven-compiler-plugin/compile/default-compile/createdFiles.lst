@@ -43,9 +43,9 @@ com/increff/assure/model/forms/ClientAndChannelSku.class
 com/increff/assure/model/constants/MemberTypes.class
 com/increff/assure/dao/OrderDao.class
 com/increff/assure/controller/AboutAppController.class
-com/increff/assure/model/data/ErrorData.class
 com/increff/assure/dto/ProductDto.class
 com/increff/assure/pojo/ChannelListingPojo.class
+com/increff/assure/util/Normalize.class
 com/increff/assure/dao/ProductDao.class
 com/increff/assure/spring/SpringConfig.class
 com/increff/assure/dao/ChannelListingDao.class

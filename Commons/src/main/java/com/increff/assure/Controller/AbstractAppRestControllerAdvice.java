@@ -1,5 +1,8 @@
 package com.increff.assure.Controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.increff.assure.model.data.ErrorData;
 import com.increff.assure.model.data.MessageData;
 import com.increff.assure.service.ApiException;
 import org.springframework.http.HttpStatus;
@@ -9,7 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestControllerAdvice
 public abstract class AbstractAppRestControllerAdvice {
@@ -21,30 +25,35 @@ public abstract class AbstractAppRestControllerAdvice {
         return data;
     }
 
-
-
-//    @ExceptionHandler(ConstraintViolationException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    public MessageData handle(ConstraintViolationException e) {
-//        MessageData data = new MessageData();
-//        data.setMessage(e.getMessage());
-//        return data;
-//    }
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public MessageData handle(MethodArgumentNotValidException e) {
         MessageData data = new MessageData();
-        final StringBuffer errors = new StringBuffer();
-        for (final FieldError error : e.getBindingResult().getFieldErrors()) {
-            errors.append("\n");
-            //char index=(error.getField()).toString().charAt(12);
-            errors.append(error.getField()+": ");
-            errors.append(error.getDefaultMessage());
-            System.out.println(error.getArguments());
-            System.out.println(error.getObjectName());
+        String errors="";
+        List<ErrorData> errorList = new ArrayList<>();
+        for (final FieldError er : e.getBindingResult().getFieldErrors()) {
+            System.out.println(er.getField());
+            if(!er.getField().contains("]"))
+            {
+                if(errors.length() > 0)
+                    errors += ", ";
+                errors += er.getDefaultMessage();
+                continue;
+            }
+            String index=(er.getField().split("\\]")[0]);
+            index=index.split("\\[")[1];
+            System.out.println(index);
+           // System.out.println(error.getField().split("]")[0].charAt(index));
+            ErrorData errorData = new ErrorData(Integer.parseInt(index), er.getDefaultMessage());
+            errorList.add(errorData);
+            }
+
+        if(errorList.size()!=0)
+        {
+            errors += ErrorData.convert(errorList);
         }
-        data.setMessage(errors.toString());
+
+        data.setMessage(errors);
         return data;
     }
 

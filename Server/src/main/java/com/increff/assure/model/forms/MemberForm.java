@@ -9,13 +9,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
-@Getter
-@Setter
+@Getter @Setter
 public class MemberForm {
 
-    @NotBlank(message = "Please enter the correct client/customer name")
+    @NotBlank(message = "Enter a valid Client/Customer Name")
     private String name;
-    @NotNull(message="Select an appropriate type")
+    @NotNull(message="Select an appropriate Type")
     private MemberTypes type;
 
 }

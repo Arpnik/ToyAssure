@@ -9,11 +9,12 @@ import java.util.List;
 
 @Repository
 public class MemberDao  extends AbstractDao<MemberPojo>{
+
     private static String select_name_type="select m from MemberPojo m where m.name=:name and m.type=:type";
     private static String select_type ="select m from MemberPojo m where m.type=:type";
 
-    public MemberPojo selectByNameType(String name, MemberTypes type) {
-        TypedQuery<MemberPojo> query = getQuery(select_name_type);
+    public MemberPojo selectByParams( String name, MemberTypes type) {
+        TypedQuery<MemberPojo> query = getQuery( select_name_type);
         query.setParameter("name", name);
         query.setParameter("type", type);
         return getSingle(query);
@@ -21,7 +22,7 @@ public class MemberDao  extends AbstractDao<MemberPojo>{
 
     public List<MemberPojo> selectAllByType(MemberTypes type)
     {
-        TypedQuery<MemberPojo> query=getQuery(select_type);
+        TypedQuery<MemberPojo> query = getQuery(select_type);
         query.setParameter("type",type);
         return query.getResultList();
     }
