@@ -3,7 +3,7 @@
 //import com.increff.assure.dao.BinDao;
 //import com.increff.assure.model.forms.BinFilterForm;
 //import com.increff.assure.model.forms.CreateBinForm;
-//import com.increff.assure.service.ApiException;
+//import com.increff.assure.model.Exception.ApiException;
 //import com.increff.assure.service.BinService;
 //import com.increff.assure.util.AbstractUnitTest;
 //import com.increff.assure.util.dataUtil;

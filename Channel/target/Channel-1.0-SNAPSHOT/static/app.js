@@ -13,18 +13,17 @@ function toJson($form){
 
 
 function handleAjaxError(response){
-    console.log(response);
 	var response = JSON.parse(response.responseText);
-    console.log(response);
-    return;
 	var error=response.message
     console.log(error);
-    if(!(error.startsWith('[')&&error.startsWith('{')))
+    if(!(error.startsWith('[')||error.startsWith('{')))
     {
         callAlertToast(error);
         return;
     }
     res=JSON.parse(error);
+    console.log(res);
+    console.log(res.message);
     if(error.startsWith('{'))
     {
         callAlertToast(res.message);

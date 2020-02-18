@@ -2,6 +2,7 @@ package com.increff.assure.service;
 
 import com.increff.assure.dao.OrderDao;
 import com.increff.assure.dao.OrderItemDao;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.model.Pojo.OrderDetailsResult;
 import com.increff.assure.model.constants.OrderStatusType;
 import com.increff.assure.pojo.BinSkuPojo;
@@ -108,6 +109,7 @@ public class OrderService {
         order.setStatus(OrderStatusType.FULFILLED);
     }
 
+    @Transactional(readOnly = true)
     protected void validate(long orderId) throws ApiException {
         OrderPojo pojo=dao.select(orderId);
 
@@ -115,7 +117,7 @@ public class OrderService {
             throw new ApiException("Order doesn't exist");
 
         if(pojo.getStatus() != OrderStatusType.CREATED)
-            throw new ApiException("Order is already allocate");
+            throw new ApiException("Order is already allocated");
     }
 
     @Transactional(readOnly = true)
@@ -130,7 +132,7 @@ public class OrderService {
         return dao.getBychannelIdAndChannelOrderId( channelId, channelOrderId);
     }
 
-    @Transactional(rollbackFor = ApiException.class)
+    @Transactional(readOnly = true)
     public OrderPojo getOrder(long orderId) throws ApiException {
         OrderPojo pojo = dao.select(orderId);
 

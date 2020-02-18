@@ -3,7 +3,7 @@
 //import com.increff.assure.model.constants.MemberTypes;
 //import com.increff.assure.model.form.MemberForm;
 //import com.increff.assure.pojo.MemberPojo;
-//import com.increff.assure.service.ApiException;
+//import com.increff.assure.model.Exception.ApiException;
 //import com.increff.assure.service.MemberService;
 //import com.increff.assure.util.AbstractUnitTest;
 //import com.increff.assure.util.dataUtil;

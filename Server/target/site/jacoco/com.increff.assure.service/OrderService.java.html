@@ -2,6 +2,7 @@
 
 import com.increff.assure.dao.OrderDao;
 import com.increff.assure.dao.OrderItemDao;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.model.Pojo.OrderDetailsResult;
 import com.increff.assure.model.constants.OrderStatusType;
 import com.increff.assure.pojo.BinSkuPojo;
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-<span class="nc" id="L18">public class OrderService {</span>
+<span class="nc" id="L19">public class OrderService {</span>
     @Autowired
     private OrderDao dao;
 
@@ -31,130 +32,130 @@ import java.util.List;
     @Transactional
     public void placeOrder(OrderPojo orderPojo, List&lt;OrderItemPojo&gt; itemList)
     {
-<span class="nc" id="L34">        dao.insert(orderPojo);</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        for(OrderItemPojo item:itemList)</span>
+<span class="nc" id="L35">        dao.insert(orderPojo);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        for(OrderItemPojo item:itemList)</span>
         {
-<span class="nc" id="L37">            item.setOrderId(orderPojo.getId());</span>
-<span class="nc" id="L38">            itemDao.insert(item);</span>
-<span class="nc" id="L39">        }</span>
+<span class="nc" id="L38">            item.setOrderId(orderPojo.getId());</span>
+<span class="nc" id="L39">            itemDao.insert(item);</span>
+<span class="nc" id="L40">        }</span>
 
-<span class="nc" id="L41">    }</span>
+<span class="nc" id="L42">    }</span>
 
     @Transactional(rollbackFor = ApiException.class)
     public void allocateOrder(long orderId) throws ApiException {
 
-<span class="nc" id="L46">        validate(orderId);</span>
-<span class="nc" id="L47">        List&lt;OrderItemPojo&gt; itemList = itemDao.getOrderedItems(orderId);</span>
-<span class="nc" id="L48">        boolean allocated = true;</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">        for(OrderItemPojo item: itemList)</span>
+<span class="nc" id="L47">        validate(orderId);</span>
+<span class="nc" id="L48">        List&lt;OrderItemPojo&gt; itemList = itemDao.getOrderedItems(orderId);</span>
+<span class="nc" id="L49">        boolean allocated = true;</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        for(OrderItemPojo item: itemList)</span>
         {
-<span class="nc" id="L51">            InventoryPojo inventory = invService.getByGlobalSkuId(item.getGlobalSkuId());</span>
-<span class="nc" id="L52">            long allocatedQuantity = Math.min( inventory.getAvailableQuantity(), item.getOrderedQuantity());</span>
-<span class="nc" id="L53">            inventory.setAvailableQuantity( inventory.getAvailableQuantity() - allocatedQuantity);</span>
-<span class="nc" id="L54">            inventory.setAllocatedQuantity( inventory.getAllocatedQuantity() + allocatedQuantity);</span>
-<span class="nc" id="L55">            item.setAllocatedQuantity(allocatedQuantity);</span>
+<span class="nc" id="L52">            InventoryPojo inventory = invService.getByGlobalSkuId(item.getGlobalSkuId());</span>
+<span class="nc" id="L53">            long allocatedQuantity = Math.min( inventory.getAvailableQuantity(), item.getOrderedQuantity());</span>
+<span class="nc" id="L54">            inventory.setAvailableQuantity( inventory.getAvailableQuantity() - allocatedQuantity);</span>
+<span class="nc" id="L55">            inventory.setAllocatedQuantity( inventory.getAllocatedQuantity() + allocatedQuantity);</span>
+<span class="nc" id="L56">            item.setAllocatedQuantity(allocatedQuantity);</span>
 
-<span class="nc" id="L57">            List&lt;BinSkuPojo&gt; binList = binService.getBins( item.getGlobalSkuId());</span>
-<span class="nc" id="L58">            allocateItems( binList, allocatedQuantity);</span>
+<span class="nc" id="L58">            List&lt;BinSkuPojo&gt; binList = binService.getBins( item.getGlobalSkuId());</span>
+<span class="nc" id="L59">            allocateItems( binList, allocatedQuantity);</span>
 
-<span class="nc bnc" id="L60" title="All 4 branches missed.">            if(allocated &amp;&amp; allocatedQuantity != item.getOrderedQuantity())</span>
-<span class="nc" id="L61">                allocated=false;</span>
+<span class="nc bnc" id="L61" title="All 4 branches missed.">            if(allocated &amp;&amp; allocatedQuantity != item.getOrderedQuantity())</span>
+<span class="nc" id="L62">                allocated=false;</span>
 
-<span class="nc" id="L63">        }</span>
+<span class="nc" id="L64">        }</span>
 
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        if(allocated)</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if(allocated)</span>
         {
-<span class="nc" id="L67">            OrderPojo order=dao.select(orderId);</span>
-<span class="nc" id="L68">            order.setStatus(OrderStatusType.ALLOCATED);</span>
+<span class="nc" id="L68">            OrderPojo order=dao.select(orderId);</span>
+<span class="nc" id="L69">            order.setStatus(OrderStatusType.ALLOCATED);</span>
         }
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L71">    }</span>
 
     @Transactional(readOnly = true)
     public List&lt;OrderDetailsResult&gt; getOrderDetails(long orderId)
     {
-<span class="nc" id="L75">        return itemDao.getDetailsByOrderId(orderId);</span>
+<span class="nc" id="L76">        return itemDao.getDetailsByOrderId(orderId);</span>
 
     }
 
     @Transactional(rollbackFor = ApiException.class)
     public OrderPojo fullFillOrder(long orderId) throws ApiException {
-<span class="nc" id="L81">        OrderPojo order = getOrder(orderId);</span>
-<span class="nc bnc" id="L82" title="All 2 branches missed.">        if(order.getStatus() == OrderStatusType.FULFILLED)</span>
-<span class="nc" id="L83">            return order;</span>
+<span class="nc" id="L82">        OrderPojo order = getOrder(orderId);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if(order.getStatus() == OrderStatusType.FULFILLED)</span>
+<span class="nc" id="L84">            return order;</span>
 
-<span class="nc" id="L85">        updateStatus(order);</span>
+<span class="nc" id="L86">        updateStatus(order);</span>
 
-<span class="nc" id="L87">        List&lt;OrderItemPojo&gt; itemList = itemDao.getOrderedItems(orderId);</span>
-<span class="nc bnc" id="L88" title="All 2 branches missed.">        for(OrderItemPojo item: itemList)</span>
+<span class="nc" id="L88">        List&lt;OrderItemPojo&gt; itemList = itemDao.getOrderedItems(orderId);</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        for(OrderItemPojo item: itemList)</span>
         {
-<span class="nc" id="L90">            InventoryPojo inventory = invService.getByGlobalSkuId(item.getGlobalSkuId());</span>
-<span class="nc" id="L91">            inventory.setAllocatedQuantity( inventory.getAllocatedQuantity() - item.getOrderedQuantity());</span>
-<span class="nc" id="L92">            inventory.setFulfilledQuantity( inventory.getFulfilledQuantity() + item.getOrderedQuantity());</span>
+<span class="nc" id="L91">            InventoryPojo inventory = invService.getByGlobalSkuId(item.getGlobalSkuId());</span>
+<span class="nc" id="L92">            inventory.setAllocatedQuantity( inventory.getAllocatedQuantity() - item.getOrderedQuantity());</span>
+<span class="nc" id="L93">            inventory.setFulfilledQuantity( inventory.getFulfilledQuantity() + item.getOrderedQuantity());</span>
 
-<span class="nc" id="L94">            item.setAllocatedQuantity(0);</span>
-<span class="nc" id="L95">            item.setFulfilledQuantity( item.getOrderedQuantity());</span>
-<span class="nc" id="L96">        }</span>
+<span class="nc" id="L95">            item.setAllocatedQuantity(0);</span>
+<span class="nc" id="L96">            item.setFulfilledQuantity( item.getOrderedQuantity());</span>
+<span class="nc" id="L97">        }</span>
 
-<span class="nc" id="L98">        return order;</span>
+<span class="nc" id="L99">        return order;</span>
 
     }
 
     @Transactional(rollbackFor = ApiException.class)
     public void updateStatus(OrderPojo order) throws ApiException {
 
-<span class="nc bnc" id="L105" title="All 2 branches missed.">        if(order.getStatus() == OrderStatusType.CREATED)</span>
-<span class="nc" id="L106">            throw new ApiException(&quot;Order cannot be fulfilled since it is not allocated&quot;);</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        if(order.getStatus() == OrderStatusType.CREATED)</span>
+<span class="nc" id="L107">            throw new ApiException(&quot;Order cannot be fulfilled since it is not allocated&quot;);</span>
 
-<span class="nc" id="L108">        order.setStatus(OrderStatusType.FULFILLED);</span>
-<span class="nc" id="L109">    }</span>
+<span class="nc" id="L109">        order.setStatus(OrderStatusType.FULFILLED);</span>
+<span class="nc" id="L110">    }</span>
 
     protected void validate(long orderId) throws ApiException {
-<span class="nc" id="L112">        OrderPojo pojo=dao.select(orderId);</span>
+<span class="nc" id="L113">        OrderPojo pojo=dao.select(orderId);</span>
 
-<span class="nc bnc" id="L114" title="All 2 branches missed.">        if(pojo == null)</span>
-<span class="nc" id="L115">            throw new ApiException(&quot;Order doesn't exist&quot;);</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">        if(pojo == null)</span>
+<span class="nc" id="L116">            throw new ApiException(&quot;Order doesn't exist&quot;);</span>
 
-<span class="nc bnc" id="L117" title="All 2 branches missed.">        if(pojo.getStatus() != OrderStatusType.CREATED)</span>
-<span class="nc" id="L118">            throw new ApiException(&quot;Order is already allocate&quot;);</span>
-<span class="nc" id="L119">    }</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if(pojo.getStatus() != OrderStatusType.CREATED)</span>
+<span class="nc" id="L119">            throw new ApiException(&quot;Order is already allocate&quot;);</span>
+<span class="nc" id="L120">    }</span>
 
     @Transactional(readOnly = true)
     public List&lt;OrderPojo&gt; getAll()
     {
-<span class="nc" id="L124">        return dao.selectAll();</span>
+<span class="nc" id="L125">        return dao.selectAll();</span>
     }
 
     @Transactional(readOnly = true)
     public OrderPojo getByParams( long channelId, String channelOrderId)
     {
-<span class="nc" id="L130">        return dao.getBychannelIdAndChannelOrderId( channelId, channelOrderId);</span>
+<span class="nc" id="L131">        return dao.getBychannelIdAndChannelOrderId( channelId, channelOrderId);</span>
     }
 
     @Transactional(rollbackFor = ApiException.class)
     public OrderPojo getOrder(long orderId) throws ApiException {
-<span class="nc" id="L135">        OrderPojo pojo = dao.select(orderId);</span>
+<span class="nc" id="L136">        OrderPojo pojo = dao.select(orderId);</span>
 
-<span class="nc bnc" id="L137" title="All 2 branches missed.">        if(pojo == null)</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        if(pojo == null)</span>
         {
-<span class="nc" id="L139">            throw new ApiException(&quot;Order doesn't exist&quot;);</span>
+<span class="nc" id="L140">            throw new ApiException(&quot;Order doesn't exist&quot;);</span>
         }
-<span class="nc" id="L141">        return pojo;</span>
+<span class="nc" id="L142">        return pojo;</span>
     }
 
     private void allocateItems( List&lt;BinSkuPojo&gt; bins, long qty)
     {
-<span class="nc bnc" id="L146" title="All 2 branches missed.">        for(BinSkuPojo bin: bins)</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        for(BinSkuPojo bin: bins)</span>
         {
-<span class="nc bnc" id="L148" title="All 2 branches missed.">            if( bin.getQuantity() &gt; qty)</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">            if( bin.getQuantity() &gt; qty)</span>
             {
-<span class="nc" id="L150">                bin.setQuantity( bin.getQuantity() - qty);</span>
-<span class="nc" id="L151">                return;</span>
+<span class="nc" id="L151">                bin.setQuantity( bin.getQuantity() - qty);</span>
+<span class="nc" id="L152">                return;</span>
             }
 
-<span class="nc" id="L154">            qty -= bin.getQuantity();</span>
-<span class="nc" id="L155">            bin.setQuantity(0);</span>
-<span class="nc" id="L156">        }</span>
-<span class="nc" id="L157">    }</span>
+<span class="nc" id="L155">            qty -= bin.getQuantity();</span>
+<span class="nc" id="L156">            bin.setQuantity(0);</span>
+<span class="nc" id="L157">        }</span>
+<span class="nc" id="L158">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

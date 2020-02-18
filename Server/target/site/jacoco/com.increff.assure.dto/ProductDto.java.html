@@ -6,7 +6,7 @@ import com.increff.assure.model.data.ProductData;
 import com.increff.assure.model.forms.ProductForm;
 import com.increff.assure.model.forms.UpdateProductForm;
 import com.increff.assure.pojo.ProductPojo;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
 import com.increff.assure.util.ConvertGeneric;
@@ -85,7 +85,7 @@ import static com.increff.assure.util.Normalize.normalizeProductForm;
     }
 
     protected void checkClientIdAndSku(ProductPojo pojo) throws ApiException {
-<span class="nc" id="L88">        ProductPojo existing=productService.getByClientIdAndClientSku(pojo.getClientId(),pojo.getClientSkuId());</span>
+<span class="nc" id="L88">        ProductPojo existing=productService.get(pojo.getClientId(),pojo.getClientSkuId());</span>
 <span class="nc bnc" id="L89" title="All 2 branches missed.">        if(existing!=null)</span>
         {
 <span class="nc" id="L91">            throw new ApiException(&quot;Client SKU ID:&quot;+pojo.getClientSkuId()+&quot; for Client:&quot;+memberService.get(pojo.getClientId()).getName()+&quot; are not unique&quot;);</span>

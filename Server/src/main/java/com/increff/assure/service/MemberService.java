@@ -1,6 +1,7 @@
 package com.increff.assure.service;
 
 import com.increff.assure.dao.MemberDao;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.pojo.MemberPojo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public void checkMemberAndType(long id, MemberTypes type) throws ApiException {
+    public void checkMemberType(long id, MemberTypes type) throws ApiException {
         MemberPojo pojo=get(id);
         if(pojo == null || pojo.getType() != type)
         {

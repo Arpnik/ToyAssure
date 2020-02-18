@@ -10,13 +10,13 @@ function addMember()
 	let name=$("#member-form input[name=name]").val();	
 	if( !name ||name.trim().length==0)
 	{
-		callWarnToast("Please enter the correct Client/Customer NAME");
+		callWarnToast("Enter valid Client/Customer NAME");
 		return false;
 	}
 	var json = toJson($form);
 	if(!JSON.parse(json).hasOwnProperty("type"))
 	 {
-	 	callWarnToast("Please select the correct Client/Customer TYPE");
+	 	callWarnToast("Select Client/Customer TYPE");
 	 	return false;
 	 }
 	var url = getMemberUrl();

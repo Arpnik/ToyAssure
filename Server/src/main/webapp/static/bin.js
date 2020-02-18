@@ -27,6 +27,10 @@ function fillDropDown()
 
 function processClient(data)
 {
+	$('#selectClient').empty();
+	$('#selectClientId').empty();
+	$('#selectClient').append('<option selected="" hidden="" disabled="" value="">Select Client Name</option>');
+	$('#selectClientId').append('<option selected="" value="">Select Client Name</option>');
 	fillAnyDropdown('#selectClient',data);
 	fillAnyDropdown('#selectClientId',data);
 }
@@ -63,7 +67,6 @@ function createBins()
 	var json={}
 	json['numberOfBins']=num;
 	let url=getBinUrl();
-	console.log(url);
 	$.ajax({
 	   url: url,
 	   type: 'POST',
@@ -72,8 +75,8 @@ function createBins()
        	'Content-Type': 'application/json'
        },	   
 	   success: function(response) {
-	   	console.log('done');
 	   callConfirmToast("Bins created Successfully");
+	   $('#inputBins').val("");
 	   },
 	   error: handleAjaxError
 	});
@@ -87,7 +90,9 @@ function fillDisplayModal(data)
 	$tbody.empty();
 	console.log(data[0]);
 	let sno=0;
-	if(data[0]['clientId']==0)
+	var clientSkuId=$('#filter-form input[name=clientSkuId]').val();
+	var binId=Number($('#filter-form input[name=binId]').val());
+	if(binId==0 || (clientSkuId && clientSkuId.trim().length!=0 && binId!=0))
 	{
 		var row='<tr>'+
 	      '<th scope="col">Bin ID</th>'+
@@ -105,6 +110,7 @@ function fillDisplayModal(data)
 			sno+=1;
 		}
 	    $('#bin-modal').modal('toggle');
+	    resetFilter();
 		return;
 	}
 
@@ -128,6 +134,8 @@ function fillDisplayModal(data)
 		sno+=1;
 	}
 	$('#bin-modal').modal('toggle');
+	resetFilter();
+
 }
 
 function displayEditQuantity(binSkuId,sno)
@@ -140,10 +148,24 @@ function displayEditQuantity(binSkuId,sno)
 
 function saveEditQuantity(binSkuId,sno,intialValue)
 {
-	var value = $("#filter-table tr:nth-child("+sno+")" ).find('td')[2].innerHTML;
+	var value = Number($("#filter-table tr:nth-child("+sno+")" ).find('td')[2].innerHTML);
 	let url=getBinUrl()+'/'+binSkuId;
 	console.log(url);
 	console.log(Number(value));
+	if(isNaN(value))
+	{
+		callWarnToast('Enter a valid integer quantity');
+		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+intialValue+'</td>');
+	   	 $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   	 return;
+	}
+	if(!Number.isInteger(value))
+	{
+		callWarnToast('Enter a valid integer quantity');
+		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+intialValue+'</td>');
+	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+		return;
+	}
 	var json={}
 	json['quantity']=Number(value);
 	$.ajax({
@@ -161,13 +183,17 @@ function saveEditQuantity(binSkuId,sno,intialValue)
 	   error:function(response){
 	   	    handleAjaxError(response);
 	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+intialValue+'</td>');
-	   	    	$("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
 	   	}
 	});
 }
 
 function resetFilter()
 {
+
+	$('#filter-form input[name=clientSkuId]').val("");
+	$('#filter-form input[name=binId]').val("");
+	fillDropDown();
 
 }
 
@@ -190,7 +216,6 @@ function getProductInfo()
 	   success: function(response) {
 	   callConfirmToast("Information fetched Successfully");
 	   fillDisplayModal(response);
-	   resetFilter();
 	   },
 	   error: handleAjaxError
 	});
@@ -285,7 +310,7 @@ function displayUploadData(){
 	var clientId=$('#selectClient option:selected').val();
 	if(!clientId)
 	{
-		callWarnToast("Please select an appropriate client");
+		callWarnToast("Select an appropriate client");
 		return;
 	}
  	resetUploadDialog(); 	

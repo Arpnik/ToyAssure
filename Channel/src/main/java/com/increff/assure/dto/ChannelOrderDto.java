@@ -6,7 +6,7 @@ import com.increff.assure.model.data.InvoiceMetaData;
 import com.increff.assure.model.data.MemberData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
 import com.increff.assure.model.form.ChannelOrderForm;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.util.PDFUtility;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

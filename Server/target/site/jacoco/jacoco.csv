@@ -20,11 +20,11 @@ Server,com.increff.assure.dao,ChannelDao,20,0,0,0,5,0,3,0,3,0
 Server,com.increff.assure.dao,AbstractDao,58,0,0,0,10,0,7,0,7,0
 Server,com.increff.assure.dao,ProductDao,41,0,0,0,10,0,4,0,4,0
 Server,com.increff.assure.dao,ChannelListingDao,55,0,0,0,12,0,4,0,4,0
-Server,com.increff.assure.dto,ChannelDto,186,0,10,0,42,0,11,0,6,0
-Server,com.increff.assure.dto,OrderDto,567,0,28,0,116,0,28,0,14,0
+Server,com.increff.assure.dto,ChannelDto,170,0,8,0,40,0,10,0,6,0
+Server,com.increff.assure.dto,OrderDto,519,0,22,0,108,0,23,0,12,0
 Server,com.increff.assure.dto,ProductDto,171,0,8,0,40,0,10,0,6,0
 Server,com.increff.assure.dto,MemberDto,107,0,6,0,26,0,8,0,5,0
-Server,com.increff.assure.dto,BinDto,283,0,30,0,59,0,23,0,8,0
+Server,com.increff.assure.dto,BinDto,279,0,30,0,59,0,24,0,9,0
 Server,com.increff.assure.model.constants,OrderStatusType,34,0,0,0,2,0,1,0,1,0
 Server,com.increff.assure.spring,ControllerConfiguration,3,0,0,0,1,0,1,0,1,0
 Server,com.increff.assure.spring,SpringConfig,3,0,0,0,1,0,1,0,1,0
@@ -34,8 +34,8 @@ Server,com.increff.assure.service,ChannelService,155,0,16,0,32,0,17,0,9,0
 Server,com.increff.assure.service,MemberService,67,0,6,0,13,0,9,0,6,0
 Server,com.increff.assure.service,InventoryService,42,0,4,0,12,0,5,0,3,0
 Server,com.increff.assure.service,OrderService,262,0,26,0,63,0,24,0,11,0
-Server,com.increff.assure.service,ProductService,72,0,4,0,19,0,9,0,7,0
-Server,com.increff.assure.service,BinService,161,0,16,0,38,0,17,0,9,0
+Server,com.increff.assure.service,ProductService,93,0,6,0,22,0,11,0,8,0
+Server,com.increff.assure.service,BinService,153,0,12,0,36,0,17,0,11,0
 Server,com.increff.assure.service,AboutAppService,9,0,0,0,3,0,3,0,3,0
 Server,com.increff.assure.controller,ProductController,26,0,0,0,7,0,5,0,5,0
 Server,com.increff.assure.controller,MemberController,20,0,0,0,6,0,5,0,5,0
@@ -59,9 +59,9 @@ Server,com.increff.assure.model.forms,OrderLineItemForm,24,0,0,0,5,0,7,0,7,0
 Server,com.increff.assure.model.forms,UpdateBinForm,10,0,0,0,3,0,3,0,3,0
 Server,com.increff.assure.model.forms,BinFilterForm,24,0,0,0,5,0,7,0,7,0
 Server,com.increff.assure.model.forms,CreateBinForm,10,0,0,0,3,0,3,0,3,0
-Server,com.increff.assure.util,PDFUtility,334,0,2,0,66,0,3,0,2,0
+Server,com.increff.assure.util,PDFUtility,329,0,2,0,65,0,3,0,2,0
 Server,com.increff.assure.util,ValidateRequestBodyList,6,0,0,0,2,0,2,0,2,0
-Server,com.increff.assure.util,Normalize,50,0,0,0,15,0,6,0,6,0
+Server,com.increff.assure.util,Normalize,102,0,4,0,27,0,11,0,9,0
 Server,com.increff.assure.util,PrefixPhysicalNamingStrategy,48,0,0,0,10,0,5,0,5,0
 Server,com.increff.assure.util,IOUtil,11,0,2,0,7,0,3,0,2,0
 Server,com.increff.assure.util,StringUtil,29,0,8,0,4,0,8,0,4,0

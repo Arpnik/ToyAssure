@@ -1,10 +1,8 @@
 package com.increff.assure.Controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.increff.assure.model.data.ErrorData;
 import com.increff.assure.model.data.MessageData;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

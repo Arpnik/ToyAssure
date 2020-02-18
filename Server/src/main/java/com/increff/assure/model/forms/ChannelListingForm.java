@@ -15,7 +15,7 @@ public class ChannelListingForm {
     @NotNull(message = "Channel is not valid")
     private long channelId;
 
-    @Size(min=1,max=5000,message = "Number of rows needs to be between 1 and 5,000") @Valid
+    @Valid @Size(min=1,max=5000,message = "Number of rows needs to be between 1 and 5,000")
     private List<ClientAndChannelSku> clientAndChannelSkuList;
 
 }

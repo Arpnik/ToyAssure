@@ -172,6 +172,10 @@ function generateInvoice(orderId)
             a.click();
             a.remove();
             window.URL.revokeObjectURL(url);
+        },
+        error:function(response)
+        {
+        	handleErrorBlob(response);
         }
     });
 }

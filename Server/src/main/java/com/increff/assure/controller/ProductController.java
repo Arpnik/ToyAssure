@@ -1,11 +1,10 @@
 package com.increff.assure.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.increff.assure.dto.ProductDto;
 import com.increff.assure.model.data.ProductData;
 import com.increff.assure.model.forms.ProductForm;
 import com.increff.assure.model.forms.UpdateProductForm;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.util.ValidateRequestBodyList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Api

@@ -5,6 +5,7 @@ com/increff/assure/model/constants/MemberTypes.class
 com/increff/assure/model/constants/InvoiceType.class
 com/increff/assure/spring/AbstractWebInitializer.class
 com/increff/assure/model/form/MemberForm.class
+com/increff/assure/model/Exception/ApiException.class
 com/increff/assure/spring/AbstractControllerConfig.class
 com/increff/assure/model/data/ErrorData.class
 com/increff/assure/model/data/InvoiceMetaData.class
@@ -15,6 +16,5 @@ com/increff/assure/model/form/ChannelOrderForm.class
 com/increff/assure/util/ConvertGeneric.class
 com/increff/assure/model/data/MessageData.class
 com/increff/assure/model/form/ChannelForm.class
-com/increff/assure/service/ApiException.class
 com/increff/assure/model/data/ChannelItemCheckData.class
 com/increff/assure/model/form/ChannelOrderLineItem.class

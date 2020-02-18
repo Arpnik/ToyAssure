@@ -7,7 +7,7 @@ import com.increff.assure.model.data.OrderDisplayData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
 import com.increff.assure.model.form.ChannelOrderForm;
 import com.increff.assure.model.forms.OrderForm;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,6 +2,7 @@ package com.increff.assure.service;
 
 import com.increff.assure.dao.ChannelDao;
 import com.increff.assure.dao.ChannelListingDao;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.pojo.ChannelListingPojo;
 import com.increff.assure.pojo.ChannelPojo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ChannelService {
         channelDao.insert(pojo);
     }
 
-    @Transactional(rollbackFor = ApiException.class)
+    @Transactional(readOnly = true)
     public void checkPresenceOfChannel(long id) throws ApiException {
         ChannelPojo pojo= channelDao.select(id);
         if(pojo==null)
@@ -76,7 +77,7 @@ public class ChannelService {
     }
 
 
-    @Transactional(rollbackFor = ApiException.class,readOnly = true)
+    @Transactional(readOnly = true)
     public ChannelPojo getChannelByName(String name) throws ApiException {
         ChannelPojo pojo=channelDao.selectByName(name);
         if(pojo==null)
@@ -87,6 +88,7 @@ public class ChannelService {
     }
 
 
+    @Transactional(readOnly = true)
     public ChannelListingPojo getByParams(long channelId, String channelSkuId, long clientId) throws ApiException {
         ChannelListingPojo pojo=channelListingDao.getListingPojoByParams(channelSkuId,channelId,clientId);
         if(pojo==null)

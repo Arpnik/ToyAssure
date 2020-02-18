@@ -4,13 +4,13 @@
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/ErrorData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/InvoiceMetaData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/spring/AbstractWebInitializer.java
+/home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/Exception/ApiException.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/ChannelData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/form/ChannelForm.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/OrderDetailsData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/form/ChannelOrderForm.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/Pojo/OrderDetailsResult.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/Controller/AbstractAppRestControllerAdvice.java
-/home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/service/ApiException.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/MemberData.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/spring/AbstractControllerConfig.java
 /home/lenovo/Desktop/Toy_Assure/Commons/src/main/java/com/increff/assure/model/data/MessageData.java

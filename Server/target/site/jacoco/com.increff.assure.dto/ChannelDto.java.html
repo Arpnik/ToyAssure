@@ -10,7 +10,7 @@ import com.increff.assure.model.forms.ClientAndChannelSku;
 import com.increff.assure.pojo.ChannelListingPojo;
 import com.increff.assure.pojo.ChannelPojo;
 import com.increff.assure.pojo.ProductPojo;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.service.ChannelService;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
@@ -110,12 +110,8 @@ import static com.increff.assure.util.Normalize.normalizeSku;
 <span class="nc" id="L110">    }</span>
 
     protected ProductPojo getProduct(long clientId,String clientSkuId) throws ApiException {
-<span class="nc" id="L113">        ProductPojo product=productService.getByClientIdAndClientSku(clientId,clientSkuId);</span>
-<span class="nc bnc" id="L114" title="All 2 branches missed.">        if(product==null)</span>
-        {
-<span class="nc" id="L116">            throw new ApiException(&quot;Client SKu:&quot;+clientSkuId+&quot; doesn't belong to specified client&quot;);</span>
-        }
-<span class="nc" id="L118">        return product;</span>
+<span class="nc" id="L113">        ProductPojo product=productService.getCheckByParams(clientId,clientSkuId);</span>
+<span class="nc" id="L114">        return product;</span>
     }
 
 }

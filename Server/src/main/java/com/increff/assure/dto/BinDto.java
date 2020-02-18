@@ -1,5 +1,6 @@
 package com.increff.assure.dto;
 
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.BinFilterData;
 import com.increff.assure.model.data.ErrorData;
@@ -15,6 +16,7 @@ import com.increff.assure.service.*;
 import com.increff.assure.util.ConvertGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +38,12 @@ public class BinDto {
     @Autowired
     private InventoryService inventoryService;
 
+    @Transactional
     public void createBins(CreateBinForm form){
         binService.createBins(form.getNumberOfBins());
     }
 
+    @Transactional(readOnly = true)
     public List<BinFilterData> getProductInfo(BinFilterForm form) throws ApiException {
         validateForm(form);
 
@@ -56,8 +60,9 @@ public class BinDto {
 
     }
 
+    @Transactional(rollbackFor = ApiException.class)
     public void uploadBinWiseInventory(long clientId, List<BinWiseInventoryForm> formList) throws ApiException {
-        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);
+        memberService.checkMemberType(clientId, MemberTypes.CLIENT);
 
         List<BinSkuPojo> pojoList = new ArrayList<>();
         List<ErrorData> errorList = new ArrayList<>();
@@ -78,6 +83,7 @@ public class BinDto {
                 errorList.add(data);
                 continue;
             }
+
             BinSkuPojo binSkuPojo = ConvertGeneric.convert(form,BinSkuPojo.class);
             binSkuPojo.setGlobalSkuId(product.getGlobalSkuId());
             InventoryPojo inventoryPojo = createInventory(product.getGlobalSkuId(),form.getQuantity());
@@ -92,17 +98,20 @@ public class BinDto {
 
     }
 
+    @Transactional(readOnly = true)
     public ProductPojo getCheckIdAndSku(long clientId, String clientSkuId) throws ApiException {
         ProductPojo product=productService.getCheckByParams(clientId,clientSkuId);
         return product;
     }
 
+    @Transactional(rollbackFor = ApiException.class)
     public void updateBin(long binSkuId, UpdateBinForm form) throws ApiException {
         BinSkuPojo existing=binService.getCheck(binSkuId);
         binService.update(binSkuId,form.getQuantity());
         InventoryPojo inventoryPojo=createInventory(existing.getGlobalSkuId(),form.getQuantity()-existing.getQuantity());
         inventoryService.addOrUpdateInventory(inventoryPojo);
     }
+
 
     public void validateForm(BinFilterForm form) throws ApiException {
         if((form.getBinId() == 0) && form.getClientId()==0 && (form.getClientSkuId()==null||form.getClientSkuId().isEmpty()))
@@ -114,6 +123,7 @@ public class BinDto {
             throw new ApiException("PLease select appropriate client Name and Client SKU");
         }
     }
+
 
     protected InventoryPojo createInventory(long globalSkuId,long quantity)
     {

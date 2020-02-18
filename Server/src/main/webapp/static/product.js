@@ -123,7 +123,6 @@ function uploadRows(){
 	   error:function(response)
 	   {
 	   		CsvHandlError(response,fileData);
-	   		getProductsById();
 	   }
 	});
 }

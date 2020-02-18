@@ -131,48 +131,48 @@ function uploadRows(){
 	   },
 	   error:function(response)
 	   {
-	   		handleErrorsInCSV(response);
+	   		CsvHandlError(response,fileData);
 	   }
 	});
 }
 
-function handleErrorsInCSV(response)
-{
-	let res=JSON.parse(response.responseText)["message"];
-    callAlertToast("Download Errors");
-    if(!res.startsWith("\n"))
-    {
-        errorData.push(JSON.parse(response.responseText));
-        updateUploadDialog();
-        return false;
-    }
-    res=res.split("\n")
-    for(row in res)
-        {
-            if(res[row].trim().length!=0)
-            {
-                var result=res[row].split(":");
-                var index=result[0];
-                if(index.includes('.'))
-                {	
-                	index=index.split('.')[0];
-                	index=index[index.length-2];
-                }
-                var createdError=fileData[Number(index)];
-                createdError["message"]=result.slice(1).join(' ');
-            }
-        }
-        for(let row=0;row<fileData.length;row++)
-        {
-            var error=fileData[row];
-            if(error.hasOwnProperty("message"))
-            {
-                errorCount++;
-                errorData.push(error);
-            }
-        }
-        updateUploadDialog();
-}
+// function handleErrorsInCSV(response)
+// {
+// 	let res=JSON.parse(response.responseText)["message"];
+//     callAlertToast("Download Errors");
+//     if(!res.startsWith("\n"))
+//     {
+//         errorData.push(JSON.parse(response.responseText));
+//         updateUploadDialog();
+//         return false;
+//     }
+//     res=res.split("\n")
+//     for(row in res)
+//         {
+//             if(res[row].trim().length!=0)
+//             {
+//                 var result=res[row].split(":");
+//                 var index=result[0];
+//                 if(index.includes('.'))
+//                 {	
+//                 	index=index.split('.')[0];
+//                 	index=index[index.length-2];
+//                 }
+//                 var createdError=fileData[Number(index)];
+//                 createdError["message"]=result.slice(1).join(' ');
+//             }
+//         }
+//         for(let row=0;row<fileData.length;row++)
+//         {
+//             var error=fileData[row];
+//             if(error.hasOwnProperty("message"))
+//             {
+//                 errorCount++;
+//                 errorData.push(error);
+//             }
+//         }
+//         updateUploadDialog();
+// }
 
 function downloadErrors(){
 	writeFileData(errorData);
@@ -198,11 +198,15 @@ function addChannel()
        	'Content-Type': 'application/json'
        },	   
 	   success: function(response) {
-	   		$form[0].reset();
+	   		$form.trigger('reset');
 	   		callConfirmToast("Added Successfully");
 	   		fillChannelDropDown();
 	   },
-	   error: handleAjaxError
+	   error: function(response)
+	   {
+	   	handleAjaxError(response);
+	   	$form.trigger('reset');
+	   }
 	});
 }
 

@@ -4,7 +4,7 @@ import com.increff.assure.dto.ChannelDto;
 import com.increff.assure.model.data.ChannelData;
 import com.increff.assure.model.form.ChannelForm;
 import com.increff.assure.model.forms.ChannelListingForm;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

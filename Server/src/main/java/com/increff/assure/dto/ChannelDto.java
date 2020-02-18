@@ -10,7 +10,7 @@ import com.increff.assure.model.forms.ClientAndChannelSku;
 import com.increff.assure.pojo.ChannelListingPojo;
 import com.increff.assure.pojo.ChannelPojo;
 import com.increff.assure.pojo.ProductPojo;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.service.ChannelService;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
@@ -47,6 +47,7 @@ public class ChannelDto {
     private ProductService productService;
 
 
+    @Transactional(rollbackFor = ApiException.class)
     public void addChannel(ChannelForm form) throws ApiException {
         normalizeAndSetDefaults(form);
         ChannelPojo pojo= ConvertGeneric.convert(form, ChannelPojo.class);
@@ -55,7 +56,7 @@ public class ChannelDto {
 
     @Transactional(rollbackFor = ApiException.class)
     public void addChannelListing(ChannelListingForm form) throws ApiException {
-        memberService.checkMemberAndType(form.getClientId(), MemberTypes.CLIENT);
+        memberService.checkMemberType(form.getClientId(), MemberTypes.CLIENT);
         channelService.checkPresenceOfChannel(form.getChannelId());
         Boolean callDbPersist=true;
         List<ErrorData> errorList=new ArrayList<>();
@@ -67,7 +68,7 @@ public class ChannelDto {
             pojo.setChannelSkuId(sku.getChannelSku());
             try
             {
-                ProductPojo product=getProduct(form.getClientId(),sku.getClientSku());
+                ProductPojo product=productService.getCheckByParams(form.getClientId(),sku.getClientSku());
                 pojo.setGlobalSkuId(product.getGlobalSkuId());
                 channelService.addChannelListing(pojo,callDbPersist);
             }
@@ -85,6 +86,8 @@ public class ChannelDto {
         }
     }
 
+
+    @Transactional(readOnly = true)
     public List<ChannelData> getAllChannels()
     {
         List<ChannelPojo> pojoList=channelService.getAllChannels();
@@ -106,12 +109,8 @@ public class ChannelDto {
         {
             form.setName(defaultName);
         }
-        form.setInvoiceType(Optional.ofNullable(form.getInvoiceType()).orElse(defaultType));
-    }
 
-    protected ProductPojo getProduct(long clientId,String clientSkuId) throws ApiException {
-        ProductPojo product=productService.getCheckByParams(clientId,clientSkuId);
-        return product;
+        form.setInvoiceType(Optional.ofNullable(form.getInvoiceType()).orElse(defaultType));
     }
 
 }

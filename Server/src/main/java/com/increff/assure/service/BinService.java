@@ -2,6 +2,7 @@ package com.increff.assure.service;
 
 import com.increff.assure.dao.BinDao;
 import com.increff.assure.dao.BinSkuDao;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.pojo.BinFilter;
 import com.increff.assure.pojo.BinPojo;
 import com.increff.assure.pojo.BinSkuPojo;
@@ -67,22 +68,20 @@ public class BinService {
     }
     @Transactional(rollbackFor = ApiException.class)
     public void update(long binSkuId,long quantity) throws ApiException {
+
         BinSkuPojo existing = binSkuDao.select(binSkuId);
         if(existing==null)
-        {
             throw new ApiException("The BinSkuId doesn't exist");
-        }
+
         existing.setQuantity(quantity);
         binSkuDao.update(existing);
     }
 
-    @Transactional(readOnly = true,rollbackFor = ApiException.class)
+    @Transactional(readOnly = true)
     public void checkBinId(long binId) throws ApiException {
         BinPojo existing = binDao.select(binId);
         if(existing==null)
-        {
             throw new ApiException("Bin ID:"+binId+" doesn't exists.");
-        }
     }
 
     @Transactional(readOnly = true)
@@ -91,7 +90,7 @@ public class BinService {
        return binSkuDao.select(binSkuId);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public BinSkuPojo getCheck(long binSkuId) throws ApiException {
         BinSkuPojo pojo=get(binSkuId);
         if(pojo==null)
@@ -99,7 +98,7 @@ public class BinService {
         return pojo;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<BinSkuPojo> getBins(long globalSkuId)
     {
         return binSkuDao.selectByGlobalSku(globalSkuId);

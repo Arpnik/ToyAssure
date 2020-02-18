@@ -84,33 +84,32 @@ import java.util.List;
 <span class="nc" id="L84">        root.appendChild(customer);</span>
 
 <span class="nc" id="L86">        Element date=document.createElement(&quot;createDate&quot;);</span>
-<span class="nc" id="L87">        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL);</span>
-<span class="nc" id="L88">        date.appendChild(document.createTextNode(data.getCreatedDate().format(formatter)));</span>
-<span class="nc" id="L89">        root.appendChild(date);</span>
+<span class="nc" id="L87">        date.appendChild(document.createTextNode(data.getOrderedDate()));</span>
+<span class="nc" id="L88">        root.appendChild(date);</span>
 
 
-<span class="nc" id="L92">        Element channelOrderId=document.createElement(&quot;channelOrderId&quot;);</span>
-<span class="nc" id="L93">        channelOrderId.appendChild(document.createTextNode(data.getChannelOrderId()));</span>
-<span class="nc" id="L94">        root.appendChild(channelOrderId);</span>
+<span class="nc" id="L91">        Element channelOrderId=document.createElement(&quot;channelOrderId&quot;);</span>
+<span class="nc" id="L92">        channelOrderId.appendChild(document.createTextNode(data.getChannelOrderId()));</span>
+<span class="nc" id="L93">        root.appendChild(channelOrderId);</span>
 
 
-<span class="nc" id="L97">        TransformerFactory transformerFactory = TransformerFactory.newInstance();</span>
-<span class="nc" id="L98">        Transformer transformer = transformerFactory.newTransformer();</span>
-<span class="nc" id="L99">        DOMSource domSource = new DOMSource(document);</span>
+<span class="nc" id="L96">        TransformerFactory transformerFactory = TransformerFactory.newInstance();</span>
+<span class="nc" id="L97">        Transformer transformer = transformerFactory.newTransformer();</span>
+<span class="nc" id="L98">        DOMSource domSource = new DOMSource(document);</span>
 
-<span class="nc" id="L101">        ByteArrayOutputStream xmlBaos = new ByteArrayOutputStream();</span>
-<span class="nc" id="L102">        StreamResult streamResult = new StreamResult(xmlBaos);</span>
-<span class="nc" id="L103">        transformer.transform(domSource, streamResult);</span>
+<span class="nc" id="L100">        ByteArrayOutputStream xmlBaos = new ByteArrayOutputStream();</span>
+<span class="nc" id="L101">        StreamResult streamResult = new StreamResult(xmlBaos);</span>
+<span class="nc" id="L102">        transformer.transform(domSource, streamResult);</span>
 
-<span class="nc" id="L105">        FopFactory fopFactory = FopFactory.newInstance(new File(&quot;.&quot;).toURI());</span>
-<span class="nc" id="L106">        ByteArrayOutputStream pdfBaos = new ByteArrayOutputStream();</span>
-<span class="nc" id="L107">        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, pdfBaos);</span>
-<span class="nc" id="L108">        TransformerFactory factory = TransformerFactory.newInstance();</span>
-<span class="nc" id="L109">        Transformer transformer2 = factory.newTransformer(new StreamSource(PATH_TO_Order_XSL));</span>
-<span class="nc" id="L110">        Result res = new SAXResult(fop.getDefaultHandler());</span>
-<span class="nc" id="L111">        Source src = new StreamSource(new ByteArrayInputStream(xmlBaos.toByteArray()));</span>
-<span class="nc" id="L112">        transformer2.transform(src, res);</span>
-<span class="nc" id="L113">        return pdfBaos.toByteArray();</span>
+<span class="nc" id="L104">        FopFactory fopFactory = FopFactory.newInstance(new File(&quot;.&quot;).toURI());</span>
+<span class="nc" id="L105">        ByteArrayOutputStream pdfBaos = new ByteArrayOutputStream();</span>
+<span class="nc" id="L106">        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, pdfBaos);</span>
+<span class="nc" id="L107">        TransformerFactory factory = TransformerFactory.newInstance();</span>
+<span class="nc" id="L108">        Transformer transformer2 = factory.newTransformer(new StreamSource(PATH_TO_Order_XSL));</span>
+<span class="nc" id="L109">        Result res = new SAXResult(fop.getDefaultHandler());</span>
+<span class="nc" id="L110">        Source src = new StreamSource(new ByteArrayInputStream(xmlBaos.toByteArray()));</span>
+<span class="nc" id="L111">        transformer2.transform(src, res);</span>
+<span class="nc" id="L112">        return pdfBaos.toByteArray();</span>
     }
 
 }

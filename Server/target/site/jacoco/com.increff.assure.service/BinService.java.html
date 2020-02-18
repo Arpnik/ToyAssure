@@ -2,6 +2,7 @@
 
 import com.increff.assure.dao.BinDao;
 import com.increff.assure.dao.BinSkuDao;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.pojo.BinFilter;
 import com.increff.assure.pojo.BinPojo;
 import com.increff.assure.pojo.BinSkuPojo;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-<span class="nc" id="L15">public class BinService {</span>
+<span class="nc" id="L16">public class BinService {</span>
     @Autowired
     private BinDao binDao;
 
@@ -23,84 +24,86 @@ import java.util.List;
     public void createBins(long numberOfBins)
     {
         long i;
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        for(i=0;i&lt;numberOfBins;i++)</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        for(i=0;i&lt;numberOfBins;i++)</span>
         {
-<span class="nc" id="L28">            BinPojo pojo=new BinPojo();</span>
-<span class="nc" id="L29">            binDao.insert(pojo);</span>
+<span class="nc" id="L29">            BinPojo pojo=new BinPojo();</span>
+<span class="nc" id="L30">            binDao.insert(pojo);</span>
         }
-<span class="nc" id="L31">    }</span>
+<span class="nc" id="L32">    }</span>
 
 
     @Transactional
     public void AddOrUpdateInventory(List&lt;BinSkuPojo&gt; pojoList)
     {
-<span class="nc bnc" id="L37" title="All 2 branches missed.">        for(BinSkuPojo pojo:pojoList)</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        for(BinSkuPojo pojo:pojoList)</span>
         {
-<span class="nc" id="L39">            BinSkuPojo existing = binSkuDao.checkPresenceByParams(pojo.getBinId(), pojo.getGlobalSkuId());</span>
-<span class="nc bnc" id="L40" title="All 2 branches missed.">            if(existing!=null)</span>
+<span class="nc" id="L40">            BinSkuPojo existing = binSkuDao.checkPresenceByParams(pojo.getBinId(), pojo.getGlobalSkuId());</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            if(existing!=null)</span>
             {
-<span class="nc" id="L42">                existing.setQuantity(pojo.getQuantity() + existing.getQuantity());</span>
-<span class="nc" id="L43">                binSkuDao.update(existing);</span>
-<span class="nc" id="L44">                continue;</span>
+<span class="nc" id="L43">                existing.setQuantity(pojo.getQuantity() + existing.getQuantity());</span>
+<span class="nc" id="L44">                binSkuDao.update(existing);</span>
+<span class="nc" id="L45">                continue;</span>
             }
-<span class="nc" id="L46">            binSkuDao.insert(pojo);</span>
-<span class="nc" id="L47">        }</span>
-<span class="nc" id="L48">    }</span>
+<span class="nc" id="L47">            binSkuDao.insert(pojo);</span>
+<span class="nc" id="L48">        }</span>
+<span class="nc" id="L49">    }</span>
 
     @Transactional(readOnly = true)
     public List&lt;BinFilter&gt; getProductInfo(long binId, long globalSkuId) throws ApiException {
-<span class="nc bnc" id="L52" title="All 2 branches missed.">        if(globalSkuId&lt;=0)</span>
-        {
-<span class="nc" id="L54">            checkBinId(binId);</span>
-<span class="nc" id="L55">            return binSkuDao.selectProductInfoByBinId(binId);</span>
-        }
-<span class="nc bnc" id="L57" title="All 2 branches missed.">        if(binId==0)</span>
-        {
-<span class="nc" id="L59">            return binSkuDao.selectProductInfoByGlobalSku(globalSkuId);</span>
-        }
-<span class="nc" id="L61">        checkBinId(binId);</span>
-<span class="nc" id="L62">        List&lt;BinFilter&gt; result = binSkuDao.selectProductInfoByBinAndGlobalSku(binId,globalSkuId);</span>
-<span class="nc" id="L63">        return result;</span>
+<span class="nc" id="L53">        checkBinId(binId);</span>
+<span class="nc" id="L54">        List&lt;BinFilter&gt; result = binSkuDao.selectProductInfoByBinAndGlobalSku(binId,globalSkuId);</span>
+<span class="nc" id="L55">        return result;</span>
     }
 
+    @Transactional(readOnly=true)
+    public List&lt;BinFilter&gt; getProducts(long globalSkuId)
+    {
+<span class="nc" id="L61">        return binSkuDao.selectProductInfoByGlobalSku(globalSkuId);</span>
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;BinFilter&gt; getProductInfo(long binId) throws ApiException {
+<span class="nc" id="L66">        checkBinId(binId);</span>
+<span class="nc" id="L67">        return binSkuDao.selectProductInfoByBinId(binId);</span>
+    }
     @Transactional(rollbackFor = ApiException.class)
     public void update(long binSkuId,long quantity) throws ApiException {
-<span class="nc" id="L68">        BinSkuPojo existing = binSkuDao.select(binSkuId);</span>
-<span class="nc bnc" id="L69" title="All 2 branches missed.">        if(existing==null)</span>
+<span class="nc" id="L71">        BinSkuPojo existing = binSkuDao.select(binSkuId);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if(existing==null)</span>
         {
-<span class="nc" id="L71">            throw new ApiException(&quot;The BinSkuId doesn't exist&quot;);</span>
+<span class="nc" id="L74">            throw new ApiException(&quot;The BinSkuId doesn't exist&quot;);</span>
         }
-<span class="nc" id="L73">        existing.setQuantity(quantity);</span>
-<span class="nc" id="L74">        binSkuDao.update(existing);</span>
-<span class="nc" id="L75">    }</span>
+<span class="nc" id="L76">        existing.setQuantity(quantity);</span>
+<span class="nc" id="L77">        binSkuDao.update(existing);</span>
+<span class="nc" id="L78">    }</span>
 
     @Transactional(readOnly = true,rollbackFor = ApiException.class)
     public void checkBinId(long binId) throws ApiException {
-<span class="nc" id="L79">        BinPojo existing = binDao.select(binId);</span>
-<span class="nc bnc" id="L80" title="All 2 branches missed.">        if(existing==null)</span>
+<span class="nc" id="L82">        BinPojo existing = binDao.select(binId);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if(existing==null)</span>
         {
-<span class="nc" id="L82">            throw new ApiException(&quot;Bin ID:&quot;+binId+&quot; doesn't exists.&quot;);</span>
+<span class="nc" id="L85">            throw new ApiException(&quot;Bin ID:&quot;+binId+&quot; doesn't exists.&quot;);</span>
         }
-<span class="nc" id="L84">    }</span>
+<span class="nc" id="L87">    }</span>
 
     @Transactional(readOnly = true)
     public BinSkuPojo get(long binSkuId)
     {
-<span class="nc" id="L89">       return binSkuDao.select(binSkuId);</span>
+<span class="nc" id="L92">       return binSkuDao.select(binSkuId);</span>
     }
 
     @Transactional
     public BinSkuPojo getCheck(long binSkuId) throws ApiException {
-<span class="nc" id="L94">        BinSkuPojo pojo=get(binSkuId);</span>
-<span class="nc bnc" id="L95" title="All 2 branches missed.">        if(pojo==null)</span>
-<span class="nc" id="L96">            throw new ApiException(&quot;BinSKuId is not valid&quot;);</span>
-<span class="nc" id="L97">        return pojo;</span>
+<span class="nc" id="L97">        BinSkuPojo pojo=get(binSkuId);</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        if(pojo==null)</span>
+<span class="nc" id="L99">            throw new ApiException(&quot;BinSKuId is not valid&quot;);</span>
+<span class="nc" id="L100">        return pojo;</span>
     }
 
     @Transactional
     public List&lt;BinSkuPojo&gt; getBins(long globalSkuId)
     {
-<span class="nc" id="L103">        return binSkuDao.selectByGlobalSku(globalSkuId);</span>
+<span class="nc" id="L106">        return binSkuDao.selectByGlobalSku(globalSkuId);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

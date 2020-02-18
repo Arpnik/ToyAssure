@@ -6,7 +6,7 @@ import com.increff.assure.model.data.ProductData;
 import com.increff.assure.model.forms.ProductForm;
 import com.increff.assure.model.forms.UpdateProductForm;
 import com.increff.assure.pojo.ProductPojo;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
 import com.increff.assure.util.ConvertGeneric;
@@ -31,7 +31,7 @@ public class ProductDto {
 
     @Transactional(rollbackFor = ApiException.class)
     public void add(List<ProductForm> formList,long clientId) throws ApiException {
-        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);
+        memberService.checkMemberType(clientId, MemberTypes.CLIENT);
 
         List<ProductPojo> pojoList = new ArrayList<>();
         List<ErrorData> errorList = new ArrayList<>();
@@ -60,8 +60,9 @@ public class ProductDto {
         productService.add(pojoList);
     }
 
+    @Transactional(readOnly = true)
     public List<ProductData> getAllByClientId(long clientId) throws ApiException {
-        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);
+        memberService.checkMemberType(clientId, MemberTypes.CLIENT);
         List<ProductPojo> pojoList= productService.getAllById(clientId);
         List<ProductData> dataList=new ArrayList<>();
         for(ProductPojo pojo:pojoList)
@@ -72,18 +73,21 @@ public class ProductDto {
         return dataList;
     }
 
+    @Transactional(rollbackFor = ApiException.class)
     public void update(long id, UpdateProductForm form) throws ApiException {
         normalize(form);
         ProductPojo pojo = ConvertGeneric.convert(form,ProductPojo.class);
         productService.update(id, pojo);
     }
 
+    @Transactional(readOnly = true)
     public ProductData get(long globalSkuId) throws ApiException {
         ProductPojo pojo = productService.getCheck(globalSkuId);
         ProductData data = ConvertGeneric.convert(pojo, ProductData.class);
         return data;
     }
 
+    @Transactional(readOnly = true)
     protected void checkClientIdAndSku(ProductPojo pojo) throws ApiException {
         ProductPojo existing=productService.get(pojo.getClientId(),pojo.getClientSkuId());
         if(existing!=null)

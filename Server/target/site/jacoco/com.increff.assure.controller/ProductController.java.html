@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Server</a> &gt; <a href="index.source.html" class="el_package">com.increff.assure.controller</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package com.increff.assure.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.increff.assure.dto.ProductDto;
 import com.increff.assure.model.data.ProductData;
 import com.increff.assure.model.forms.ProductForm;
 import com.increff.assure.model.forms.UpdateProductForm;
-import com.increff.assure.service.ApiException;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.util.ValidateRequestBodyList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,12 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Api
 @RestController
-<span class="nc" id="L21">public class ProductController {</span>
+<span class="nc" id="L19">public class ProductController {</span>
 
     @Autowired
     private ProductDto dto;
@@ -26,26 +24,26 @@ import java.util.List;
     @ApiOperation(value = &quot;Add product information&quot;)
     @RequestMapping(path = &quot;/api/product/{clientId}&quot;, method = RequestMethod.POST)
     public void add( @PathVariable long clientId,@Valid @RequestBody  ValidateRequestBodyList&lt;ProductForm&gt; requestBodyList) throws ApiException {
-<span class="nc" id="L29">        dto.add(requestBodyList.getRequestBody(), clientId);</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L27">        dto.add(requestBodyList.getRequestBody(), clientId);</span>
+<span class="nc" id="L28">    }</span>
 
     @ApiOperation(value = &quot;Get all products by clientId&quot;)
     @RequestMapping(path = &quot;/api/product/client/{clientId}&quot;, method = RequestMethod.GET)
     public List&lt;ProductData&gt; getAllProductsByClientId( @PathVariable long clientId) throws ApiException {
-<span class="nc" id="L35">       return dto.getAllByClientId(clientId);</span>
+<span class="nc" id="L33">       return dto.getAllByClientId(clientId);</span>
     }
 
     @ApiOperation(value = &quot;Get Product information by Global SkuId&quot;)
     @RequestMapping(path = &quot;/api/product/{id}&quot;, method = RequestMethod.GET)
     public ProductData getProduct(@PathVariable long id) throws ApiException {
-<span class="nc" id="L41">        return dto.get(id);</span>
+<span class="nc" id="L39">        return dto.get(id);</span>
     }
 
     @ApiOperation(value=&quot;Update Product Information by global SkuId&quot;)
     @RequestMapping(path=&quot;/api/product/{id}&quot;,method = RequestMethod.PUT)
     public void updateProduct(@PathVariable long id,@Valid @RequestBody UpdateProductForm form) throws ApiException {
-<span class="nc" id="L47">        dto.update(id,form);</span>
-<span class="nc" id="L48">    }</span>
+<span class="nc" id="L45">        dto.update(id,form);</span>
+<span class="nc" id="L46">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

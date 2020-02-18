@@ -7,7 +7,7 @@
 //import com.increff.assure.model.forms.UpdateProductForm;
 //import com.increff.assure.pojo.MemberPojo;
 //import com.increff.assure.pojo.ProductPojo;
-//import com.increff.assure.service.ApiException;
+//import com.increff.assure.model.Exception.ApiException;
 //import com.increff.assure.service.ProductService;
 //import com.increff.assure.util.AbstractUnitTest;
 //import com.increff.assure.util.ConvertGeneric;

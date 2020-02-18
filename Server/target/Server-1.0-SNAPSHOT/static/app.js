@@ -12,18 +12,44 @@ function toJson($form){
 }
 
 
+function handleErrorBlob(response)
+{
+    console.log(response);
+    console.log(response.responseText);
+    var myReader = new FileReader();
+    console.log(myReader.readAsText(myBlob));
+    var response=response.responseText.message;
+    console.log(response);
+}
+
+
+
 function handleAjaxError(response){
-	var response = JSON.parse(response.responseText);
-	var error=response.message;
-    error=error.split(',').join(' and ');
-    console.log(error);
-    // if(error.startsWith('\n'))
-    // {
-    //     error=error.split(':');
-    //     error=error.slice(1).join();
-    //     console.log(error);
-    // }
-    callAlertToast(error);
+	//console.log(response.responseText);
+   // console.log(typeof(response.responseText));
+  //  console.log(response.responseText);
+    var response = JSON.parse(response.responseText);
+  //  console.log(response);
+    var error=response.message
+  //  console.log(error);
+    if(!(error.startsWith('[')||error.startsWith('{')))
+    {
+        callAlertToast(error);
+        return;
+    }
+    res=JSON.parse(error);
+    if(error.startsWith('{'))
+    {
+        callAlertToast(res.message);
+        return;
+    }
+    var Errors="";
+    for(row in res)
+    {
+        Errors+=row.message;
+        Errors+=', ';
+    }
+    callAlertToast(Errors);
 }
 
 var options={
