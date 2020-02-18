@@ -53,9 +53,19 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public ProductPojo getByClientIdAndClientSku(long clientId,String ClientSkuId){
-        ProductPojo existing = dao.selectByClientIdAndClientSku(clientId,ClientSkuId);
+    public ProductPojo getCheckByParams(long clientId, String clientSkuId) throws ApiException {
+        ProductPojo existing = get(clientId,clientSkuId);
+        if(existing == null)
+        {
+            throw new ApiException("ClientSKu:"+clientSkuId+" is not valid");
+        }
         return existing;
+    }
+
+    @Transactional(readOnly = true)
+    public ProductPojo get(long clientId, String ClientSkuId)
+    {
+        return dao.selectByClientIdAndClientSku(clientId,ClientSkuId);
     }
 
 

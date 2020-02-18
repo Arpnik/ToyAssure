@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BinDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Server</a> &gt; <a href="index.source.html" class="el_package">com.increff.assure.dto</a> &gt; <span class="el_source">BinDto.java</span></div><h1>BinDto.java</h1><pre class="source lang-java linenums">package com.increff.assure.dto;
+
+import com.increff.assure.model.constants.MemberTypes;
+import com.increff.assure.model.data.BinFilterData;
+import com.increff.assure.model.data.ErrorData;
+import com.increff.assure.model.forms.BinFilterForm;
+import com.increff.assure.model.forms.BinWiseInventoryForm;
+import com.increff.assure.model.forms.CreateBinForm;
+import com.increff.assure.model.forms.UpdateBinForm;
+import com.increff.assure.pojo.BinFilter;
+import com.increff.assure.pojo.BinSkuPojo;
+import com.increff.assure.pojo.InventoryPojo;
+import com.increff.assure.pojo.ProductPojo;
+import com.increff.assure.service.*;
+import com.increff.assure.util.ConvertGeneric;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.increff.assure.util.Normalize.normalize;
+
+@Service
+<span class="nc" id="L25">public class BinDto {</span>
+
+    @Autowired
+    private BinService binService;
+
+    @Autowired
+    private MemberService memberService;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private InventoryService inventoryService;
+
+    public void createBins(CreateBinForm form){
+<span class="nc" id="L40">        binService.createBins(form.getNumberOfBins());</span>
+<span class="nc" id="L41">    }</span>
+
+    public List&lt;BinFilterData&gt; getProductInfo(BinFilterForm form) throws ApiException {
+<span class="nc" id="L44">        validateForm(form);</span>
+        //todo keep boolean flag instead of sending hardcoded values.
+<span class="nc" id="L46">        long globalSkuId=-1;</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if(!form.getClientSkuId().isEmpty())</span>
+        {
+<span class="nc" id="L49">            normalize(form);</span>
+<span class="nc" id="L50">           ProductPojo productPojo= getCheckClientIdAndClientSku(form.getClientId(),form.getClientSkuId());</span>
+<span class="nc" id="L51">           globalSkuId=productPojo.getGlobalSkuId();</span>
+        }
+<span class="nc" id="L53">        List&lt;BinFilter&gt; results=binService.getProductInfo(form.getBinId(),globalSkuId);</span>
+        //todo bin filter can be returned here instead of bin filter data
+<span class="nc" id="L55">        List&lt;BinFilterData&gt; dataList=new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        for(BinFilter res:results)</span>
+        {
+<span class="nc" id="L58">            BinFilterData data=ConvertGeneric.convert(res, BinFilterData.class);</span>
+<span class="nc" id="L59">            dataList.add(data);</span>
+<span class="nc" id="L60">        }</span>
+<span class="nc" id="L61">        return dataList;</span>
+    }
+
+    public void uploadBinWiseInventory(long clientId, List&lt;BinWiseInventoryForm&gt; formList) throws ApiException {
+<span class="nc" id="L65">        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);</span>
+
+<span class="nc" id="L67">        List&lt;BinSkuPojo&gt; pojoList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L68">        List&lt;ErrorData&gt; errorList = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L70">        int sno=-1;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        for(BinWiseInventoryForm form:formList)</span>
+        {
+<span class="nc" id="L73">            sno+=1;</span>
+<span class="nc" id="L74">            form.setClientSkuId(form.getClientSkuId().trim());</span>
+<span class="nc" id="L75">            ProductPojo product=null;</span>
+            try {
+<span class="nc" id="L77">                product = getCheckClientIdAndClientSku(clientId, form.getClientSkuId());</span>
+<span class="nc" id="L78">                binService.checkBinId(form.getBinId());</span>
+            }
+<span class="nc" id="L80">            catch (ApiException e)</span>
+            {
+<span class="nc" id="L82">                ErrorData data=new ErrorData(sno,e.getMessage());</span>
+<span class="nc" id="L83">                errorList.add(data);</span>
+<span class="nc" id="L84">                continue;</span>
+<span class="nc" id="L85">            }</span>
+<span class="nc" id="L86">            BinSkuPojo binSkuPojo = ConvertGeneric.convert(form,BinSkuPojo.class);</span>
+<span class="nc" id="L87">            binSkuPojo.setGlobalSkuId(product.getGlobalSkuId());</span>
+<span class="nc" id="L88">            InventoryPojo inventoryPojo = createInventory(product.getGlobalSkuId(),form.getQuantity());</span>
+<span class="nc" id="L89">            inventoryService.addOrUpdateInventory(inventoryPojo);</span>
+<span class="nc" id="L90">            pojoList.add(binSkuPojo);</span>
+<span class="nc" id="L91">        }</span>
+
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if(errorList.size() != 0)</span>
+<span class="nc" id="L94">            throw new ApiException(ErrorData.convert(errorList));</span>
+
+<span class="nc" id="L96">        binService.AddOrUpdateInventory(pojoList);</span>
+
+<span class="nc" id="L98">    }</span>
+
+    public ProductPojo getCheckClientIdAndClientSku(long clientId, String clientSkuId) throws ApiException {
+<span class="nc" id="L101">        ProductPojo product=productService.getByClientIdAndClientSku(clientId,clientSkuId);</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        if(product==null)</span>
+        {
+<span class="nc" id="L104">            throw new ApiException(&quot;No Product with Client SKU ID: &quot;+clientSkuId+&quot; and Client Name:&quot; +memberService.get(clientId).getName()+&quot; exists.&quot;);</span>
+        }
+<span class="nc" id="L106">        return product;</span>
+    }
+
+    public void updateBin(long binSkuId, UpdateBinForm form) throws ApiException {
+<span class="nc" id="L110">        BinSkuPojo existing=binService.getCheck(binSkuId);</span>
+<span class="nc" id="L111">        binService.update(binSkuId,form.getQuantity());</span>
+<span class="nc" id="L112">        InventoryPojo inventoryPojo=createInventory(existing.getGlobalSkuId(),form.getQuantity()-existing.getQuantity());</span>
+<span class="nc" id="L113">        inventoryService.addOrUpdateInventory(inventoryPojo);</span>
+<span class="nc" id="L114">    }</span>
+
+    public void validateForm(BinFilterForm form) throws ApiException {
+<span class="nc bnc" id="L117" title="All 8 branches missed.">        if((form.getBinId() == 0) &amp;&amp; form.getClientId()==0 &amp;&amp; (form.getClientSkuId()==null||form.getClientSkuId().isEmpty()))</span>
+        {
+<span class="nc" id="L119">            throw new ApiException(&quot;Please set some values in the  filter form&quot;);</span>
+        }
+<span class="nc bnc" id="L121" title="All 12 branches missed.">        if((!(form.getClientSkuId()==null||form.getClientSkuId().isEmpty())&amp;&amp; form.getClientId()==0)|| ((form.getClientSkuId()==null||form.getClientSkuId().isEmpty())&amp;&amp;form.getClientId()&gt;0))</span>
+        {
+<span class="nc" id="L123">            throw new ApiException(&quot;PLease select appropriate client Name and Client SKU&quot;);</span>
+        }
+<span class="nc" id="L125">    }</span>
+
+    protected InventoryPojo createInventory(long globalSkuId,long quantity)
+    {
+<span class="nc" id="L129">        InventoryPojo pojo=new InventoryPojo();</span>
+<span class="nc" id="L130">        pojo.setAvailableQuantity(quantity);</span>
+<span class="nc" id="L131">        pojo.setGlobalSkuId(globalSkuId);</span>
+<span class="nc" id="L132">        return pojo;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -3,7 +3,7 @@ package com.increff.assure.util;
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.forms.BinFilterForm;
 import com.increff.assure.model.forms.CreateBinForm;
-import com.increff.assure.model.forms.MemberForm;
+import com.increff.assure.model.form.MemberForm;
 import com.increff.assure.model.forms.ProductForm;
 import com.increff.assure.pojo.BinSkuPojo;
 import com.increff.assure.pojo.MemberPojo;
@@ -17,7 +17,7 @@ public class dataUtil {
         return member;
     }
 
-    public static BinSkuPojo createBinSkuPojo(long qty,long globalSku,long binId)
+    public static BinSkuPojo createBinSkuPojo(long qty, long globalSku, long binId)
     {
         BinSkuPojo pojo=new BinSkuPojo();
         pojo.setQuantity(qty);
@@ -52,7 +52,7 @@ public class dataUtil {
         return form;
     }
 
-    public static ProductPojo createProductPojo(String name,String brandId,String clientSkuId,String desc,double mrp,long clientId)
+    public static ProductPojo createProductPojo(String name, String brandId, String clientSkuId, String desc, double mrp, long clientId)
     {
         ProductPojo pojo=new ProductPojo();
         pojo.setName(name);

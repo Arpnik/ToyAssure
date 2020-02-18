@@ -30,7 +30,7 @@ public class PDFUtility {
     private static final String PATH_TO_Order_XSL = "src/main/resources/com/increff/assure/templateInvoice.xsl" ;
 
 
-    public static byte[] createPdfForInvoice(InvoiceMetaData data, List<OrderDetailsData> itemData) throws Exception {
+    public static byte[] createPdfForInvoice(InvoiceMetaData data) throws Exception {
 
         DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 
@@ -41,7 +41,8 @@ public class PDFUtility {
         document.appendChild(root);
         double sum=0.0;
         int sno=1;
-        for(OrderDetailsData item:itemData)
+
+        for(OrderDetailsData item:data.getItems())
         {
             Element product = document.createElement("invoice");
             root.appendChild(product);
@@ -83,8 +84,7 @@ public class PDFUtility {
         root.appendChild(customer);
 
         Element date=document.createElement("createDate");
-        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL);
-        date.appendChild(document.createTextNode(data.getCreatedDate().format(formatter)));
+        date.appendChild(document.createTextNode(data.getOrderedDate()));
         root.appendChild(date);
 
 

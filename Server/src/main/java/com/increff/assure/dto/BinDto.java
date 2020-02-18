@@ -16,7 +16,6 @@ import com.increff.assure.util.ConvertGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,23 +42,18 @@ public class BinDto {
 
     public List<BinFilterData> getProductInfo(BinFilterForm form) throws ApiException {
         validateForm(form);
-        //todo keep boolean flag instead of sending hardcoded values.
-        long globalSkuId=-1;
-        if(!form.getClientSkuId().isEmpty())
-        {
-            normalize(form);
-           ProductPojo productPojo= getCheckClientIdAndClientSku(form.getClientId(),form.getClientSkuId());
-           globalSkuId=productPojo.getGlobalSkuId();
-        }
-        List<BinFilter> results=binService.getProductInfo(form.getBinId(),globalSkuId);
-        //todo bin filter can be returned here instead of bin filter data
-        List<BinFilterData> dataList=new ArrayList<>();
-        for(BinFilter res:results)
-        {
-            BinFilterData data=ConvertGeneric.convert(res, BinFilterData.class);
-            dataList.add(data);
-        }
-        return dataList;
+
+        if(form.getClientSkuId().isEmpty())
+            return convert(binService.getProductInfo(form.getBinId()));
+
+        normalize(form);
+        ProductPojo product = getCheckIdAndSku(form.getClientId(),form.getClientSkuId());
+        long globalSkuId=product.getGlobalSkuId();
+        if(form.getBinId()==0)
+            return convert(binService.getProducts(globalSkuId));
+        else
+            return convert( binService.getProductInfo(form.getBinId(),globalSkuId));
+
     }
 
     public void uploadBinWiseInventory(long clientId, List<BinWiseInventoryForm> formList) throws ApiException {
@@ -75,7 +69,7 @@ public class BinDto {
             form.setClientSkuId(form.getClientSkuId().trim());
             ProductPojo product=null;
             try {
-                product = getCheckClientIdAndClientSku(clientId, form.getClientSkuId());
+                product = getCheckIdAndSku(clientId, form.getClientSkuId());
                 binService.checkBinId(form.getBinId());
             }
             catch (ApiException e)
@@ -98,12 +92,8 @@ public class BinDto {
 
     }
 
-    public ProductPojo getCheckClientIdAndClientSku(long clientId, String clientSkuId) throws ApiException {
-        ProductPojo product=productService.getByClientIdAndClientSku(clientId,clientSkuId);
-        if(product==null)
-        {
-            throw new ApiException("No Product with Client SKU ID: "+clientSkuId+" and Client Name:" +memberService.get(clientId).getName()+" exists.");
-        }
+    public ProductPojo getCheckIdAndSku(long clientId, String clientSkuId) throws ApiException {
+        ProductPojo product=productService.getCheckByParams(clientId,clientSkuId);
         return product;
     }
 
@@ -131,6 +121,17 @@ public class BinDto {
         pojo.setAvailableQuantity(quantity);
         pojo.setGlobalSkuId(globalSkuId);
         return pojo;
+    }
+
+    protected List<BinFilterData> convert(List<BinFilter> results)
+    {
+        List<BinFilterData> dataList=new ArrayList<>();
+        for(BinFilter res: results)
+        {
+            BinFilterData data = ConvertGeneric.convert(res, BinFilterData.class);
+            dataList.add(data);
+        }
+        return dataList;
     }
 
 

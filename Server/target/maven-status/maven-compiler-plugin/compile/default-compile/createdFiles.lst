@@ -1,4 +1,3 @@
-com/increff/assure/model/data/ChannelData.class
 com/increff/assure/model/constants/OrderStatusType.class
 com/increff/assure/service/ChannelService.class
 com/increff/assure/spring/ControllerConfiguration.class
@@ -10,7 +9,6 @@ com/increff/assure/dto/ChannelDto.class
 com/increff/assure/service/AboutAppService.class
 com/increff/assure/controller/ChannelController.class
 com/increff/assure/pojo/ProductPojo.class
-com/increff/assure/pojo/OrderDetailsResult.class
 com/increff/assure/model/data/ProductData.class
 com/increff/assure/pojo/InventoryPojo.class
 com/increff/assure/model/forms/OrderLineItemForm.class
@@ -23,7 +21,6 @@ com/increff/assure/controller/MemberController.class
 com/increff/assure/service/MemberService.class
 com/increff/assure/model/data/BinData.class
 com/increff/assure/model/forms/CreateBinForm.class
-com/increff/assure/model/data/OrderDetailsData.class
 com/increff/assure/dao/ChannelDao.class
 com/increff/assure/spring/DbConfig.class
 com/increff/assure/service/OrderService.class
@@ -37,10 +34,8 @@ com/increff/assure/spring/WebInitializerExtended.class
 com/increff/assure/dto/BinDto.class
 com/increff/assure/controller/AbstractUiController.class
 com/increff/assure/pojo/BinFilter.class
-com/increff/assure/model/data/MemberData.class
 com/increff/assure/dao/OrderItemDao.class
 com/increff/assure/model/forms/ClientAndChannelSku.class
-com/increff/assure/model/constants/MemberTypes.class
 com/increff/assure/dao/OrderDao.class
 com/increff/assure/controller/AboutAppController.class
 com/increff/assure/dto/ProductDto.class
@@ -59,7 +54,6 @@ com/increff/assure/service/ProductService.class
 com/increff/assure/model/data/OrderDisplayData.class
 com/increff/assure/dao/AbstractDao.class
 com/increff/assure/pojo/AbstractEntity.class
-com/increff/assure/model/constants/InvoiceType.class
 com/increff/assure/pojo/BinPojo.class
 com/increff/assure/model/forms/BinFilterForm.class
 com/increff/assure/util/ValidateRequestBodyList.class
@@ -69,8 +63,6 @@ com/increff/assure/util/PrefixPhysicalNamingStrategy.class
 com/increff/assure/dto/OrderDto.class
 com/increff/assure/util/IOUtil.class
 com/increff/assure/model/forms/OrderForm.class
-com/increff/assure/model/forms/ChannelForm.class
-com/increff/assure/model/forms/MemberForm.class
 com/increff/assure/service/BinService.class
 com/increff/assure/controller/AboutAppController$AboutApiController.class
 com/increff/assure/model/data/BinFilterData.class

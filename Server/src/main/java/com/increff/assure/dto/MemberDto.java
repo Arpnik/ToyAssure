@@ -2,7 +2,7 @@ package com.increff.assure.dto;
 
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.MemberData;
-import com.increff.assure.model.forms.MemberForm;
+import com.increff.assure.model.form.MemberForm;
 import com.increff.assure.pojo.MemberPojo;
 import com.increff.assure.service.ApiException;
 import com.increff.assure.service.MemberService;

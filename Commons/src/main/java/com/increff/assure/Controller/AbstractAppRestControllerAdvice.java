@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.RestClientResponseException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,15 @@ public abstract class AbstractAppRestControllerAdvice {
         }
 
         data.setMessage(errors);
+        return data;
+    }
+
+    @ExceptionHandler(RestClientResponseException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public MessageData handle(RestClientResponseException e) {
+        MessageData data = new MessageData();
+        data.setMessage(e.getResponseBodyAsString());
+        System.out.println(e.getResponseBodyAsString());
         return data;
     }
 

@@ -4,7 +4,7 @@ import com.increff.assure.model.constants.InvoiceType;
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.ChannelData;
 import com.increff.assure.model.data.ErrorData;
-import com.increff.assure.model.forms.ChannelForm;
+import com.increff.assure.model.form.ChannelForm;
 import com.increff.assure.model.forms.ChannelListingForm;
 import com.increff.assure.model.forms.ClientAndChannelSku;
 import com.increff.assure.pojo.ChannelListingPojo;
@@ -110,11 +110,7 @@ public class ChannelDto {
     }
 
     protected ProductPojo getProduct(long clientId,String clientSkuId) throws ApiException {
-        ProductPojo product=productService.getByClientIdAndClientSku(clientId,clientSkuId);
-        if(product==null)
-        {
-            throw new ApiException("Client SKu:"+clientSkuId+" doesn't belong to specified client");
-        }
+        ProductPojo product=productService.getCheckByParams(clientId,clientSkuId);
         return product;
     }
 

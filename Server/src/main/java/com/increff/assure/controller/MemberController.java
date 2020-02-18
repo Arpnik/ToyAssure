@@ -2,7 +2,7 @@ package com.increff.assure.controller;
 
 import com.increff.assure.dto.MemberDto;
 import com.increff.assure.model.data.MemberData;
-import com.increff.assure.model.forms.MemberForm;
+import com.increff.assure.model.form.MemberForm;
 import com.increff.assure.service.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

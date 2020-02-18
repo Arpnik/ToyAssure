@@ -2,8 +2,12 @@ package com.increff.assure.service;
 
 import com.increff.assure.dao.OrderDao;
 import com.increff.assure.dao.OrderItemDao;
+import com.increff.assure.model.Pojo.OrderDetailsResult;
 import com.increff.assure.model.constants.OrderStatusType;
-import com.increff.assure.pojo.*;
+import com.increff.assure.pojo.BinSkuPojo;
+import com.increff.assure.pojo.InventoryPojo;
+import com.increff.assure.pojo.OrderItemPojo;
+import com.increff.assure.pojo.OrderPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,9 +70,10 @@ public class OrderService {
     }
 
     @Transactional(readOnly = true)
-    public List<OrderDetailsResult> getOrderDetails( long orderId)
+    public List<OrderDetailsResult> getOrderDetails(long orderId)
     {
-        return itemDao.getDetailsByOrderId( orderId);
+        return itemDao.getDetailsByOrderId(orderId);
+
     }
 
     @Transactional(rollbackFor = ApiException.class)

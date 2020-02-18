@@ -48,21 +48,23 @@ public class BinService {
     }
 
     @Transactional(readOnly = true)
-    public List<BinFilter> getProductInfo(long binId,long globalSkuId) throws ApiException {
-        if(globalSkuId<=0)
-        {
-            checkBinId(binId);
-            return binSkuDao.selectProductInfoByBinId(binId);
-        }
-        if(binId==0)
-        {
-            return binSkuDao.selectProductInfoByGlobalSku(globalSkuId);
-        }
+    public List<BinFilter> getProductInfo(long binId, long globalSkuId) throws ApiException {
         checkBinId(binId);
         List<BinFilter> result = binSkuDao.selectProductInfoByBinAndGlobalSku(binId,globalSkuId);
         return result;
     }
 
+    @Transactional(readOnly=true)
+    public List<BinFilter> getProducts(long globalSkuId)
+    {
+        return binSkuDao.selectProductInfoByGlobalSku(globalSkuId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<BinFilter> getProductInfo(long binId) throws ApiException {
+        checkBinId(binId);
+        return binSkuDao.selectProductInfoByBinId(binId);
+    }
     @Transactional(rollbackFor = ApiException.class)
     public void update(long binSkuId,long quantity) throws ApiException {
         BinSkuPojo existing = binSkuDao.select(binSkuId);

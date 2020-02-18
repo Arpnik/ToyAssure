@@ -7,7 +7,6 @@ package com.increff.assure.service;
 //TODO constraint naming
 //TODO annotation knowing
 //TODO select by param when name is very long
-//TODO binfilter service 3 methods
 //TODO use crteriaquery and make 1 constructor
 //TODO naming in 2 dao in 1 service
 //TODO readONLY methods don't rollBAck

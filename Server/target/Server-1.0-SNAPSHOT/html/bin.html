@@ -1,0 +1,138 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+<div th:replace="snippets.html :: toast_box"></div>
+
+<div class="container">
+
+
+<div class="row">
+	 <div class="col-lg-6">
+	 	<h3>Bins Creation</h3>
+	 	<form class="form-inline" id="bin-form">
+			      <input type="text" class="form-control col-sm-5" name="numberOfBins" id="inputBins" placeholder="Enter Number Of Bins">
+			       &nbsp;
+			       <button type="button" class="btn btn-primary float-right" id="create-bin">Create</button>
+		</form>
+	</div>
+	<div class="col-lg-6">
+		<h3>Upload Bin-Wise Inventory</h3>
+		<form class="form-inline" id="brand-DropDown">
+					<select class="form-control col-sm-5"  id="selectClient" name='clientName'>
+						<option selected hidden disabled value="">Select Client Name</option>
+					</select>
+					&nbsp;
+				  <button type="button" class="btn btn-primary" id="upload-data">Upload</button>
+			</form>
+	</div>
+</div>
+		<!-- Blank Row -->
+		<div class="row">
+			&nbsp;
+		</div>
+		<div class="row">
+			&nbsp;
+		</div>
+
+<h3>Product Information</h3>
+<div class="row">
+	 <div class="col-12">
+	 	<form class="form-inline" id="filter-form">
+				<div class="form-group " id="client-DropDown">
+						<select class="form-control"  id="selectClientId" name='clientId'>
+							<option selected value="">Select Client Name</option>
+						</select>
+				</div>
+				&nbsp;
+				<div class="form-group " id="clientSku">
+						<input type="text" id="ClientSkuId" class="form-control" name="clientSkuId" placeholder="Enter Client Sku">
+			</div>
+			&nbsp;
+			<div class="form-group" id="clientSku">
+				      <input type="text" id="BinId" class="form-control" name="binId" placeholder="Enter Bin Id">
+			</div>
+			&nbsp;
+			<button type="button" class="btn btn-primary" id="get-productInfo">Get Product Information</button>
+		</form>
+		</div>		
+	</div>
+</div>
+
+</div><!--container end-->
+
+<!--upload modal-->
+<div class="modal" tabindex="-1" role="dialog" id="upload-bin-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">Upload Bin-Wise Inventory</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+      	<div class="product-file">
+		  <input type="file" class="custom-file-input" id="binFile">
+		  <label class="custom-file-label" for="productFile" id="binFileName">Choose file</label>
+		</div>
+		<a th:href="@{/sample/bin.csv}" target="_blank">Download Sample</a> 
+		<br>
+		Rows: <span id="rowCount">0</span>, 
+		Processed: <span id="processCount">0</span>, 
+		Errors: <span id="errorCount">0</span>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="process-data">Upload</button>
+        <button type="button" class="btn btn-warning" id="download-errors">Download Errors</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	
+
+<!-- bin/product display modal-->
+ <div class="modal" tabindex="-1" role="dialog" id="bin-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Bin/Product Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<table class="table table-striped" id="filter-table" style ="overflow-y:auto">
+			  <thead>
+			    <!--dynamically filled when display clicked-->
+			  </thead>
+			  <tbody >
+				    <!-- dynamic generation of rows-->
+			  </tbody>
+			</table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div> <!-- Container end-->
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+<script th:src="@{/static/bin.js}"/></script>
+
+</body>	
+
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Server</a> &gt; <a href="index.source.html" class="el_package">com.increff.assure.dto</a> &gt; <span class="el_source">ProductDto.java</span></div><h1>ProductDto.java</h1><pre class="source lang-java linenums">package com.increff.assure.dto;
+
+import com.increff.assure.model.constants.MemberTypes;
+import com.increff.assure.model.data.ErrorData;
+import com.increff.assure.model.data.ProductData;
+import com.increff.assure.model.forms.ProductForm;
+import com.increff.assure.model.forms.UpdateProductForm;
+import com.increff.assure.pojo.ProductPojo;
+import com.increff.assure.service.ApiException;
+import com.increff.assure.service.MemberService;
+import com.increff.assure.service.ProductService;
+import com.increff.assure.util.ConvertGeneric;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.increff.assure.util.Normalize.normalize;
+import static com.increff.assure.util.Normalize.normalizeProductForm;
+
+@Service
+<span class="nc" id="L24">public class ProductDto {</span>
+
+    @Autowired
+    ProductService productService;
+
+    @Autowired
+    MemberService memberService;
+
+    @Transactional(rollbackFor = ApiException.class)
+    public void add(List&lt;ProductForm&gt; formList,long clientId) throws ApiException {
+<span class="nc" id="L34">        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);</span>
+
+<span class="nc" id="L36">        List&lt;ProductPojo&gt; pojoList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L37">        List&lt;ErrorData&gt; errorList = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L39">        int sno = 0;</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        for(ProductForm form: formList){</span>
+
+<span class="nc" id="L42">            normalizeProductForm(form);</span>
+<span class="nc" id="L43">            ProductPojo pojo = ConvertGeneric.convert(form,ProductPojo.class);</span>
+<span class="nc" id="L44">            pojo.setClientId( clientId);</span>
+            try {
+<span class="nc" id="L46">                checkClientIdAndSku(pojo);</span>
+            }
+<span class="nc" id="L48">            catch (ApiException e)</span>
+            {
+<span class="nc" id="L50">                ErrorData data=new ErrorData(sno,e.getMessage());</span>
+<span class="nc" id="L51">                errorList.add(data);</span>
+<span class="nc" id="L52">            }</span>
+<span class="nc" id="L53">                pojoList.add(pojo);</span>
+<span class="nc" id="L54">                sno+=1;</span>
+<span class="nc" id="L55">        }</span>
+
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if(errorList.size()!=0)</span>
+<span class="nc" id="L58">            throw new ApiException(ErrorData.convert(errorList));</span>
+
+<span class="nc" id="L60">        productService.add(pojoList);</span>
+<span class="nc" id="L61">    }</span>
+
+    public List&lt;ProductData&gt; getAllByClientId(long clientId) throws ApiException {
+<span class="nc" id="L64">        memberService.checkMemberAndType(clientId, MemberTypes.CLIENT);</span>
+<span class="nc" id="L65">        List&lt;ProductPojo&gt; pojoList= productService.getAllById(clientId);</span>
+<span class="nc" id="L66">        List&lt;ProductData&gt; dataList=new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        for(ProductPojo pojo:pojoList)</span>
+        {
+<span class="nc" id="L69">            ProductData data=ConvertGeneric.convert(pojo,ProductData.class);</span>
+<span class="nc" id="L70">            dataList.add(data);</span>
+<span class="nc" id="L71">        }</span>
+<span class="nc" id="L72">        return dataList;</span>
+    }
+
+    public void update(long id, UpdateProductForm form) throws ApiException {
+<span class="nc" id="L76">        normalize(form);</span>
+<span class="nc" id="L77">        ProductPojo pojo = ConvertGeneric.convert(form,ProductPojo.class);</span>
+<span class="nc" id="L78">        productService.update(id, pojo);</span>
+<span class="nc" id="L79">    }</span>
+
+    public ProductData get(long globalSkuId) throws ApiException {
+<span class="nc" id="L82">        ProductPojo pojo = productService.getCheck(globalSkuId);</span>
+<span class="nc" id="L83">        ProductData data = ConvertGeneric.convert(pojo, ProductData.class);</span>
+<span class="nc" id="L84">        return data;</span>
+    }
+
+    protected void checkClientIdAndSku(ProductPojo pojo) throws ApiException {
+<span class="nc" id="L88">        ProductPojo existing=productService.getByClientIdAndClientSku(pojo.getClientId(),pojo.getClientSkuId());</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        if(existing!=null)</span>
+        {
+<span class="nc" id="L91">            throw new ApiException(&quot;Client SKU ID:&quot;+pojo.getClientSkuId()+&quot; for Client:&quot;+memberService.get(pojo.getClientId()).getName()+&quot; are not unique&quot;);</span>
+        }
+<span class="nc" id="L93">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -36,7 +36,7 @@ public class OrderController {
 
     @ApiOperation(value = "Check Order Quantity and ClientId from channel")
     @RequestMapping(path="/api/order/product",method = RequestMethod.POST)
-    public ChannelItemCheckData checkOrderedItem(@Valid @RequestBody ChannelItemCheckForm form) throws Exception {
+    public ChannelItemCheckData checkOrderedItem(@Valid @RequestBody ChannelItemCheckForm form) throws ApiException {
         return dto.checkOrderedItem(form);
     }
 

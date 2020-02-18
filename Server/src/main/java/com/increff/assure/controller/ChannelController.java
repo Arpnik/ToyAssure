@@ -2,7 +2,7 @@ package com.increff.assure.controller;
 
 import com.increff.assure.dto.ChannelDto;
 import com.increff.assure.model.data.ChannelData;
-import com.increff.assure.model.forms.ChannelForm;
+import com.increff.assure.model.form.ChannelForm;
 import com.increff.assure.model.forms.ChannelListingForm;
 import com.increff.assure.service.ApiException;
 import io.swagger.annotations.Api;

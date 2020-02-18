@@ -42,7 +42,7 @@ public class ChannelService {
     }
 
     @Transactional(rollbackFor = ApiException.class)
-    public void addChannelListing(ChannelListingPojo pojo,boolean callDbPersist) throws ApiException {
+    public void addChannelListing(ChannelListingPojo pojo, boolean callDbPersist) throws ApiException {
         ChannelListingPojo existingChannel=channelListingDao.getListingPojoByParams(pojo.getChannelSkuId(),pojo.getChannelId(),pojo.getClientId());
         if(existingChannel!=null)
         {
@@ -87,7 +87,7 @@ public class ChannelService {
     }
 
 
-    public ChannelListingPojo getByChannelIdAndChannelSkuAndClientId(long channelId, String channelSkuId, long clientId) throws ApiException {
+    public ChannelListingPojo getByParams(long channelId, String channelSkuId, long clientId) throws ApiException {
         ChannelListingPojo pojo=channelListingDao.getListingPojoByParams(channelSkuId,channelId,clientId);
         if(pojo==null)
         {

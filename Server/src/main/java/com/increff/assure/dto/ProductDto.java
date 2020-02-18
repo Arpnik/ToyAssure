@@ -1,6 +1,5 @@
 package com.increff.assure.dto;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.ErrorData;
 import com.increff.assure.model.data.ProductData;
@@ -86,7 +85,7 @@ public class ProductDto {
     }
 
     protected void checkClientIdAndSku(ProductPojo pojo) throws ApiException {
-        ProductPojo existing=productService.getByClientIdAndClientSku(pojo.getClientId(),pojo.getClientSkuId());
+        ProductPojo existing=productService.get(pojo.getClientId(),pojo.getClientSkuId());
         if(existing!=null)
         {
             throw new ApiException("Client SKU ID:"+pojo.getClientSkuId()+" for Client:"+memberService.get(pojo.getClientId()).getName()+" are not unique");

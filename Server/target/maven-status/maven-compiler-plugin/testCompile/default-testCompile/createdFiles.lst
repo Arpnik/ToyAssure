@@ -1,9 +1,3 @@
-com/increff/assure/dto/BinDtoTest.class
-com/increff/assure/dto/ProductDtoTest.class
-com/increff/assure/util/AbstractUnitTest.class
 com/increff/assure/util/QaConfig.class
-com/increff/assure/service/MemberServiceTest.class
 com/increff/assure/util/dataUtil.class
-com/increff/assure/service/ProductServiceTest.class
-com/increff/assure/dto/MemberDtoTest.class
-com/increff/assure/service/BinServiceTest.class
+com/increff/assure/util/AbstractUnitTest.class

@@ -1,6 +1,10 @@
 com/increff/assure/spring/ControllerConfigurationChannel.class
 com/increff/assure/controller/AppRestControllerAdvice.class
+com/increff/assure/controller/AbstractUiController.class
 com/increff/assure/dto/ChannelOrderDto.class
 com/increff/assure/controller/ChannelOrderController.class
+com/increff/assure/spring/RestTemplateResponseErrorHandler.class
+com/increff/assure/util/PDFUtility.class
+com/increff/assure/controller/ChannelUiController.class
 com/increff/assure/spring/SpringConfig.class
 com/increff/assure/spring/WebInitializerChannel.class
