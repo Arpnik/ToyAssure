@@ -33,13 +33,13 @@ com/increff/assure/dao/InventoryDao.class
 com/increff/assure/spring/WebInitializerExtended.class
 com/increff/assure/dto/BinDto.class
 com/increff/assure/controller/AbstractUiController.class
-com/increff/assure/pojo/BinFilter.class
 com/increff/assure/dao/OrderItemDao.class
 com/increff/assure/model/forms/ClientAndChannelSku.class
 com/increff/assure/dao/OrderDao.class
 com/increff/assure/controller/AboutAppController.class
 com/increff/assure/dto/ProductDto.class
 com/increff/assure/pojo/ChannelListingPojo.class
+com/increff/assure/pojo/join/BinFilter.class
 com/increff/assure/util/Normalize.class
 com/increff/assure/dao/ProductDao.class
 com/increff/assure/spring/SpringConfig.class

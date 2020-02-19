@@ -15,15 +15,12 @@ function toJson($form){
 function handleAjaxError(response){
 	var response = JSON.parse(response.responseText);
 	var error=response.message
-    console.log(error);
     if(!(error.startsWith('[')||error.startsWith('{')))
     {
         callAlertToast(error);
         return;
     }
     res=JSON.parse(error);
-    console.log(res);
-    console.log(res.message);
     if(error.startsWith('{'))
     {
         callAlertToast(res.message);
@@ -62,7 +59,6 @@ function callAlertToast(message)
     $('#toast-body').empty();
     $('#toast-body').text(message);
     $('#PopUpToast').toast('show');
-    console.log("hello");
 }
 
 function callWarnToast(message)

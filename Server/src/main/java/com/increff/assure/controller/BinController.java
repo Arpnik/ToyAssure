@@ -1,12 +1,12 @@
 package com.increff.assure.controller;
 
 import com.increff.assure.dto.BinDto;
-import com.increff.assure.model.data.BinFilterData;
-import com.increff.assure.model.forms.BinWiseInventoryForm;
-import com.increff.assure.model.forms.BinFilterForm;
-import com.increff.assure.model.forms.UpdateBinForm;
-import com.increff.assure.model.forms.CreateBinForm;
 import com.increff.assure.model.Exception.ApiException;
+import com.increff.assure.model.data.BinFilterData;
+import com.increff.assure.model.forms.BinFilterForm;
+import com.increff.assure.model.forms.BinWiseInventoryForm;
+import com.increff.assure.model.forms.CreateBinForm;
+import com.increff.assure.model.forms.UpdateBinForm;
 import com.increff.assure.util.ValidateRequestBodyList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

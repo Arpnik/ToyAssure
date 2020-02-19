@@ -116,7 +116,6 @@ function uploadRows(){
 	requestBody["clientAndChannelSkuList"]=skus;
 	requestBody["clientId"]=Number($('#selectClient option:selected').val());
 	var json = JSON.stringify(requestBody);
-	console.log(json);
 	var url = getChannelUrl()+'/listing';
 	//Make ajax call
 	$.ajax({

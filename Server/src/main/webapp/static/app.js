@@ -12,26 +12,9 @@ function toJson($form){
 }
 
 
-function handleErrorBlob(response)
-{
-    console.log(response);
-    console.log(response.responseText);
-    var myReader = new FileReader();
-    console.log(myReader.readAsText(myBlob));
-    var response=response.responseText.message;
-    console.log(response);
-}
-
-
-
 function handleAjaxError(response){
-	//console.log(response.responseText);
-   // console.log(typeof(response.responseText));
-  //  console.log(response.responseText);
     var response = JSON.parse(response.responseText);
-  //  console.log(response);
     var error=response.message
-  //  console.log(error);
     if(!(error.startsWith('[')||error.startsWith('{')))
     {
         callAlertToast(error);
@@ -120,10 +103,7 @@ function readFileData(file, callback){
 function CsvHandlError(response,fileData)
 {
     let res=JSON.parse(response.responseText)["message"];
-    console.log(res);
     callAlertToast("Download Errors");
-    console.log(res);
-    console.log(typeof(res));
     if(!(res.startsWith("[") || res.startsWith('{')))
     {
         errorData.push(JSON.parse(response.responseText));
@@ -133,9 +113,7 @@ function CsvHandlError(response,fileData)
     res=JSON.parse(res);
     for(row in res)
     {
-        console.log(res[row].index);
         var createdError=fileData[Number(res[row].index)];
-        console.log(res[row].message);
         if(createdError.hasOwnProperty("message"))
         {
             var newMessage=createdError["message"].concat(",",res[row].message);

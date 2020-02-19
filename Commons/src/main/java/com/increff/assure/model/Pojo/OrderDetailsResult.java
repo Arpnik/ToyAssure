@@ -1,6 +1,5 @@
 package com.increff.assure.model.Pojo;
 
-import com.increff.assure.model.data.ChannelItemCheckData;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

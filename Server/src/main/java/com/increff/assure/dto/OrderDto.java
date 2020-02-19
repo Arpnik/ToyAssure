@@ -53,6 +53,7 @@ public class OrderDto {
     public void placeOrder(OrderForm form) throws ApiException {
         normalize(form);
         long channelId=channelService.getDefaultChannel().getId();
+        //clientId,customerId,channelOrderID for channel unique
         validate(form.getCustomerId(),form.getClientId(), channelId, form.getChannelOrderId());
         OrderPojo orderPojo= ConvertGeneric.convert(form,OrderPojo.class);
         orderPojo.setChannelId(channelId);
@@ -60,12 +61,12 @@ public class OrderDto {
         long sno = -1;
         Set<String> hash_Set = new HashSet<>();
         List<OrderItemPojo> pojoList = new ArrayList<>();
-        List<ErrorData> errors = new ArrayList<>();
+        List<ErrorData> errors = new ArrayList<>();//make error list
 
         for(OrderLineItemForm item:form.getItems())
         {
             sno+=1;
-
+            //check duplicate
             if(hash_Set.contains(item.getClientSkuId())){
                 errors.add(new ErrorData(sno,"Duplicate Client Sku ID:"+item.getClientSkuId()));
                 continue;
@@ -117,7 +118,7 @@ public class OrderDto {
             OrderItemPojo pojo=ConvertGeneric.convert(item,OrderItemPojo.class);
             pojo.setOrderedQuantity(item.getOrderedQuantity());
             try{
-                ChannelListingPojo listingPojo=channelService.getByParams(form.getChannelId(),item.getChannelSkuId(),form.getClientId());
+                ChannelListingPojo listingPojo=channelService.getCheckByParams(form.getChannelId(),item.getChannelSkuId(),form.getClientId());
                 pojo.setGlobalSkuId(listingPojo.getGlobalSkuId());
             }
             catch (Exception e)
@@ -181,7 +182,7 @@ public class OrderDto {
 
     public ChannelItemCheckData checkOrderedItem(ChannelItemCheckForm form) throws ApiException {
         normalize(form);
-        ChannelListingPojo pojo = channelService.getByParams(form.getChannelId(),form.getChannelSkuId(),form.getClientId());
+        ChannelListingPojo pojo = channelService.getCheckByParams(form.getChannelId(),form.getChannelSkuId(),form.getClientId());
         InventoryPojo inventoryPojo = inventoryService.getByGlobalSkuId(pojo.getGlobalSkuId());
 
         if(inventoryPojo.getAvailableQuantity() <= 0)
@@ -222,6 +223,7 @@ public class OrderDto {
     protected void validate(long customerId, long clientId, long channelId, String channelOrderId) throws ApiException {
         memberService.checkMemberType(customerId,MemberTypes.CUSTOMER);
         memberService.checkMemberType(clientId,MemberTypes.CLIENT);
+        channelService.getCheck(channelId);
         validateChannelIdAndChannelOrderId(channelId, channelOrderId);
 
     }
@@ -233,4 +235,5 @@ public class OrderDto {
             throw new ApiException("ChannelOrderId:"+channelOrderId+" for this channel is not unique");
         }
     }
+
 }

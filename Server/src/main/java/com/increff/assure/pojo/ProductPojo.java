@@ -8,13 +8,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(
-        indexes = @Index(name = "uniqueConstraintProduct", columnList = "clientId, clientSkuId", unique = true)
+        indexes = @Index(name = "client_id_sku", columnList = "clientId, clientSkuId", unique = true)
 )
 @Getter @Setter
 public class ProductPojo extends AbstractEntity {
     @Id
-    @SequenceGenerator(name = "mySeqGen", sequenceName = "mySeq", initialValue = 100,allocationSize = 1)
-    @GeneratedValue(generator = "mySeqGen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long globalSkuId;
     private String clientSkuId;
     private long clientId;

@@ -1,7 +1,6 @@
 package com.increff.assure.model.data;
 
 import com.increff.assure.model.Pojo.OrderDetailsResult;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

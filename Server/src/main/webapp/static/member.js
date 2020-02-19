@@ -28,8 +28,7 @@ function addMember()
        	'Content-Type': 'application/json'
        },	   
 	   success: function(response) {
-	   		console.log("inside ajax");
-	   		getMemberList();  
+	   		getMemberList();
 	   		$form[0].reset();
 	   		callConfirmToast("Added Successfully");
 	   },

@@ -6,10 +6,10 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
 @Table(
-        indexes = @Index(name="uniqueConstraintBinSku",columnList = "binId,globalSkuId",unique = true)
+        indexes = @Index(name="bin_global_sku",columnList = "binId,globalSkuId",unique = true)
 )
+@Getter @Setter
 public class BinSkuPojo extends AbstractEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

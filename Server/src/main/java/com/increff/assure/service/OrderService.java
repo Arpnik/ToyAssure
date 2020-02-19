@@ -50,15 +50,15 @@ public class OrderService {
         for(OrderItemPojo item: itemList)
         {
             InventoryPojo inventory = invService.getByGlobalSkuId(item.getGlobalSkuId());
-            long allocatedQuantity = Math.min( inventory.getAvailableQuantity(), item.getOrderedQuantity());
+            long allocatedQuantity = Math.min( inventory.getAvailableQuantity(),item.getOrderedQuantity() - item.getAllocatedQuantity());
             inventory.setAvailableQuantity( inventory.getAvailableQuantity() - allocatedQuantity);
             inventory.setAllocatedQuantity( inventory.getAllocatedQuantity() + allocatedQuantity);
-            item.setAllocatedQuantity(allocatedQuantity);
+            item.setAllocatedQuantity(item.getAllocatedQuantity() + allocatedQuantity);
 
             List<BinSkuPojo> binList = binService.getBins( item.getGlobalSkuId());
             allocateItems( binList, allocatedQuantity);
 
-            if(allocated && allocatedQuantity != item.getOrderedQuantity())
+            if(allocated && item.getOrderedQuantity() != item.getAllocatedQuantity())
                 allocated=false;
 
         }
@@ -66,7 +66,8 @@ public class OrderService {
         if(allocated)
         {
             OrderPojo order=dao.select(orderId);
-            order.setStatus(OrderStatusType.ALLOCATED);
+            if(order.getStatus()==OrderStatusType.CREATED)
+                order.setStatus(OrderStatusType.ALLOCATED);
         }
     }
 

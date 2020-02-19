@@ -1,13 +1,13 @@
 package com.increff.assure.controller;
 
 import com.increff.assure.dto.OrderDto;
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.model.data.ChannelItemCheckData;
 import com.increff.assure.model.data.OrderDetailsData;
 import com.increff.assure.model.data.OrderDisplayData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
 import com.increff.assure.model.form.ChannelOrderForm;
 import com.increff.assure.model.forms.OrderForm;
-import com.increff.assure.model.Exception.ApiException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +24,13 @@ public class OrderController {
 
     @ApiOperation(value = "Place Order using CSV")
     @RequestMapping(path="/api/order",method = RequestMethod.POST)
-    public void placeOrder(@Valid @RequestBody OrderForm form) throws Exception {
+    public void placeOrder(@Valid @RequestBody OrderForm form) throws ApiException {
         dto.placeOrder(form);
     }
 
     @ApiOperation(value = "Place Order from channel")
     @RequestMapping(path="/api/channelOrder",method = RequestMethod.POST)
-    public void placeOrderByChannel(@Valid @RequestBody ChannelOrderForm form) throws Exception {
+    public void placeOrderByChannel(@Valid @RequestBody ChannelOrderForm form) throws ApiException {
         dto.placeOrderByChannel(form);
     }
 
@@ -42,7 +42,7 @@ public class OrderController {
 
     @ApiOperation(value = "Show All Orders")
     @RequestMapping(path = "/api/order",method = RequestMethod.GET)
-    public List<OrderDisplayData> getAllOrders() throws Exception {
+    public List<OrderDisplayData> getAllOrders() {
         return dto.getAll();
     }
 

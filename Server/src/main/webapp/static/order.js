@@ -97,7 +97,6 @@ function showOrders(data)
 
 function showOrderDetails(orderId)
 {
-	console.log('hello');
 	var url=getOrderUrl()+'/'+orderId;
 	$.ajax({
 	   url: url,
@@ -147,6 +146,7 @@ function allocateOrder(orderId)
        	'Content-Type': 'application/json'
        },	   
 	   success: function(response) {
+	   callConfirmToast('Allocated maximum possible amount');
 	   fillTable();
 	   },
 	   error: handleAjaxError
@@ -159,23 +159,16 @@ function generateInvoice(orderId)
     $.ajax({
         url: fullUrl,
         method: 'GET',
-        xhrFields: {
-            responseType: 'blob'
-        },
         success: function (data) {
         	fillTable();
-            var a = document.createElement('a');
-            var url = window.URL.createObjectURL(data);
-            a.href = url;
-            a.download = 'invoice_'+orderId+'.pdf';
-            document.body.append(a);
-            a.click();
-            a.remove();
-            window.URL.revokeObjectURL(url);
+            var link=document.createElement('a');
+            link.href=fullUrl;
+            link.download="invoice_"+orderId;
+            link.click();
         },
         error:function(response)
         {
-        	handleErrorBlob(response);
+        	handleAjaxError(response);
         }
     });
 }
@@ -259,6 +252,11 @@ function uploadRows(){
 	for(let row=0;row<fileData.length;row++)
 	{
 		items.push(fileData[row]);
+		// if(!Number.isInteger(Number(fileData[row].orderedQuantity)))
+		// {
+		// 	callWarnToast('OrderedQuantity is not an Integer for row:'+row);
+		// 	return;
+		// }
 		processCount++;
 		updateUploadDialog();
 	}
@@ -283,6 +281,7 @@ function uploadRows(){
 	   success: function(response) {
 	   		callConfirmToast("Added Successfully");
 	   		fillDropDowns();
+	   		$('#inputOrderId').val("");
 	   },
 	   error:function(response)
 	   {

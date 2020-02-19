@@ -6,10 +6,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+@Entity
 @Table(
-        indexes = @Index(name="uniqueConstraintChannel",columnList = "name",unique = true)
+        indexes = @Index(name="channel_name",columnList = "name",unique = true)
 )
-@Getter @Setter @Entity
+@Getter @Setter
 public class ChannelPojo extends AbstractEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

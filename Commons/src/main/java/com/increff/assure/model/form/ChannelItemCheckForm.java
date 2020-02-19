@@ -1,6 +1,5 @@
 package com.increff.assure.model.form;
 
-import com.increff.assure.model.data.ChannelItemCheckData;
 import lombok.Getter;
 import lombok.Setter;
 

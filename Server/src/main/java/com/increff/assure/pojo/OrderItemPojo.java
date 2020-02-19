@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity @Getter @Setter
-//TODO unique constraint orderID
+@Entity
+@Getter @Setter
 public class OrderItemPojo extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

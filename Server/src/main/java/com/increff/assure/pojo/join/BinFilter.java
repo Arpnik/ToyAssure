@@ -1,4 +1,4 @@
-package com.increff.assure.pojo;
+package com.increff.assure.pojo.join;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

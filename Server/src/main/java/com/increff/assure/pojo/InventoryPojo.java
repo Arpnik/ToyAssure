@@ -8,7 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity @Getter @Setter
+@Entity
+@Getter @Setter
 public class InventoryPojo extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

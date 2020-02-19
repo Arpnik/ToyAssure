@@ -6,10 +6,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity @Getter @Setter
+@Entity
 @Table(
-        indexes = @Index(name="uniqueConstraintOrder",columnList = "channelId,channelOrderId",unique = true)
+        indexes = @Index(name="channelId_channelOrderId",columnList = "channelId,channelOrderId",unique = true)
 )
+@Getter @Setter
 public class OrderPojo extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,8 +1,8 @@
 package com.increff.assure.Controller;
 
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.model.data.ErrorData;
 import com.increff.assure.model.data.MessageData;
-import com.increff.assure.model.Exception.ApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -31,7 +31,7 @@ public abstract class AbstractAppRestControllerAdvice {
         String errors="";
         List<ErrorData> errorList = new ArrayList<>();
         for (final FieldError er : e.getBindingResult().getFieldErrors()) {
-            System.out.println(er.getField());
+            //get index of row having error
             if(!er.getField().contains("]"))
             {
                 if(errors.length() > 0)
@@ -41,16 +41,13 @@ public abstract class AbstractAppRestControllerAdvice {
             }
             String index=(er.getField().split("\\]")[0]);
             index=index.split("\\[")[1];
-            System.out.println(index);
-           // System.out.println(error.getField().split("]")[0].charAt(index));
+            //create error
             ErrorData errorData = new ErrorData(Integer.parseInt(index), er.getDefaultMessage());
             errorList.add(errorData);
-            }
+        }
 
         if(errorList.size()!=0)
-        {
             errors += ErrorData.convert(errorList);
-        }
 
         data.setMessage(errors);
         return data;
@@ -61,7 +58,6 @@ public abstract class AbstractAppRestControllerAdvice {
     public MessageData handle(RestClientResponseException e) {
         MessageData data = new MessageData();
         data.setMessage(e.getResponseBodyAsString());
-        System.out.println(e.getResponseBodyAsString());
         return data;
     }
 

@@ -1,12 +1,12 @@
 package com.increff.assure.dto;
 
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.ErrorData;
 import com.increff.assure.model.data.ProductData;
 import com.increff.assure.model.forms.ProductForm;
 import com.increff.assure.model.forms.UpdateProductForm;
 import com.increff.assure.pojo.ProductPojo;
-import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;
 import com.increff.assure.util.ConvertGeneric;

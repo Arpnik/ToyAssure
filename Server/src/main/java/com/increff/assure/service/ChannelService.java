@@ -89,7 +89,7 @@ public class ChannelService {
 
 
     @Transactional(readOnly = true)
-    public ChannelListingPojo getByParams(long channelId, String channelSkuId, long clientId) throws ApiException {
+    public ChannelListingPojo getCheckByParams(long channelId, String channelSkuId, long clientId) throws ApiException {
         ChannelListingPojo pojo=channelListingDao.getListingPojoByParams(channelSkuId,channelId,clientId);
         if(pojo==null)
         {
@@ -97,7 +97,6 @@ public class ChannelService {
         }
         return pojo;
     }
-
 
 
 }

@@ -1,5 +1,6 @@
 package com.increff.assure.dto;
 
+import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.model.constants.InvoiceType;
 import com.increff.assure.model.constants.MemberTypes;
 import com.increff.assure.model.data.ChannelData;
@@ -10,7 +11,6 @@ import com.increff.assure.model.forms.ClientAndChannelSku;
 import com.increff.assure.pojo.ChannelListingPojo;
 import com.increff.assure.pojo.ChannelPojo;
 import com.increff.assure.pojo.ProductPojo;
-import com.increff.assure.model.Exception.ApiException;
 import com.increff.assure.service.ChannelService;
 import com.increff.assure.service.MemberService;
 import com.increff.assure.service.ProductService;

@@ -88,7 +88,6 @@ function fillDisplayModal(data)
 	var $tbody=$('#filter-table').find('tbody');
 	$thead.empty();
 	$tbody.empty();
-	console.log(data[0]);
 	let sno=0;
 	var clientSkuId=$('#filter-form input[name=clientSkuId]').val();
 	var binId=Number($('#filter-form input[name=binId]').val());
@@ -102,6 +101,10 @@ function fillDisplayModal(data)
 
 	    for(d in data)
 	    {
+//	    	if(Number(data[d].quantity)<=0)
+//	    	{
+//	    		continue;
+//	    	}
 	    	row='<tr>'
 			+ '<td>' + data[d].binId + '</td>'
 			+ '<td contenteditable="false">'  + data[d].quantity + '</td>'
@@ -123,6 +126,11 @@ function fillDisplayModal(data)
 	$thead.append(row);
 	for(d in data)
 	{
+		if(Number(data[d].quantity)<=0)
+	    {
+	    		console.log('inside');
+	    		continue;
+	    	}
 		let buttonHtml = ' <button class="btn btn-primary" onclick="displayEditQuantity(' + data[d].binSkuId+','+(sno+1) + ')" >edit</button>'
 	    	row='<tr>'
 		+ '<td>' + data[d].name + '</td>'

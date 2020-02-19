@@ -15,7 +15,6 @@ function fillAnyDropdown(dropselector,filler)
 
 function fillDropDowns()
 {
-	console.log('inside');
 	$('#selectChannel').empty();
 	$('#selectClient').empty();
 	$('#selectCustomer').empty();
@@ -34,11 +33,7 @@ function fillDropDowns()
 	   success: function(response) {
 		fillAnyDropdown('#selectCustomer',response);
 	   },
-	   error: function(response)
-	   {
-	   	console.log(response);
-	   }
-
+	   error: handleAjaxError
 	});
 
 	$.ajax({
@@ -50,10 +45,7 @@ function fillDropDowns()
 	   success: function(response) {
 		fillAnyDropdown('#selectClient',response);
 	   },
-	 error: function(response)
-	   {
-	   	console.log(response);
-	   }
+	 error: handleAjaxError
 	});
 
 	$.ajax({
@@ -65,10 +57,7 @@ function fillDropDowns()
 	   success: function(response) {
 		fillAnyDropdown('#selectChannel',response);
 	   },
-		error: function(response)
-	   {
-	   	console.log(response);
-	   }
+		error: handleAjaxError
 	});	
 }
 
@@ -116,11 +105,12 @@ function validateItem()
 		callWarnToast("Ordered Quantity cannot be less than equal to 0");
 		return false;
 	}
-	// if(!Number.isInteger(qty))
-	// {	
-	// 	callWarnToast("Quantity is not integer");
-	// 	return false;
-	// }
+	
+	if(!Number.isInteger(qty))
+	{	
+	 	callWarnToast("Quantity is not integer");
+	 	return false;
+	}
 
 	if(mrp<=0)
 	{
@@ -162,8 +152,7 @@ function checkCart(json)
 {
 	var channelSkuId=json['channelSkuId'];
 	if(cart.hasOwnProperty(channelSkuId))
-    {
-    	callWarnToast("Item already present so added in cart");
+    { 
     	json['quantity']=cart[channelSkuId][2]+json['quantity'];
     }	
 }
@@ -182,7 +171,7 @@ function makeCart(data)
     	return;
 	}
 	var existing=cart[channelSkuId];
-   	cart[channelSkuId]=[existing[0],existing[1],existing[2]+qty,existing[3],existing[4]+(mrp*qty)];
+   	cart[channelSkuId]=[existing[0],existing[1],existing[2]+qty,existing[3],existing[3]*(existing[2]+qty)];
 }
 
 function checkItem(json)
@@ -239,6 +228,49 @@ function displayItems()
 
 }
 
+function displayEditOrder(row)
+{
+	$('#order-edit-form input[name=name]').val(cart[row][0]);
+	$('#order-edit-form input[name=brandId]').val(cart[row][1]);
+	$('#order-edit-form input[name=quantity]').val(cart[row][2]);
+	$('#order-edit-form input[name=channelSkuId]').val(row);
+	console.log($('#order-edit-form input[name=channelSkuId]').val());
+	$('#edit-order-modal').modal('toggle');
+}
+
+
+function updateOrderItem()
+{
+	var channelSkuId=$('#order-edit-form input[name=channelSkuId]').val();
+	var json={}
+	json['channelId']=Number($('#selectChannel option:selected').val());
+	json['channelSkuId']=channelSkuId;
+	json['clientId']=Number($('#selectClient option:selected').val());
+	json['quantity']=Number($('#order-edit-form input[name=quantity]').val());
+	console.log(json);
+	$('#edit-order-modal').modal('toggle');
+	$.ajax({
+	   url: getChannelUrl()+'/product',
+	   type: 'POST',
+	   data: JSON.stringify(json),
+	   headers: {
+       	'Content-Type': 'application/json'
+       },	   
+	   success: function(response) {
+	   		var existing=cart[channelSkuId];
+	   		var qty=Number($('#order-edit-form input[name=quantity]').val());
+   			cart[channelSkuId]=[existing[0],existing[1],qty,existing[3],(existing[3]*qty)];
+   			displayItems();
+	   },
+	   error: function(response){
+	   		console.log(response);
+	   		handleAjaxError(response);
+	   		$('#order-form').trigger('reset');
+	   }
+	});
+
+}
+
 function deleteItem(channelSkuId)
 {
 	delete cart[channelSkuId];
@@ -252,8 +284,9 @@ function validateChannelOrderId()
 	if(!channelOrderId ||channelOrderId.trim().length==0)
 	{
 		callWarnToast("Enter valid Channel Order ID");
-		return;
+		return false;
 	}
+	return true;
 }
 
 function processed()
@@ -330,6 +363,7 @@ function init()
 	$('#add-order').click(addInCart);
 	$('#confirm').click(placeOrder);
 	$('#afresh').click(resetUi);
+	$('#update-order').click(updateOrderItem);
 }
 
 
