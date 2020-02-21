@@ -6,7 +6,7 @@
 //import com.fasterxml.jackson.databind.JavaType;
 //import com.fasterxml.jackson.databind.JsonNode;
 //import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-//import com.fasterxml.jackson.databind.node.IntNode;
+//import com.fasterxml.jackson.databind.node.IntegerNode;
 //import org.springframework.context.annotation.Bean;
 //
 //import java.io.IOException;
@@ -29,9 +29,9 @@
 //
 //    @Override @Bean
 //    public ZonedDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-//        System.out.println("hello");
+//        System.out.prIntegerln("hello");
 //        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-//        System.out.println(node.get("dayOfMonth"));
+//        System.out.prIntegerln(node.get("dayOfMonth"));
 //
 //        return null;
 //    }

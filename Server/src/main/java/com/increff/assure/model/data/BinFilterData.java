@@ -6,8 +6,8 @@ import lombok.Setter;
 
 @Getter @Setter
 public class BinFilterData extends BinFilterForm {
-    private String name;//client name
-    private long quantity;
-    private long binSkuId;
+    private String name;//client name //TODO change nclientNmae
+    private Long quantity;
+    private Long binSkuId;
 
 }

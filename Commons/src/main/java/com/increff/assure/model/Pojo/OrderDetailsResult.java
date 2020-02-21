@@ -5,14 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class OrderDetailsResult{
 
+    @NotNull
     private String productName;
+    @NotNull
     private String brandId;
-    private long OrderedQuantity;
-    private double sellingPricePerUnit;
-    private long allocatedQuantity;
+    @NotNull
+    private Long OrderedQuantity;
+    @NotNull
+    private Double sellingPricePerUnit;
+    @NotNull
+    private Long allocatedQuantity;
 
 
 }

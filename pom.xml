@@ -29,11 +29,14 @@
         <hibernate.version>5.4.0.Final</hibernate.version>
         <mysql.version>8.0.17</mysql.version>
         <junit.version>4.12</junit.version>
+        <struts2.version>2.3.8</struts2.version>
+        <fop.version>2.3</fop.version>
         <log4j.version>1.2.17</log4j.version>
         <h2.version>1.4.200</h2.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <commons-io.version>2.6</commons-io.version>
         <validation.version>2.0.0.Final</validation.version>
+        <mockito.version>1.9.5</mockito.version>
         <validator.version>6.0.2.Final</validator.version>
         <dbcp2.version>2.7.0</dbcp2.version>
         <fop.version>2.3</fop.version>

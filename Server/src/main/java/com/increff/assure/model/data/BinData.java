@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter @Setter
 public class BinData {
-    private long binId;
-    private long quantity;
+    private Long binId;
+    private Long quantity;
 }

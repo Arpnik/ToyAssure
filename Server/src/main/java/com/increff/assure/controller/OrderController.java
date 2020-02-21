@@ -16,53 +16,56 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@RestController
+
 @Api
+@RestController
+@RequestMapping("/api/order")
 public class OrderController {
     @Autowired
     OrderDto dto;
 
     @ApiOperation(value = "Place Order using CSV")
-    @RequestMapping(path="/api/order",method = RequestMethod.POST)
+    @RequestMapping(path="",method = RequestMethod.POST)
     public void placeOrder(@Valid @RequestBody OrderForm form) throws ApiException {
         dto.placeOrder(form);
     }
 
     @ApiOperation(value = "Place Order from channel")
-    @RequestMapping(path="/api/channelOrder",method = RequestMethod.POST)
+    @RequestMapping(path="/channel",method = RequestMethod.POST)
     public void placeOrderByChannel(@Valid @RequestBody ChannelOrderForm form) throws ApiException {
         dto.placeOrderByChannel(form);
     }
 
     @ApiOperation(value = "Check Order Quantity and ClientId from channel")
-    @RequestMapping(path="/api/order/product",method = RequestMethod.POST)
+    @RequestMapping(path="/product",method = RequestMethod.POST)
     public ChannelItemCheckData checkOrderedItem(@Valid @RequestBody ChannelItemCheckForm form) throws ApiException {
         return dto.checkOrderedItem(form);
     }
-
+//TODO file upload directly to java learn
     @ApiOperation(value = "Show All Orders")
-    @RequestMapping(path = "/api/order",method = RequestMethod.GET)
+    @RequestMapping(path = "",method = RequestMethod.GET)
     public List<OrderDisplayData> getAllOrders() {
         return dto.getAll();
     }
 
     @ApiOperation(value="Get order Details from Order ID")
-    @RequestMapping(path = "/api/order/{orderId}",method = RequestMethod.GET)
-    public List<OrderDetailsData> getOrderDetails(@PathVariable long orderId)
+    @RequestMapping(path = "/{orderId}",method = RequestMethod.GET)
+    public List<OrderDetailsData> getOrderDetails(@PathVariable Long orderId)
     {
         return dto.getOrderDetails(orderId);
     }
 
     @ApiOperation(value="Allocate order from Order ID")
-    @RequestMapping(path = "/api/order/{orderId}",method = RequestMethod.PUT)
-    public void allocateOrder(@PathVariable long orderId) throws ApiException {
+    @RequestMapping(path = "/{orderId}",method = RequestMethod.PUT)
+    public void allocateOrder(@PathVariable Long orderId) throws ApiException {
          dto.allocateOrder(orderId);
     }
 
     @ApiOperation(value = "Generate Invoice")
-    @RequestMapping(path="api/order/invoice/{orderId}",method = RequestMethod.GET)
-    public byte[] createInvoice(@PathVariable long orderId) throws Exception {
+    @RequestMapping(path="/invoice/{orderId}",method = RequestMethod.GET)
+    public byte[] createInvoice(@PathVariable Long orderId) throws ApiException {
         return dto.createInvoice(orderId);
     }
+
 
 }

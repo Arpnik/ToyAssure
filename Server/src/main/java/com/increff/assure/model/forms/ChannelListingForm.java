@@ -11,9 +11,9 @@ import java.util.List;
 @Getter @Setter
 public class ChannelListingForm {
     @NotNull(message = "Client is not valid")
-    private long clientId;
+    private Long clientId;
     @NotNull(message = "Channel is not valid")
-    private long channelId;
+    private Long channelId;
 
     @Valid @Size(min=1,max=5000,message = "Number of rows needs to be between 1 and 5,000")
     private List<ClientAndChannelSku> clientAndChannelSkuList;

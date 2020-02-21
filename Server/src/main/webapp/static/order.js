@@ -252,9 +252,9 @@ function uploadRows(){
 	for(let row=0;row<fileData.length;row++)
 	{
 		items.push(fileData[row]);
-		// if(!Number.isInteger(Number(fileData[row].orderedQuantity)))
+		// if(!Number.isIntegereger(Number(fileData[row].orderedQuantity)))
 		// {
-		// 	callWarnToast('OrderedQuantity is not an Integer for row:'+row);
+		// 	callWarnToast('OrderedQuantity is not an Integereger for row:'+row);
 		// 	return;
 		// }
 		processCount++;

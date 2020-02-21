@@ -3,15 +3,11 @@ package com.increff.assure.model.forms;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
+import java.util.List;
 
 @Getter @Setter
-public class BinWiseInventoryForm extends UpdateBinForm{
-
-    @NotNull(message = "BinId is not valid")
-    private long binId;
-    @NotBlank(message="Client Sku information is incomplete")
-    private String clientSkuId;
-
+public class BinWiseInventoryForm {
+    @Valid
+    List<BinInventoryForm> binList;
 }

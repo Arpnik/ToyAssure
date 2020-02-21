@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 public class InventoryDao extends AbstractDao<InventoryPojo> {
     private static String select_globalSkuId="select p from InventoryPojo p where p.globalSkuId=:globalSkuId";
 
-    public InventoryPojo getInventoryByGlobalSku(long globalSkuId)
+    public InventoryPojo getInventoryByGlobalSku(Long globalSkuId)
     {
         TypedQuery<InventoryPojo> query=getQuery(select_globalSkuId);
         query.setParameter("globalSkuId",globalSkuId);

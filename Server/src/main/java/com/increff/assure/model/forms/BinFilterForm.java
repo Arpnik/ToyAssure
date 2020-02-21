@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class BinFilterForm {
     private String clientSkuId;
-    private long clientId;
-    private long binId;
+    private Long clientId;
+    private Long binId;
 
 }

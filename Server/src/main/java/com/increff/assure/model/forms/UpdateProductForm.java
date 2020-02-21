@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+
 @Getter @Setter
 public class UpdateProductForm {
 
@@ -16,7 +17,8 @@ public class UpdateProductForm {
     private String brandId;
     @NotNull(message = "Enter the MRP correctly")
     @Positive(message = "MRP cannot be less than equal to 0")
-    private double mrp;
+    private Double mrp;
     @NotBlank(message = "Enter some Description of the product")
     private String description;
+    //TODO size of description
 }

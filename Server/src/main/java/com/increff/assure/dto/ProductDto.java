@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.increff.assure.util.Normalize.normalize;
 import static com.increff.assure.util.Normalize.normalizeProductForm;
@@ -30,58 +31,50 @@ public class ProductDto {
     MemberService memberService;
 
     @Transactional(rollbackFor = ApiException.class)
-    public void add(List<ProductForm> formList,long clientId) throws ApiException {
+    public void add(List<ProductForm> formList, Long clientId) throws ApiException {
         memberService.checkMemberType(clientId, MemberTypes.CLIENT);
 
         List<ProductPojo> pojoList = new ArrayList<>();
         List<ErrorData> errorList = new ArrayList<>();
 
-        int sno = 0;
-        for(ProductForm form: formList){
+        Integer sno = 0;
+        for (ProductForm form : formList) {
 
             normalizeProductForm(form);
-            ProductPojo pojo = ConvertGeneric.convert(form,ProductPojo.class);
-            pojo.setClientId( clientId);
+            ProductPojo pojo = ConvertGeneric.convert(form, ProductPojo.class);
+            pojo.setClientId(clientId);
             try {
                 checkClientIdAndSku(pojo);
-            }
-            catch (ApiException e)
-            {
-                ErrorData data=new ErrorData(sno,e.getMessage());
+            } catch (ApiException e) {
+                ErrorData data = new ErrorData(new Long(sno), e.getMessage());
                 errorList.add(data);
             }
-                pojoList.add(pojo);
-                sno+=1;
+            pojoList.add(pojo);
+            sno += 1;
         }
 
-        if(errorList.size()!=0)
+        if (errorList.size() != 0)
             throw new ApiException(ErrorData.convert(errorList));
 
         productService.add(pojoList);
     }
 
     @Transactional(readOnly = true)
-    public List<ProductData> getAllByClientId(long clientId) throws ApiException {
+    public List<ProductData> getAllByClientId(Long clientId) throws ApiException {
         memberService.checkMemberType(clientId, MemberTypes.CLIENT);
-        List<ProductPojo> pojoList= productService.getAllById(clientId);
-        List<ProductData> dataList=new ArrayList<>();
-        for(ProductPojo pojo:pojoList)
-        {
-            ProductData data=ConvertGeneric.convert(pojo,ProductData.class);
-            dataList.add(data);
-        }
-        return dataList;
+        List<ProductPojo> pojoList = productService.getAllById(clientId);
+        return pojoList.stream().map(x -> ConvertGeneric.convert(x, ProductData.class)).collect(Collectors.toList());
     }
 
     @Transactional(rollbackFor = ApiException.class)
-    public void update(long id, UpdateProductForm form) throws ApiException {
+    public void update(Long id, UpdateProductForm form) throws ApiException {
         normalize(form);
-        ProductPojo pojo = ConvertGeneric.convert(form,ProductPojo.class);
+        ProductPojo pojo = ConvertGeneric.convert(form, ProductPojo.class);
         productService.update(id, pojo);
     }
 
     @Transactional(readOnly = true)
-    public ProductData get(long globalSkuId) throws ApiException {
+    public ProductData get(Long globalSkuId) throws ApiException {
         ProductPojo pojo = productService.getCheck(globalSkuId);
         ProductData data = ConvertGeneric.convert(pojo, ProductData.class);
         return data;
@@ -89,10 +82,9 @@ public class ProductDto {
 
     @Transactional(readOnly = true)
     protected void checkClientIdAndSku(ProductPojo pojo) throws ApiException {
-        ProductPojo existing=productService.get(pojo.getClientId(),pojo.getClientSkuId());
-        if(existing!=null)
-        {
-            throw new ApiException("Client SKU ID:"+pojo.getClientSkuId()+" for Client:"+memberService.get(pojo.getClientId()).getName()+" are not unique");
+        ProductPojo existing = productService.get(pojo.getClientId(), pojo.getClientSkuId());
+        if (existing != null) {
+            throw new ApiException("Client SKU ID:" + pojo.getClientSkuId() + " for client:" + memberService.get(pojo.getClientId()).getName() + " are not unique");
         }
     }
 

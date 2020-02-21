@@ -18,25 +18,26 @@ import java.util.List;
 
 @Api
 @RestController
+@RequestMapping("/api/channel")
 public class ChannelController {
     @Autowired
     private ChannelDto dto;
 
     @ApiOperation(value = "Add channel information")
-    @RequestMapping(path = "/api/channel", method = RequestMethod.POST)
+    @RequestMapping(path = "", method = RequestMethod.POST)
     public void addChannel(@Valid @RequestBody ChannelForm form) throws ApiException {
         dto.addChannel(form);
     }
 
     @ApiOperation(value = "Add channel listing")
-    @RequestMapping(path="/api/channel/listing",method = RequestMethod.POST)
+    @RequestMapping(path="/listing",method = RequestMethod.POST)
     public void addChannelListing(@Valid @RequestBody ChannelListingForm form) throws ApiException {
         dto.addChannelListing(form);
     }
 
     @ApiOperation(value = "Get All channel Information")
-    @RequestMapping(path="/api/channel",method = RequestMethod.GET)
-    public List<ChannelData> getAllChannels() throws Exception {
+    @RequestMapping(path="",method = RequestMethod.GET)
+    public List<ChannelData> getAllChannels() {
        return dto.getAllChannels();
     }
 

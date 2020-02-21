@@ -5,36 +5,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/ui")
 public class AppUiController extends AbstractUiController {
-
-	@RequestMapping(value = "/ui/home")
+	// Request mapping get
+	@RequestMapping(value = "/home")
 	public ModelAndView home() {
-		return mav("home.html");
+		return modelAndView("home.html");
 	}
 
-	@RequestMapping(value = "/ui/member")
+	@RequestMapping(value = "/member")
 	public ModelAndView member() {
-		return mav("member.html");
+		return modelAndView("member.html");
 	}
 
-	@RequestMapping(value = "/ui/product")
+	@RequestMapping(value = "/product")
 	public ModelAndView product() {
-		return mav("product.html");
+		return modelAndView("product.html");
 	}
 
-	@RequestMapping(value = "/ui/bin")
+	@RequestMapping(value = "/bin")
 	public ModelAndView updateBinInventory() {
-		return mav("bin.html");
+		return modelAndView("bin.html");
 	}
 
-	@RequestMapping(value = "/ui/channel")
+	@RequestMapping(value = "/channel")
 	public ModelAndView channel() {
-		return mav("channel.html");
+		return modelAndView("channel.html");
 	}
 
-	@RequestMapping(value = "/ui/order")
+	@RequestMapping(value = "/order")
 	public ModelAndView order() {
-		return mav("order.html");
+		return modelAndView("order.html");
 	}
 
 

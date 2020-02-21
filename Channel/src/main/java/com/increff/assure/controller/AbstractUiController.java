@@ -1,20 +1,20 @@
 package com.increff.assure.controller;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
+import com.increff.assure.spring.ApplicationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+
 public abstract class AbstractUiController {
 
-    @Value("${channel.baseUrl}")
-    private String baseUrl;
+    @Autowired
+    private ApplicationProperties properties;
 
     protected ModelAndView mav(String page) {
 
         // Set info
         ModelAndView mav = new ModelAndView(page);
-        mav.addObject("baseUrl", baseUrl);
+        mav.addObject("baseUrl", properties.getBaseUrl());
         return mav;
     }
 

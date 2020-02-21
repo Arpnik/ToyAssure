@@ -17,14 +17,14 @@ public class BinSkuDao extends AbstractDao<BinSkuPojo> {
     private static String select_product_info_by_global="select new com.increff.assure.pojo.join.BinFilter(b.id,b.binId,b.quantity) from BinSkuPojo b where b.globalSkuId=:globalSkuId";
     private static String select_globalSkuId="select p from BinSkuPojo p where p.globalSkuId=:globalSkuId order by p.quantity";
 
-    public BinSkuPojo checkPresenceByParams(long binId, long globalSkuId) {
+    public BinSkuPojo checkPresenceByParams(Long binId, Long globalSkuId) {
         TypedQuery<BinSkuPojo> query=getQuery(select_binId_globalSkuId);
         query.setParameter("globalSkuId",globalSkuId);
         query.setParameter("binId",binId);
         return getSingle(query);
     }
 
-    public List<BinFilter> selectProductInfoByGlobalSku(long globalSkuId)
+    public List<BinFilter> selectProductInfoByGlobalSku(Long globalSkuId)
     {
         Query query=em().createQuery(select_product_info_by_global);
         query.setParameter("globalSkuId",globalSkuId);
@@ -32,7 +32,7 @@ public class BinSkuDao extends AbstractDao<BinSkuPojo> {
     }
 
 
-    public List<BinFilter> selectProductInfoByBinAndGlobalSku(long binId, long globalSkuId)
+    public List<BinFilter> selectProductInfoByBinAndGlobalSku(Long binId, Long globalSkuId)
     {
         Query query=em().createQuery(select_product_info_by_binId_global);
         query.setParameter("globalSkuId",globalSkuId);
@@ -41,14 +41,14 @@ public class BinSkuDao extends AbstractDao<BinSkuPojo> {
     }
 
 
-    public List<BinFilter> selectProductInfoByBinId(long binId)
+    public List<BinFilter> selectProductInfoByBinId(Long binId)
     {
         Query query=em().createQuery(select_product_info_by_binId);
         query.setParameter("binId",binId);
         return query.getResultList();
     }
 
-    public List<BinSkuPojo> selectByGlobalSku(long globalSkuId)
+    public List<BinSkuPojo> selectByGlobalSku(Long globalSkuId)
     {
         TypedQuery<BinSkuPojo> query = getQuery(select_globalSkuId);
         query.setParameter("globalSkuId", globalSkuId);

@@ -17,30 +17,31 @@ import java.util.List;
 
 @Api
 @RestController
+@RequestMapping("/api/member")
 public class MemberController {
     @Autowired
     private MemberDto dto;
 
     @ApiOperation( value = "Add member information")
-    @RequestMapping( path = "/api/member", method = RequestMethod.POST)
+    @RequestMapping( path = "", method = RequestMethod.POST)
     public void add( @Valid @RequestBody MemberForm form) throws ApiException {
         dto.add( form);
     }
 
     @ApiOperation( value = "Get information of all members")
-    @RequestMapping( path = "/api/member", method = RequestMethod.GET)
+    @RequestMapping( path = "", method = RequestMethod.GET)
     public List<MemberData> getAll(){
         return dto.getAll();
     }
 
     @ApiOperation(value="Get all client information")
-    @RequestMapping(path="/api/member/client",method = RequestMethod.GET)
+    @RequestMapping(path="/client",method = RequestMethod.GET)
     public List<MemberData> getClients(){
         return dto.getClients();
     }
 
     @ApiOperation(value="Get all customer information")
-    @RequestMapping(path="/api/member/customer",method = RequestMethod.GET)
+    @RequestMapping(path="/customer",method = RequestMethod.GET)
     public List<MemberData> getCustomers(){
         return dto.getCustomers();
     }

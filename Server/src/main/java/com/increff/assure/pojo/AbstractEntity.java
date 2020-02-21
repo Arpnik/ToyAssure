@@ -11,7 +11,7 @@ import javax.persistence.Version;
 import java.time.ZonedDateTime;
 
 @MappedSuperclass @Getter @Setter
-public class AbstractEntity {
+public abstract class AbstractEntity {
 
     @CreationTimestamp
     @Column(updatable=false)
@@ -24,12 +24,5 @@ public class AbstractEntity {
     @Version
     private Long version;
 
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
 
 }

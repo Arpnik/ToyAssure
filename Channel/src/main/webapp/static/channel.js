@@ -106,9 +106,9 @@ function validateItem()
 		return false;
 	}
 	
-	if(!Number.isInteger(qty))
+	if(!Number.isIntegereger(qty))
 	{	
-	 	callWarnToast("Quantity is not integer");
+	 	callWarnToast("Quantity is not Integereger");
 	 	return false;
 	}
 
@@ -340,7 +340,7 @@ function placeOrder()
 	   },
 	   error: function(response)
 	   {
-	   	console.log(response);
+	   		handleAjaxError(response);
 	   }
 	});
 
