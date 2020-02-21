@@ -10,5 +10,5 @@ import org.springframework.context.annotation.PropertySources;
 @PropertySources({ //
         @PropertySource(value = "file:./channel.properties", ignoreResourceNotFound = true) //
 })
-public class SpringConfig{
+public class SpringConfig {
 }

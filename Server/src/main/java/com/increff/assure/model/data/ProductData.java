@@ -6,6 +6,6 @@ import lombok.Setter;
 
 @Getter @Setter
 public class ProductData extends ProductForm {
-    long globalSkuId;
+    Long globalSkuId;
 
 }

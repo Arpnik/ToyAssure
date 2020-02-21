@@ -11,11 +11,11 @@ import java.util.List;
 @Getter @Setter
 public class OrderForm {
     @NotNull(message = "Client Name is not valid")
-    private long clientId;
+    private Long clientId;
     @NotBlank(message = "Channel Order Id is not valid ")
     private String channelOrderId;
     @NotNull(message = "Customer Name is not valid")
-    private long customerId;
+    private Long customerId;
     @Valid
     private List<OrderLineItemForm> items;
 }

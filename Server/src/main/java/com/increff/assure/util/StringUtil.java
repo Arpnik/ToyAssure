@@ -10,7 +10,7 @@ public class StringUtil {
 		return s == null ? null : s.trim().toLowerCase();
 	}
 	public static String toUpperCase(String s) {
-		return s == null ? null : s.trim().toUpperCase();
+		return s == null ? null : (s.trim().isEmpty() ? null:s.toUpperCase());
 	}
 
 }

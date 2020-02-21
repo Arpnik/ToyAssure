@@ -14,14 +14,14 @@ public class OrderItemDao extends AbstractDao<OrderItemPojo> {
     private static String select_orderId="Select new com.increff.assure.model.Pojo.OrderDetailsResult(p.name,p.brandId,i.orderedQuantity,i.sellingPricePerUnit, i.allocatedQuantity) from OrderItemPojo i,ProductPojo p where i.orderId=:orderId and p.globalSkuId=i.globalSkuId";
     private static String select="Select p from OrderItemPojo p where p.orderId=:orderId";
 
-    public List<OrderDetailsResult> getDetailsByOrderId(long orderId)
+    public List<OrderDetailsResult> getDetailsByOrderId(Long orderId)
     {
         Query query=em().createQuery(select_orderId);
         query.setParameter("orderId",orderId);
         return query.getResultList();
     }
 
-    public List<OrderItemPojo> getOrderedItems(long orderId)
+    public List<OrderItemPojo> getOrderedItems(Long orderId)
     {
         TypedQuery<OrderItemPojo> query=getQuery(select);
         query.setParameter("orderId",orderId);

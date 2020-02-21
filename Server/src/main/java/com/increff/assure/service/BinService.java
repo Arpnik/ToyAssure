@@ -21,25 +21,20 @@ public class BinService {
     private BinSkuDao binSkuDao;
 
     @Transactional
-    public void createBins(long numberOfBins)
-    {
-        long i;
-        for(i=0;i<numberOfBins;i++)
-        {
-            BinPojo pojo=new BinPojo();
+    public void createBins(Long numberOfBins) {
+        Long i;
+        for (i = new Long(0); i < numberOfBins; i++) {
+            BinPojo pojo = new BinPojo();
             binDao.insert(pojo);
         }
     }
 
 
     @Transactional
-    public void AddOrUpdateInventory(List<BinSkuPojo> pojoList)
-    {
-        for(BinSkuPojo pojo:pojoList)
-        {
+    public void AddOrUpdateInventory(List<BinSkuPojo> pojoList) {
+        for (BinSkuPojo pojo : pojoList) {
             BinSkuPojo existing = binSkuDao.checkPresenceByParams(pojo.getBinId(), pojo.getGlobalSkuId());
-            if(existing!=null)
-            {
+            if (existing != null) {
                 existing.setQuantity(pojo.getQuantity() + existing.getQuantity());
                 binSkuDao.update(existing);
                 continue;
@@ -49,58 +44,55 @@ public class BinService {
     }
 
     @Transactional(readOnly = true)
-    public List<BinFilter> getProductInfo(long binId, long globalSkuId) throws ApiException {
+    public List<BinFilter> getProductInfo(Long binId, Long globalSkuId) throws ApiException {
         checkBinId(binId);
-        List<BinFilter> result = binSkuDao.selectProductInfoByBinAndGlobalSku(binId,globalSkuId);
-        return result;
+        return binSkuDao.selectProductInfoByBinAndGlobalSku(binId, globalSkuId);
     }
 
-    @Transactional(readOnly=true)
-    public List<BinFilter> getProducts(long globalSkuId)
-    {
+    @Transactional(readOnly = true)
+    public List<BinFilter> getProducts(Long globalSkuId) {
         return binSkuDao.selectProductInfoByGlobalSku(globalSkuId);
     }
 
     @Transactional(readOnly = true)
-    public List<BinFilter> getProductInfo(long binId) throws ApiException {
+    public List<BinFilter> getProductInfo(Long binId) throws ApiException {
         checkBinId(binId);
         return binSkuDao.selectProductInfoByBinId(binId);
     }
+
     @Transactional(rollbackFor = ApiException.class)
-    public void update(long binSkuId,long quantity) throws ApiException {
+    public void update(Long binSkuId, Long quantity) throws ApiException {
 
         BinSkuPojo existing = binSkuDao.select(binSkuId);
-        if(existing==null)
-            throw new ApiException("The BinSkuId doesn't exist");
+        if (existing == null)
+            throw new ApiException("The bin SKU ID doesn't exist");
 
         existing.setQuantity(quantity);
         binSkuDao.update(existing);
     }
 
     @Transactional(readOnly = true)
-    public void checkBinId(long binId) throws ApiException {
+    public void checkBinId(Long binId) throws ApiException {
         BinPojo existing = binDao.select(binId);
-        if(existing==null)
-            throw new ApiException("Bin ID:"+binId+" doesn't exists.");
+        if (existing == null)
+            throw new ApiException("Bin ID:" + binId + " doesn't exist");
     }
 
     @Transactional(readOnly = true)
-    public BinSkuPojo get(long binSkuId)
-    {
-       return binSkuDao.select(binSkuId);
+    public BinSkuPojo get(Long binSkuId) {
+        return binSkuDao.select(binSkuId);
     }
 
     @Transactional(readOnly = true)
-    public BinSkuPojo getCheck(long binSkuId) throws ApiException {
-        BinSkuPojo pojo=get(binSkuId);
-        if(pojo==null)
-            throw new ApiException("BinSKuId is not valid");
+    public BinSkuPojo getCheck(Long binSkuId) throws ApiException {
+        BinSkuPojo pojo = get(binSkuId);
+        if (pojo == null)
+            throw new ApiException("Bin SKU ID is not valid");
         return pojo;
     }
 
     @Transactional(readOnly = true)
-    public List<BinSkuPojo> getBins(long globalSkuId)
-    {
+    public List<BinSkuPojo> getBins(Long globalSkuId) {
         return binSkuDao.selectByGlobalSku(globalSkuId);
     }
 }

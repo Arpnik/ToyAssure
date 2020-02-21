@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 public class OrderDao extends AbstractDao<OrderPojo> {
     private static String select_channelId_channelOrderId = "select p from OrderPojo p where p.channelId=:channelId and p.channelOrderId=:channelOrderId";
 
-    public OrderPojo getBychannelIdAndChannelOrderId(long channelId,String channelOrderId)
+    public OrderPojo getBychannelIdAndChannelOrderId(Long channelId,String channelOrderId)
     {
         TypedQuery<OrderPojo> query=getQuery(select_channelId_channelOrderId);
         query.setParameter("channelId",channelId);

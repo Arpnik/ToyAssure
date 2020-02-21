@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                version="1.0">
     <!-- Attribute used for table border -->
     <xsl:attribute-set name="tableBorder">
         <xsl:attribute name="border">solid 0.3mm white</xsl:attribute>
@@ -15,9 +15,13 @@
             </fo:layout-master-set>
             <fo:page-sequence master-reference="simpleA4">
                 <fo:flow flow-name="xsl-region-body">
-                    <fo:block space-after="5mm"> 
-                          <fo:external-graphic src="https://bsmedia.business-standard.com/_media/bs/img/article/2017-07/30/full/1501437790-9307.jpg" content-height="scale-to-fit" height="3cm"  content-width="6cm" scaling="non-uniform"/>
-                          <fo:inline font-size="32pt" font-family="Helvetica" font-weight="bold" text-align="center">&#160; &#160; &#160; Order Invoice-<xsl:value-of select="Id"/></fo:inline>
+                    <fo:block space-after="5mm">
+                        <fo:external-graphic
+                                src="https://bsmedia.business-standard.com/_media/bs/img/article/2017-07/30/full/1501437790-9307.jpg"
+                                content-height="scale-to-fit" height="3cm" content-width="6cm" scaling="non-uniform"/>
+                        <fo:inline font-size="32pt" font-family="Helvetica" font-weight="bold" text-align="center">
+                            &#160; &#160; &#160; Order Invoice-<xsl:value-of select="Id"/>
+                        </fo:inline>
                     </fo:block>
 
 
@@ -28,51 +32,66 @@
                             <fo:table-body>
 
                                 <fo:table-row>
-                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold" color="white" xsl:use-attribute-sets="tableBorder">
+                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold"
+                                                   color="white" xsl:use-attribute-sets="tableBorder">
                                         <fo:block font-size="15pt" text-align="left">Channel Name</fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell margin-left="1mm">
-                                        <fo:block font-size="15pt" text-align="left">  <xsl:value-of select="channelName"/></fo:block>
+                                        <fo:block font-size="15pt" text-align="left">
+                                            <xsl:value-of select="channelName"/>
+                                        </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
 
 
                                 <fo:table-row>
-                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold" color="white" xsl:use-attribute-sets="tableBorder">
+                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold"
+                                                   color="white" xsl:use-attribute-sets="tableBorder">
                                         <fo:block font-size="15pt" text-align="left">Channel OrderID</fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell margin-left="1mm">
-                                        <fo:block font-size="15pt" text-align="left">  <xsl:value-of select="channelOrderId"/></fo:block>
+                                        <fo:block font-size="15pt" text-align="left">
+                                            <xsl:value-of select="channelOrderId"/>
+                                        </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
-                                
+
                                 <fo:table-row>
-                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold" color="white" xsl:use-attribute-sets="tableBorder">
+                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold"
+                                                   color="white" xsl:use-attribute-sets="tableBorder">
                                         <fo:block font-size="15pt" text-align="left">Client Name</fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell margin-left="1mm">
-                                        <fo:block font-size="15pt" text-align="left">  <xsl:value-of select="clientName"/></fo:block>
+                                        <fo:block font-size="15pt" text-align="left">
+                                            <xsl:value-of select="clientName"/>
+                                        </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
 
                                 <fo:table-row>
-                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold" color="white" xsl:use-attribute-sets="tableBorder">
+                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold"
+                                                   color="white" xsl:use-attribute-sets="tableBorder">
                                         <fo:block font-size="15pt" text-align="left">Customer Name</fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell margin-left="1mm">
-                                        <fo:block font-size="15pt" text-align="left">  <xsl:value-of select="customerName"/></fo:block>
+                                        <fo:block font-size="15pt" text-align="left">
+                                            <xsl:value-of select="customerName"/>
+                                        </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
 
                                 <fo:table-row>
-                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold" color="white" xsl:use-attribute-sets="tableBorder">
+                                    <fo:table-cell margin-left="1mm" background-color="#000080" font-weight="bold"
+                                                   color="white" xsl:use-attribute-sets="tableBorder">
                                         <fo:block font-size="15pt" text-align="left">Order Date</fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell margin-left="1mm">
-                                        <fo:block font-size="15pt" text-align="left">  <xsl:value-of select="createDate"/></fo:block>
+                                        <fo:block font-size="15pt" text-align="left">
+                                            <xsl:value-of select="createDate"/>
+                                        </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
-                                    
+
                             </fo:table-body>
                         </fo:table>
 
@@ -87,37 +106,49 @@
                             <fo:table-column column-width="3cm"/>
                             <fo:table-column column-width="6cm"/>
                             <fo:table-header font-weight="bold">
-                                <fo:table-cell  background-color="#000080" color="white" xsl:use-attribute-sets="tableBorder">
+                                <fo:table-cell background-color="#000080" color="white"
+                                               xsl:use-attribute-sets="tableBorder">
                                     <fo:block font-size="15pt" text-align="center" font-weight="bold">S.NO.</fo:block>
                                 </fo:table-cell>
-                                <fo:table-cell  background-color="#000080" color="white" xsl:use-attribute-sets="tableBorder">
-                                    <fo:block font-size="15pt" text-align="center" font-weight="bold">ProductName</fo:block>
+                                <fo:table-cell background-color="#000080" color="white"
+                                               xsl:use-attribute-sets="tableBorder">
+                                    <fo:block font-size="15pt" text-align="center" font-weight="bold">ProductName
+                                    </fo:block>
                                 </fo:table-cell>
-                                <fo:table-cell  background-color="#000080" color="white" xsl:use-attribute-sets="tableBorder">
+                                <fo:table-cell background-color="#000080" color="white"
+                                               xsl:use-attribute-sets="tableBorder">
                                     <fo:block font-size="15pt" text-align="center" font-weight="bold">BrandId</fo:block>
                                 </fo:table-cell>
-                                <fo:table-cell  background-color="#000080" color="white" xsl:use-attribute-sets="tableBorder">
-                                    <fo:block font-size="15pt"  text-align="center" font-weight="bold">Unit Price</fo:block>
+                                <fo:table-cell background-color="#000080" color="white"
+                                               xsl:use-attribute-sets="tableBorder">
+                                    <fo:block font-size="15pt" text-align="center" font-weight="bold">Unit Price
+                                    </fo:block>
                                 </fo:table-cell>
-                                <fo:table-cell  background-color="#000080" color="white" xsl:use-attribute-sets="tableBorder">
-                                    <fo:block font-size="15pt" text-align="center" font-weight="bold">Quantity</fo:block>
+                                <fo:table-cell background-color="#000080" color="white"
+                                               xsl:use-attribute-sets="tableBorder">
+                                    <fo:block font-size="15pt" text-align="center" font-weight="bold">Quantity
+                                    </fo:block>
                                 </fo:table-cell>
-                                <fo:table-cell  background-color="#000080" color="white" xsl:use-attribute-sets="tableBorder">
+                                <fo:table-cell background-color="#000080" color="white"
+                                               xsl:use-attribute-sets="tableBorder">
                                     <fo:block font-size="15pt" text-align="center" font-weight="bold">Amount</fo:block>
                                 </fo:table-cell>
                             </fo:table-header>
                             <fo:table-footer font-weight="bold">
                                 <fo:table-row>
-                                    <fo:table-cell  background-color="#000080"  color="white" number-columns-spanned="5" >
+                                    <fo:table-cell background-color="#000080" color="white" number-columns-spanned="5">
                                         <fo:block font-size="15pt" text-align="right">Total Amount:</fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell  background-color="#000080" color="white"  number-columns-spanned="1" >
-                                        <fo:block font-size="15pt" text-align="center">Rs. <xsl:value-of select="totalBill"/> /-</fo:block>
+                                    <fo:table-cell background-color="#000080" color="white" number-columns-spanned="1">
+                                        <fo:block font-size="15pt" text-align="center">Rs.
+                                            <xsl:value-of select="totalBill"/> /-
+                                        </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </fo:table-footer>
                             <fo:table-body>
-                                <xsl:apply-templates select="invoice"/> <!-- branch tag is taken and pasted in below used template 46 line-->
+                                <xsl:apply-templates
+                                        select="invoice"/> <!-- branch tag is taken and pasted in below used template 46 line-->
                             </fo:table-body>
                         </fo:table>
                     </fo:block>
@@ -127,33 +158,33 @@
     </xsl:template>
     <xsl:template match="invoice">
         <fo:table-row>
-            <fo:table-cell  xsl:use-attribute-sets="tableBorder">
+            <fo:table-cell xsl:use-attribute-sets="tableBorder">
                 <fo:block text-align="center" font-size="15pt">
                     <xsl:value-of select="sno"/>
                 </fo:block>
             </fo:table-cell>
-            <fo:table-cell  xsl:use-attribute-sets="tableBorder">
+            <fo:table-cell xsl:use-attribute-sets="tableBorder">
                 <fo:block text-align="center" font-size="15pt">
                     <xsl:value-of select="name"/>
                 </fo:block>
             </fo:table-cell>
 
-            <fo:table-cell  xsl:use-attribute-sets="tableBorder">
+            <fo:table-cell xsl:use-attribute-sets="tableBorder">
                 <fo:block text-align="center" font-size="15pt">
                     <xsl:value-of select="brandId"/>
                 </fo:block>
             </fo:table-cell>
-            <fo:table-cell  xsl:use-attribute-sets="tableBorder">
+            <fo:table-cell xsl:use-attribute-sets="tableBorder">
                 <fo:block text-align="center" font-size="15pt">
                     <xsl:value-of select="mrp"/>
                 </fo:block>
             </fo:table-cell>
-            <fo:table-cell  xsl:use-attribute-sets="tableBorder">
+            <fo:table-cell xsl:use-attribute-sets="tableBorder">
                 <fo:block text-align="center" font-size="15pt">
                     <xsl:value-of select="qty"/>
                 </fo:block>
             </fo:table-cell>
-            <fo:table-cell  xsl:use-attribute-sets="tableBorder">
+            <fo:table-cell xsl:use-attribute-sets="tableBorder">
                 <fo:block text-align="center" font-size="15pt">
                     <xsl:value-of select="amount"/>
                 </fo:block>

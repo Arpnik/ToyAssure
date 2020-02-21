@@ -6,6 +6,6 @@ import lombok.Setter;
 
 @Getter @Setter
 public class MemberData extends MemberForm {
-    private long id;
+    private Long id;
 
 }

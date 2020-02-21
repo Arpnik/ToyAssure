@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(
@@ -14,12 +15,18 @@ import javax.persistence.*;
 public class ProductPojo extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long globalSkuId;
+    private Long globalSkuId;
+    @NotNull
     private String clientSkuId;
-    private long clientId;
+    @NotNull
+    private Long clientId;
+    @NotNull
     private String name;
+    @NotNull
     private String brandId;
-    private double mrp;
-    private String description;
+    @NotNull
+    private Double mrp;
+    @NotNull
+    private String description;//TODO size handle
 
 }

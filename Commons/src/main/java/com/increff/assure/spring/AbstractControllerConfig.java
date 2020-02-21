@@ -20,7 +20,6 @@ public abstract class AbstractControllerConfig extends WebMvcConfigurerAdapter {
 
 	public static final String PACKAGE_CONTROLLER = "com.increff.assure.controller";
 
-
 	private ApplicationContext applicationContext;
 
 	public void setApplicationContext(ApplicationContext applicationContext) {

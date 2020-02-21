@@ -9,19 +9,19 @@
 <nav th:replace="snippets.html :: name_site_navbar"></nav>
 
 <div class="container">
-<div class="d-flex justify-content-center">
-<div class="col-6">
- 
-<div class="jumbotron">
-  <h1 class="display-4">Toy Assure</h1>
-  <p class="lead">Welcome to Channel UI of Assure Toy Version</p>
-  <hr class="my-4">
-  <p>Placing order from channel</p>
-  <a class="btn btn-primary btn-lg" th:href="@{/ui/channel}" role="button">Go to channel</a>
-</div>
+    <div class="d-flex justify-content-center">
+        <div class="col-6">
 
-</div>
-</div>
+            <div class="jumbotron">
+                <h1 class="display-4">Toy Assure</h1>
+                <p class="lead">Welcome to Channel UI of Assure Toy Version</p>
+                <hr class="my-4">
+                <p>Placing order from channel</p>
+                <a class="btn btn-primary btn-lg" role="button" th:href="@{/ui/channel}">Go to channel</a>
+            </div>
+
+        </div>
+    </div>
 </div> <!--Container-->
 
 <footer th:replace="snippets.html :: name_footer"></footer>

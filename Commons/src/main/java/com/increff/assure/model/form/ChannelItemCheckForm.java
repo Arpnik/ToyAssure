@@ -11,17 +11,17 @@ import javax.validation.constraints.Positive;
 public class ChannelItemCheckForm{
 
     @NotNull(message = "Client ID is not valid")
-    private long clientId;
+    private Long clientId;
 
     @NotBlank(message = "Channel Sku is not valid")
     private String channelSkuId;
 
     @NotNull(message = "ChannelId is not valid")
-    private long channelId;
+    private Long channelId;
 
     @NotNull(message = "Quantity is not valid")
     @Positive(message = "Quantity cannot be less than or equal to zero")
-    private long quantity;
+    private Long quantity;
 
 
 

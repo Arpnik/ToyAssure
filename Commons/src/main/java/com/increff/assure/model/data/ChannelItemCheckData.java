@@ -10,7 +10,7 @@ public class ChannelItemCheckData {
 
     private String productName;
     private String brandId;
-    private long OrderedQuantity;
-    private double sellingPricePerUnit;
+    private Long OrderedQuantity;
+    private Double sellingPricePerUnit;
 
 }

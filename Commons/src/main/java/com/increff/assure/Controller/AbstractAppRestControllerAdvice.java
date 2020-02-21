@@ -42,7 +42,7 @@ public abstract class AbstractAppRestControllerAdvice {
             String index=(er.getField().split("\\]")[0]);
             index=index.split("\\[")[1];
             //create error
-            ErrorData errorData = new ErrorData(Integer.parseInt(index), er.getDefaultMessage());
+            ErrorData errorData = new ErrorData(Long.parseLong(index), er.getDefaultMessage());
             errorList.add(errorData);
         }
 

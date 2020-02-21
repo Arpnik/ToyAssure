@@ -26,7 +26,7 @@ public abstract class AbstractDao< T > {
 		em.persist( entity );
 	}
 
-	public T select(long id){
+	public T select(Long id){
 		return em.find( clazz, id );
 	}
 

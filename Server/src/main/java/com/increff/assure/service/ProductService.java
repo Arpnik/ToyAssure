@@ -11,31 +11,29 @@ import java.util.List;
 
 @Service
 public class ProductService {
-    
+
     @Autowired
     ProductDao dao;
 
     @Transactional
-    public void add(List<ProductPojo> pojoList){
-        for(ProductPojo pojo:pojoList){
-             dao.insert(pojo);
+    public void add(List<ProductPojo> pojoList) {
+        for (ProductPojo pojo : pojoList) {
+            dao.insert(pojo);
         }
     }
 
     @Transactional(readOnly = true)
-    public List<ProductPojo> getAllById(long clientId)
-    {
+    public List<ProductPojo> getAllById(Long clientId) {
         return dao.selectByClientId(clientId);
     }
 
     @Transactional(readOnly = true)
-    public ProductPojo get(long id)
-    {
+    public ProductPojo get(Long id) {
         return dao.select(id);
     }
 
     @Transactional(rollbackFor = ApiException.class)
-    public void update(long id,ProductPojo updated) throws ApiException {
+    public void update(Long id, ProductPojo updated) throws ApiException {
         ProductPojo existing = getCheck(id);
         existing.setDescription(updated.getDescription());
         existing.setBrandId(updated.getBrandId());
@@ -44,29 +42,26 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public ProductPojo getCheck(long id) throws ApiException {
-        ProductPojo pojo=get(id);
-        if(pojo==null)
-        {
+    public ProductPojo getCheck(Long id) throws ApiException {
+        ProductPojo pojo = get(id);
+        if (pojo == null) {
             throw new ApiException("Product doesn't exists");
         }
         return pojo;
     }
 
     @Transactional(readOnly = true)
-    public ProductPojo getCheckByParams(long clientId, String clientSkuId) throws ApiException {
-        ProductPojo existing = get(clientId,clientSkuId);
-        if(existing == null)
-        {
-            throw new ApiException("ClientSKu:"+clientSkuId+" is not valid");
+    public ProductPojo getCheckByParams(Long clientId, String clientSkuId) throws ApiException {
+        ProductPojo existing = get(clientId, clientSkuId);
+        if (existing == null) {
+            throw new ApiException("Client SKU:" + clientSkuId + " is not valid");
         }
         return existing;
     }
 
     @Transactional(readOnly = true)
-    public ProductPojo get(long clientId, String ClientSkuId)
-    {
-        return dao.selectByClientIdAndClientSku(clientId,ClientSkuId);
+    public ProductPojo get(Long clientId, String ClientSkuId) {
+        return dao.selectByClientIdAndClientSku(clientId, ClientSkuId);
     }
 
 

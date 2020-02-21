@@ -12,10 +12,10 @@ import com.increff.assure.model.forms.OrderForm;
 import com.increff.assure.model.forms.OrderLineItemForm;
 import com.increff.assure.pojo.*;
 import com.increff.assure.service.*;
+import com.increff.assure.spring.ApplicationProperties;
 import com.increff.assure.util.ConvertGeneric;
 import com.increff.assure.util.PDFUtility;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -46,47 +46,45 @@ public class OrderDto {
     @Autowired
     private InventoryService inventoryService;
 
-    @Value("${channel.uri}")
-    private String channelUri;
 
+    @Autowired
+    private ApplicationProperties properties;
 
     public void placeOrder(OrderForm form) throws ApiException {
         normalize(form);
-        long channelId=channelService.getDefaultChannel().getId();
+        Long channelId = channelService.getDefaultChannel().getId();
         //clientId,customerId,channelOrderID for channel unique
-        validate(form.getCustomerId(),form.getClientId(), channelId, form.getChannelOrderId());
-        OrderPojo orderPojo= ConvertGeneric.convert(form,OrderPojo.class);
+        checkPresence(form.getCustomerId(), form.getClientId(), channelId, form.getChannelOrderId());
+        OrderPojo orderPojo = ConvertGeneric.convert(form, OrderPojo.class);
         orderPojo.setChannelId(channelId);
 
-        long sno = -1;
+        Long sno = new Long(-1);
         Set<String> hash_Set = new HashSet<>();
         List<OrderItemPojo> pojoList = new ArrayList<>();
         List<ErrorData> errors = new ArrayList<>();//make error list
 
-        for(OrderLineItemForm item:form.getItems())
-        {
-            sno+=1;
+        for (OrderLineItemForm item : form.getItems()) {
+            sno += 1;
             //check duplicate
-            if(hash_Set.contains(item.getClientSkuId())){
-                errors.add(new ErrorData(sno,"Duplicate Client Sku ID:"+item.getClientSkuId()));
+            if (hash_Set.contains(item.getClientSkuId())) {
+                errors.add(new ErrorData(sno, "Duplicate client SKU ID:" + item.getClientSkuId()));
                 continue;
             }
             hash_Set.add(item.getClientSkuId());
 
-            OrderItemPojo itemPojo = ConvertGeneric.convert(item,OrderItemPojo.class);
-            try{
-                ProductPojo productPojo= productService.getCheckByParams(orderPojo.getClientId(), item.getClientSkuId());
+            OrderItemPojo itemPojo = ConvertGeneric.convert(item, OrderItemPojo.class);
+            try {
+                ProductPojo productPojo = productService.getCheckByParams(orderPojo.getClientId(), item.getClientSkuId());
                 itemPojo.setGlobalSkuId(productPojo.getGlobalSkuId());
-             }
-            catch(ApiException e)
-            {
+                itemPojo.setAllocatedQuantity(new Long(0));
+                itemPojo.setFulfilledQuantity(new Long(0));
+            } catch (ApiException e) {
                 errors.add(new ErrorData(sno, e.getMessage()));
             }
             pojoList.add(itemPojo);
         }
 
-        if(!errors.isEmpty())
-        {
+        if (!errors.isEmpty()) {
             throw new ApiException(ErrorData.convert(errors));
         }
 
@@ -96,72 +94,68 @@ public class OrderDto {
 
     public void placeOrderByChannel(ChannelOrderForm form) throws ApiException {
         normalize(form);
-        validate(form.getCustomerId(), form.getClientId(), form.getChannelId(), form.getChannelOrderId());
-        OrderPojo orderPojo= ConvertGeneric.convert(form, OrderPojo.class);
+        checkPresence(form.getCustomerId(), form.getClientId(), form.getChannelId(), form.getChannelOrderId());
+        OrderPojo orderPojo = ConvertGeneric.convert(form, OrderPojo.class);
         orderPojo.setChannelId(form.getChannelId());
 
-        long sno = -1;
+        Long sno = new Long(-1);
         Set<String> hash_Set = new HashSet<>();
         List<OrderItemPojo> pojoList = new ArrayList<>();
         List<ErrorData> errors = new ArrayList<>();
 
-        for(ChannelOrderLineItem item: form.getItems())
-        {
-            sno+=1;
+        for (ChannelOrderLineItem item : form.getItems()) {
+            sno += 1;
 
-            if(hash_Set.contains(item.getChannelSkuId())){
-                errors.add(new ErrorData(sno,"Duplicate Channel Sku ID:"+item.getChannelSkuId()));
+            if (hash_Set.contains(item.getChannelSkuId())) {
+                errors.add(new ErrorData(sno, "Duplicate channel SKU ID:" + item.getChannelSkuId()));
                 continue;
             }
             hash_Set.add(item.getChannelSkuId());
 
-            OrderItemPojo pojo=ConvertGeneric.convert(item,OrderItemPojo.class);
+            OrderItemPojo pojo = ConvertGeneric.convert(item, OrderItemPojo.class);
+            pojo.setAllocatedQuantity(new Long(0));
+            pojo.setFulfilledQuantity(new Long(0));
             pojo.setOrderedQuantity(item.getOrderedQuantity());
-            try{
-                ChannelListingPojo listingPojo=channelService.getCheckByParams(form.getChannelId(),item.getChannelSkuId(),form.getClientId());
+            try {
+                ChannelListingPojo listingPojo = channelService.getCheckByParams(form.getChannelId(), item.getChannelSkuId(), form.getClientId());
                 pojo.setGlobalSkuId(listingPojo.getGlobalSkuId());
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 errors.add(new ErrorData(sno, e.getMessage()));
             }
             pojoList.add(pojo);
 
         }
 
-        if(!errors.isEmpty())
-        {
+        if (!errors.isEmpty()) {
             throw new ApiException(ErrorData.convert(errors));
         }
 
         orderService.placeOrder(orderPojo, pojoList);
     }
 
+    //Todo pom say version
     @Transactional(rollbackFor = ApiException.class)
-    public byte[] createInvoice(long orderId) throws Exception {
-        OrderPojo order=orderService.fullFillOrder(orderId);
-        InvoiceMetaData invoice=Convert(order);
+    public byte[] createInvoice(Long orderId) throws ApiException {
+        OrderPojo order = orderService.fulfillOrder(orderId);
+        InvoiceMetaData invoice = Convert(order);
         invoice.setItems(getOrderDetails(orderId));
 
-        if(channelService.getCheck(order.getChannelId()).getInvoiceType() == InvoiceType.CHANNEL)
-        {
+        if (channelService.getCheck(order.getChannelId()).getInvoiceType() == InvoiceType.CHANNEL) {
             return getInvoice(invoice);
         }
 
         return PDFUtility.createPdfForInvoice(invoice);
     }
 
-    public byte[] getInvoice(InvoiceMetaData invoice)
-    {
-        RestTemplate restTemplate=new RestTemplate();
-        return restTemplate.postForObject(channelUri,invoice,byte[].class);
+    public byte[] getInvoice(InvoiceMetaData invoice) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForObject(properties.getChannelUri(), invoice, byte[].class);
     }
 
     public List<OrderDisplayData> getAll() {
         List<OrderDisplayData> dataList = new ArrayList<>();
         List<OrderPojo> pojoList = orderService.getAll();
-        for(OrderPojo pojo: pojoList)
-        {
+        for (OrderPojo pojo : pojoList) {
             OrderDisplayData data = ConvertGeneric.convert(pojo, OrderDisplayData.class);
             data.setOrderId(pojo.getId());
             dataList.add(data);
@@ -169,11 +163,10 @@ public class OrderDto {
         return dataList;
     }
 
-    public List<OrderDetailsData> getOrderDetails(long orderId){
+    public List<OrderDetailsData> getOrderDetails(Long orderId) {
         List<OrderDetailsData> dataList = new ArrayList<>();
         List<OrderDetailsResult> resultList = orderService.getOrderDetails(orderId);
-        for(OrderDetailsResult res : resultList)
-        {
+        for (OrderDetailsResult res : resultList) {
             OrderDetailsData data = ConvertGeneric.convert(res, OrderDetailsData.class);
             dataList.add(data);
         }
@@ -182,37 +175,35 @@ public class OrderDto {
 
     public ChannelItemCheckData checkOrderedItem(ChannelItemCheckForm form) throws ApiException {
         normalize(form);
-        ChannelListingPojo pojo = channelService.getCheckByParams(form.getChannelId(),form.getChannelSkuId(),form.getClientId());
+        ChannelListingPojo pojo = channelService.getCheckByParams(form.getChannelId(), form.getChannelSkuId(), form.getClientId());
         InventoryPojo inventoryPojo = inventoryService.getByGlobalSkuId(pojo.getGlobalSkuId());
 
-        if(inventoryPojo.getAvailableQuantity() <= 0)
-        {
+        if (inventoryPojo.getAvailableQuantity() <= 0) {
             ChannelItemCheckData data = new ChannelItemCheckData();
-            data.setOrderedQuantity(0);
+            data.setOrderedQuantity(new Long(0));
             return data;
         }
 
-        ProductPojo product=productService.getCheck(pojo.getGlobalSkuId());
-        return makeChannelData(product,inventoryPojo);
+        ProductPojo product = productService.getCheck(pojo.getGlobalSkuId());
+        return makeChannelData(product, inventoryPojo);
     }
 
-    public static ChannelItemCheckData makeChannelData(ProductPojo product,InventoryPojo inventoryPojo)
-    {
-        ChannelItemCheckData data = ConvertGeneric.convert(product,ChannelItemCheckData.class);
+    public static ChannelItemCheckData makeChannelData(ProductPojo product, InventoryPojo inventoryPojo) {
+        ChannelItemCheckData data = ConvertGeneric.convert(product, ChannelItemCheckData.class);
         data.setProductName(product.getName());
         data.setOrderedQuantity(inventoryPojo.getAvailableQuantity());
         return data;
     }
 
-    public void allocateOrder(long orderId) throws ApiException {
+    public void allocateOrder(Long orderId) throws ApiException {
         orderService.allocateOrder(orderId);
     }
 
     protected InvoiceMetaData Convert(OrderPojo order) throws ApiException {
-        InvoiceMetaData invoice=new InvoiceMetaData();
-        invoice.setClientName( memberService.get( order.getClientId()).getName());
-        invoice.setCustomerName( memberService.get( order.getCustomerId()).getName());
-        invoice.setChannelName( channelService.getCheck( order.getChannelId()).getName());
+        InvoiceMetaData invoice = new InvoiceMetaData();
+        invoice.setClientName(memberService.get(order.getClientId()).getName());
+        invoice.setCustomerName(memberService.get(order.getCustomerId()).getName());
+        invoice.setChannelName(channelService.getCheck(order.getChannelId()).getName());
         DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL);
         invoice.setOrderedDate(order.getCreatedDate().format(formatter));
         invoice.setId(order.getId());
@@ -220,19 +211,17 @@ public class OrderDto {
         return invoice;
     }
 
-    protected void validate(long customerId, long clientId, long channelId, String channelOrderId) throws ApiException {
-        memberService.checkMemberType(customerId,MemberTypes.CUSTOMER);
-        memberService.checkMemberType(clientId,MemberTypes.CLIENT);
+    protected void checkPresence(Long customerId, Long clientId, Long channelId, String channelOrderId) throws ApiException {
+        memberService.checkMemberType(customerId, MemberTypes.CUSTOMER);
+        memberService.checkMemberType(clientId, MemberTypes.CLIENT);
         channelService.getCheck(channelId);
         validateChannelIdAndChannelOrderId(channelId, channelOrderId);
-
     }
 
-    protected void validateChannelIdAndChannelOrderId(long channelId, String channelOrderId) throws ApiException {
+    protected void validateChannelIdAndChannelOrderId(Long channelId, String channelOrderId) throws ApiException {
         OrderPojo pojo = orderService.getByParams(channelId, channelOrderId);
-        if(pojo != null)
-        {
-            throw new ApiException("ChannelOrderId:"+channelOrderId+" for this channel is not unique");
+        if (pojo != null) {
+            throw new ApiException("Channel order ID:" + channelOrderId + " for this channel is not unique");
         }
     }
 

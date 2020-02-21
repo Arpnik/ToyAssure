@@ -7,67 +7,55 @@ import com.increff.assure.model.data.InvoiceMetaData;
 import com.increff.assure.model.data.MemberData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
 import com.increff.assure.model.form.ChannelOrderForm;
+import com.increff.assure.spring.ApplicationProperties;
 import com.increff.assure.util.PDFUtility;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 @Service
-public class ChannelOrderDto  {
+public class ChannelOrderDto {
 
-    @Value("${channel.placeOrderUri}")
-    private String placeOrderUri;
+    @Autowired
+    private RestTemplate restTemplate;
 
-    @Value("${channel.checkOrderUri}")
-    private String checkOrderUri;
+    @Autowired
+    private ApplicationProperties properties;
 
-    @Value("${channel.customerUri}")
-    private String customerUri;
-
-    @Value("${channel.clientUri}")
-    private String clientUri;
-
-    @Value("${channel.allChannelUri}")
-    private String channelUri;
-
-    public void placeOrder(ChannelOrderForm form)
-    {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForObject(placeOrderUri,form,ChannelOrderForm.class);
+    public void placeOrder(ChannelOrderForm form) {
+        restTemplate.postForObject(properties.getServerUri() + "order/channel", form, ChannelOrderForm.class);
     }
 
+
+    //TODO autowire and bean learn
     public ChannelItemCheckData checkOrderItem(ChannelItemCheckForm item) throws ApiException {
-        RestTemplate restTemplate =new RestTemplate();
-        ResponseEntity<ChannelItemCheckData> response=restTemplate.postForEntity(checkOrderUri,item, ChannelItemCheckData.class);
-        ChannelItemCheckData data=response.getBody();
-        if(data.getOrderedQuantity()<item.getQuantity())
-        {
-            throw new ApiException("Available Quantity of product with Channel SKU:"+item.getChannelSkuId()+" is:"+data.getOrderedQuantity());
+        ResponseEntity<ChannelItemCheckData> response = restTemplate.postForEntity(properties.getServerUri() + "order/product", item, ChannelItemCheckData.class);
+        ChannelItemCheckData data = response.getBody();
+        if (data.getOrderedQuantity() < item.getQuantity()) {
+            throw new ApiException("Available quantity of product with channel SKU:" + item.getChannelSkuId() + " is:" + data.getOrderedQuantity());
         }
         return data;
     }
 
-    public MemberData[] getClients()
-    {
-        RestTemplate restTemplate=new RestTemplate();
-        return restTemplate.getForObject(clientUri, MemberData[].class);
+    public List<MemberData> getClients() {
+        System.out.println(properties.getServerUri() + "member/client");
+        return Arrays.asList(restTemplate.getForObject(properties.getServerUri() + "member/client", MemberData[].class));
     }
 
-    public MemberData[] getCustomers()
-    {
-        RestTemplate restTemplate=new RestTemplate();
-        return restTemplate.getForObject(customerUri, MemberData[].class);
+    public List<MemberData> getCustomers() {
+        return Arrays.asList(restTemplate.getForObject(properties.getServerUri() + "member/customer", MemberData[].class));
     }
 
-    public ChannelData[] getChannels()
-    {
-        RestTemplate restTemplate=new RestTemplate();
-        return restTemplate.getForObject(channelUri, ChannelData[].class);
+    public List<ChannelData> getChannels() {
+        return Arrays.asList(restTemplate.getForObject(properties.getServerUri() + "channel", ChannelData[].class));
     }
 
-    public byte[] getInvoice(InvoiceMetaData data) throws Exception {
+    public byte[] getInvoice(InvoiceMetaData data) throws ApiException {
         return PDFUtility.createPdfForInvoice(data);
     }
 }

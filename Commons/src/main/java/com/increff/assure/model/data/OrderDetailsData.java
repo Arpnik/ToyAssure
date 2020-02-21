@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 public class OrderDetailsData extends OrderDetailsResult {
 
 
-    public OrderDetailsData(String productName, String brandId, long OrderedQuantity, double sellingPricePerUnit, long allocatedQuantity) {
+    public OrderDetailsData(String productName, String brandId, Long OrderedQuantity, Double sellingPricePerUnit, Long allocatedQuantity) {
         super(productName, brandId, OrderedQuantity, sellingPricePerUnit, allocatedQuantity);
     }
 }

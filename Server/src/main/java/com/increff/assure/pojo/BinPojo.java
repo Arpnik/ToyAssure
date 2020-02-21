@@ -8,9 +8,9 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 public class BinPojo extends AbstractEntity {
-    @TableGenerator(name = "Bin_Gen", pkColumnValue = "bin_gen", initialValue = 1000, allocationSize = 1)
+    @TableGenerator(name = "bin_gen", pkColumnValue = "bin_gen", initialValue = 1000)
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "Bin_Gen")
-    private long binId;
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "bin_gen")
+    private Long binId;
 
 }

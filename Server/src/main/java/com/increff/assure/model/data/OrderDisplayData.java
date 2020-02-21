@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 @Getter @Setter
 public class OrderDisplayData {
 
-    private long orderId;
+    private Long orderId;
     private ZonedDateTime createdDate;
     private OrderStatusType status;
     private String channelOrderId;

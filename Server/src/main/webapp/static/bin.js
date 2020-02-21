@@ -51,17 +51,17 @@ function createBins()
 	let num=Number($('#inputBins').val());
 	if(isNaN(num))
 	{
-		callWarnToast('Please enter a valid integer number');
+		callWarnToast('Please enter a valid Integereger number');
 		return;
 	}
 	if(num<1)
 	{
-		callWarnToast("Number of Bins cannot be less than 1, Enter a valid integer number");
+		callWarnToast("Number of Bins cannot be less than 1, Enter a valid Integereger number");
 		return;
 	}
-	if(!Number.isInteger(num))
+	if(!Number.isIntegereger(num))
 	{
-		callWarnToast('Number of bins has to be integer');
+		callWarnToast('Number of bins has to be Integereger');
 		return;
 	}
 	var json={}
@@ -154,7 +154,7 @@ function displayEditQuantity(binSkuId,sno)
 	
 }
 
-function saveEditQuantity(binSkuId,sno,intialValue)
+function saveEditQuantity(binSkuId,sno,IntegerialValue)
 {
 	var value = Number($("#filter-table tr:nth-child("+sno+")" ).find('td')[2].innerHTML);
 	let url=getBinUrl()+'/'+binSkuId;
@@ -162,15 +162,15 @@ function saveEditQuantity(binSkuId,sno,intialValue)
 	console.log(Number(value));
 	if(isNaN(value))
 	{
-		callWarnToast('Enter a valid integer quantity');
-		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+intialValue+'</td>');
+		callWarnToast('Enter a valid Integereger quantity');
+		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
 	   	 $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
 	   	 return;
 	}
-	if(!Number.isInteger(value))
+	if(!Number.isIntegereger(value))
 	{
-		callWarnToast('Enter a valid integer quantity');
-		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+intialValue+'</td>');
+		callWarnToast('Enter a valid Integereger quantity');
+		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
 	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
 		return;
 	}
@@ -190,7 +190,7 @@ function saveEditQuantity(binSkuId,sno,intialValue)
 	   },		
 	   error:function(response){
 	   	    handleAjaxError(response);
-	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+intialValue+'</td>');
+	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
 	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
 	   	}
 	});

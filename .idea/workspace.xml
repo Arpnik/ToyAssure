@@ -1,0 +1,1291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d05f9d4c-00df-4acd-8f0d-0830979d374e" name="Default Changelist" comment="vcs commit">
+      <change afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/ApplicationProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/RestTemplateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/util/Validate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Channel/src/test/java/com/increff/assure/dto/ChannelDtoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Channel/src/test/java/com/increff/assure/util/AbstractUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Channel/src/test/java/com/increff/assure/util/DataUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Channel/src/test/java/com/increff/assure/util/QaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Channel/src/test/resources/com/increff/assure/testChannel.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/BinInventoryForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/ProductListForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/spring/ApplicationProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/util/Validate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/dto/ChannelDtoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/dto/OrderDtoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/InventoryServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/OrderServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/Channel.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/channel.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/channel.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/controller/AbstractUiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/controller/AbstractUiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/controller/ChannelOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/controller/ChannelOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/dto/ChannelOrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/dto/ChannelOrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/ControllerConfigurationChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/ControllerConfigChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/RestTemplateResponseErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/RestTemplateResponseErrorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/SpringConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/WebInitializerChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/spring/WebInitializerChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/util/PDFUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/java/com/increff/assure/util/PDFUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/resources/com/increff/assure/assureChannel.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/resources/com/increff/assure/assureChannel.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/webapp/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/webapp/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/webapp/html/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/webapp/html/snippets.html" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/webapp/html/snippets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/src/main/webapp/static/channel.js" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/webapp/static/channel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/assureChannel.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/controller/AppRestControllerAdvice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/controller/ChannelOrderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/dto/ChannelOrderDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/spring/ControllerConfigurationChannel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/spring/SpringConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/spring/WebInitializerChannel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/templateInvoice.xsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/Commons-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/attoparser-2.0.4.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/classmate-1.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/guava-18.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/hamcrest-core-1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/hibernate-validator-6.0.2.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/hibernate-validator-annotation-processor-6.0.2.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.9.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/jackson-core-2.9.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/jackson-databind-2.9.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/javassist-3.20.0-GA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/javax.servlet-api-3.1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/jboss-logging-3.3.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/junit-4.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/lombok-1.18.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/ognl-3.1.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/slf4j-api-1.7.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-aop-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-beans-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-context-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-core-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-expression-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-jdbc-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-orm-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-plugin-core-1.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-plugin-metadata-1.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-test-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-tx-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-web-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-4.3.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/springfox-core-2.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/springfox-schema-2.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/springfox-spi-2.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/springfox-spring-web-2.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/springfox-swagger-common-2.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/springfox-swagger-ui-2.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/springfox-swagger2-2.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/swagger-annotations-1.5.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/swagger-models-1.5.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/thymeleaf-3.0.9.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/thymeleaf-spring4-3.0.9.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/unbescape-1.1.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/WEB-INF/lib/validation-api-2.0.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/html/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/html/order.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/html/snippets.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/static/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/static/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/static/channel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/Channel-1.0-SNAPSHOT/static/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/classes/com/increff/assure/assureChannel.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/classes/com/increff/assure/controller/AppRestControllerAdvice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/classes/com/increff/assure/controller/ChannelOrderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/classes/com/increff/assure/dto/ChannelOrderDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/classes/com/increff/assure/spring/ControllerConfigurationChannel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/classes/com/increff/assure/spring/SpringConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/classes/com/increff/assure/spring/WebInitializerChannel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/classes/com/increff/assure/templateInvoice.xsl" beforeDir="false" afterPath="$PROJECT_DIR$/Channel/src/main/resources/com/increff/assure/templateInvoice.xsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Channel/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/Commons.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/Controller/AbstractAppRestControllerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/Controller/AbstractAppRestControllerAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/Exception/ApiException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/Exception/ApiException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/Pojo/OrderDetailsResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/Pojo/OrderDetailsResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/ChannelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/ChannelData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/ChannelItemCheckData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/ChannelItemCheckData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/ErrorData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/ErrorData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/InvoiceMetaData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/InvoiceMetaData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/MemberData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/MemberData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/OrderDetailsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/data/OrderDetailsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/form/ChannelItemCheckForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/form/ChannelItemCheckForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/form/ChannelOrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/form/ChannelOrderForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/form/ChannelOrderLineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/model/form/ChannelOrderLineItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/spring/AbstractControllerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/spring/AbstractControllerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/spring/AbstractWebInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/spring/AbstractWebInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/util/ZonedDateDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/src/main/java/com/increff/assure/util/ZonedDateDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/Commons-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/Controller/AbstractAppRestControllerAdvice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/model/data/ChannelItemCheckData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/model/data/MessageData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/model/form/ChannelItemCheckForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/model/form/ChannelOrderForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/model/form/ChannelOrderLineItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/spring/AbstractControllerConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/spring/AbstractWebInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/classes/com/increff/assure/util/ConvertGeneric.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/assure.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Server/assure.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/jetty.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/AboutAppController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/AbstractUiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/AbstractUiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/AppUiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/AppUiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/BinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/BinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/ChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/ChannelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/SiteUiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/controller/SiteUiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/AbstractDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/BinSkuDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/BinSkuDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/ChannelListingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/ChannelListingDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/InventoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/InventoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/OrderItemDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/OrderItemDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dao/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/BinDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/BinDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/ChannelDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/ChannelDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/MemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/MemberDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/OrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/AboutAppData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/BinData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/BinData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/BinFilterData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/BinFilterData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/OrderDisplayData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/OrderDisplayData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/ProductData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/data/ProductData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/BinFilterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/BinFilterForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/BinWiseInventoryForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/BinWiseInventoryForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/ChannelListingForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/ChannelListingForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/ClientAndChannelSku.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/ClientAndChannelSku.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/CreateBinForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/CreateBinForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/OrderForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/OrderForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/OrderLineItemForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/OrderLineItemForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/UpdateBinForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/UpdateBinForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/UpdateProductForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/model/forms/UpdateProductForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/AbstractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/BinPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/BinPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/BinSkuPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/BinSkuPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/ChannelListingPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/ChannelListingPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/ChannelPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/ChannelPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/InventoryPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/InventoryPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/MemberPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/MemberPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/OrderItemPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/OrderItemPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/OrderPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/OrderPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/ProductPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/ProductPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/join/BinFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/pojo/join/BinFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/AboutAppService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/BinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/BinService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/ChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/ChannelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/spring/DbConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/spring/DbConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/util/Normalize.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/util/Normalize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/util/PDFUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/util/PDFUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/util/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/util/StringUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/util/ValidateRequestBodyList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/webapp/static/bin.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/webapp/static/bin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/webapp/static/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/webapp/static/papaparse.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/webapp/static/papaparse.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/dto/BinDtoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/dto/BinDtoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/dto/MemberDtoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/dto/MemberDtoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/dto/ProductDtoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/dto/ProductDtoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/BinServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/BinServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/ChannelServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/ChannelServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/MemberServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/MemberServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/ProductServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/service/ProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/util/dataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/java/com/increff/assure/util/dataUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/test/resources/com/increff/assure/test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/test/resources/com/increff/assure/test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/bin.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/product.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/WEB-INF/classes/com/increff/assure/templateInvoice.xsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/bin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/channel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/init.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/member.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/order.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/pricing.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/product.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/html/snippets.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/bin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/channel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/employee.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/member.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/order.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/papaparse.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/product.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/Server-1.0-SNAPSHOT/static/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/bin.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/channel.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/AboutAppController$AboutApiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/AboutAppController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/AbstractUiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/AppRestControllerAdvice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/AppUiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/BinController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/ChannelController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/MemberController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/OrderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/ProductController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/SampleController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/controller/SiteUiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/AbstractDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/BinDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/BinSkuDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/ChannelDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/ChannelListingDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/InventoryDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/MemberDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/OrderDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/OrderItemDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dao/ProductDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dto/BinDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dto/ChannelDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dto/MemberDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dto/OrderDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/dto/ProductDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/constants/OrderStatusType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/data/AboutAppData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/data/BinData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/data/BinFilterData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/data/OrderDisplayData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/data/ProductData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/BinFilterForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/BinWiseInventoryForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/ChannelListingForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/ClientAndChannelSku.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/CreateBinForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/OrderForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/OrderLineItemForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/ProductForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/UpdateBinForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/model/forms/UpdateProductForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/AbstractEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/BinPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/BinSkuPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/ChannelListingPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/ChannelPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/InventoryPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/MemberPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/OrderItemPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/OrderPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/pojo/ProductPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/product.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/service/AboutAppService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/service/BinService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/service/ChannelService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/service/InventoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/service/MemberService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/service/OrderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/service/ProductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/spring/ControllerConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/spring/DbConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/spring/SpringConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/spring/WebInitializerExtended.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/templateInvoice.xsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/util/IOUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/util/PrefixPhysicalNamingStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/util/StringUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/com/increff/assure/util/ValidateRequestBodyList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/jacoco.exec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AboutAppController$AboutApiController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AboutAppController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AboutAppController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AbstractUiController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AbstractUiController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AppRestControllerAdvice.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AppRestControllerAdvice.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AppUiController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/AppUiController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/BinController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/BinController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/ChannelController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/ChannelController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/MemberController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/MemberController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/OrderController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/OrderController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/ProductController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/ProductController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/SampleController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/SampleController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/SiteUiController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/SiteUiController.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.controller/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/AbstractDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/AbstractDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/BinDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/BinDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/BinSkuDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/BinSkuDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/ChannelDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/ChannelDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/ChannelListingDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/ChannelListingDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/InventoryDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/InventoryDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/MemberDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/MemberDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/OrderDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/OrderDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/OrderItemDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/OrderItemDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/ProductDao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/ProductDao.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dao/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/BinDto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/BinDto.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/ChannelDto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/ChannelDto.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/MemberDto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/MemberDto.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/OrderDto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/OrderDto.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/ProductDto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/ProductDto.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.dto/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.constants/OrderStatusType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.constants/OrderStatusType.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.constants/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.constants/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/AboutAppData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/AboutAppData.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/BinData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/BinData.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/BinFilterData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/BinFilterData.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/OrderDisplayData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/OrderDisplayData.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/ProductData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/ProductData.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.data/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/BinFilterForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/BinFilterForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/BinWiseInventoryForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/BinWiseInventoryForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/ChannelListingForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/ChannelListingForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/ClientAndChannelSku.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/ClientAndChannelSku.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/CreateBinForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/CreateBinForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/OrderForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/OrderForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/OrderLineItemForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/OrderLineItemForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/ProductForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/ProductForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/UpdateBinForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/UpdateBinForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/UpdateProductForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/UpdateProductForm.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.model.forms/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/AbstractEntity.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/AbstractEntity.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/BinFilter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/BinFilter.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/BinPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/BinPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/BinSkuPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/BinSkuPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/ChannelListingPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/ChannelListingPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/ChannelPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/ChannelPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/InventoryPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/InventoryPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/MemberPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/MemberPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/OrderItemPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/OrderItemPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/OrderPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/OrderPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/ProductPojo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/ProductPojo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.pojo/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/AboutAppService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/AboutAppService.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/BinService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/BinService.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/ChannelService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/ChannelService.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/InventoryService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/InventoryService.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/MemberService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/MemberService.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/OrderService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/OrderService.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/ProductService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/ProductService.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.service/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/ControllerConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/ControllerConfiguration.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/DbConfig.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/DbConfig.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/SpringConfig.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/SpringConfig.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/WebInitializerExtended.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/WebInitializerExtended.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.spring/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/IOUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/IOUtil.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/Normalize.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/Normalize.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/PDFUtility.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/PDFUtility.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/PrefixPhysicalNamingStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/PrefixPhysicalNamingStrategy.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/StringUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/StringUtil.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/ValidateRequestBodyList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/ValidateRequestBodyList.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/com.increff.assure.util/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/branchfc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/branchnc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/branchpc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/bundle.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/class.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/down.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/greenbar.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/group.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/method.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/package.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/prettify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/redbar.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/report.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/report.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/session.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/sort.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/sort.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/source.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-resources/up.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco-sessions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/site/jacoco/jacoco.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/test-classes/com/increff/assure/test.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/test-classes/com/increff/assure/util/AbstractUnitTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/test-classes/com/increff/assure/util/QaConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/test-classes/com/increff/assure/util/dataUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Toy_Assure.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="172" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1X6O8ZYakoPsWGs3jSYcSHPnslj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Channel/src/test/java/util" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.increff.assure" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Channel/src/test/java/util" />
+      <recent name="$PROJECT_DIR$/Channel/src/main/resources/com/increff/assure" />
+      <recent name="$PROJECT_DIR$/Channel/src/main/webapp/static" />
+      <recent name="$PROJECT_DIR$/Server/src/main/java/com/increff/assure/spring" />
+      <recent name="$PROJECT_DIR$/channel/src/main/java/com/increff/assure/spring" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.increff.assure.util" />
+      <recent name="com.increff.assure.model.exception" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/main/java/com/increff/assure/model/forms" />
+      <recent name="$PROJECT_DIR$/commons/src/main/java/com/increff/assure/model" />
+      <recent name="$PROJECT_DIR$/commons/src/main/java/com/increff/assure" />
+      <recent name="$PROJECT_DIR$/server/src/main/resources/com/increff/assure" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.All in Server">
+    <configuration name="All in Server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderDtoTest.testCheckOrderedItemQuantityLess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.dto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure.dto" />
+      <option name="MAIN_CLASS_NAME" value="com.increff.assure.dto.OrderDtoTest" />
+      <option name="METHOD_NAME" value="testCheckOrderedItemQuantityLess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderDtoTest.testGetOrderDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.dto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure.dto" />
+      <option name="MAIN_CLASS_NAME" value="com.increff.assure.dto.OrderDtoTest" />
+      <option name="METHOD_NAME" value="testGetOrderDetails" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderDtoTest.testValidateChannelIdAndChannelOrderIdInvalid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.dto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure.dto" />
+      <option name="MAIN_CLASS_NAME" value="com.increff.assure.dto.OrderDtoTest" />
+      <option name="METHOD_NAME" value="testValidateChannelIdAndChannelOrderIdInvalid" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceTest.testHalfAllocate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.increff.assure.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.increff.assure.service" />
+      <option name="MAIN_CLASS_NAME" value="com.increff.assure.service.OrderServiceTest" />
+      <option name="METHOD_NAME" value="testHalfAllocate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="Server" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server [jetty:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="jetty:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Server" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="jetty:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/server" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.Unnamed" />
+      <item itemvalue="Maven.Server [jetty:run]" />
+      <item itemvalue="JUnit.OrderDtoTest.testGetOrderDetails" />
+      <item itemvalue="JUnit.OrderServiceTest.testHalfAllocate" />
+      <item itemvalue="JUnit.OrderDtoTest.testCheckOrderedItemQuantityLess" />
+      <item itemvalue="JUnit.OrderDtoTest.testValidateChannelIdAndChannelOrderIdInvalid" />
+      <item itemvalue="JUnit.All in Server" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in Server" />
+        <item itemvalue="JUnit.OrderDtoTest.testValidateChannelIdAndChannelOrderIdInvalid" />
+        <item itemvalue="JUnit.OrderDtoTest.testCheckOrderedItemQuantityLess" />
+        <item itemvalue="JUnit.OrderServiceTest.testHalfAllocate" />
+        <item itemvalue="JUnit.OrderDtoTest.testGetOrderDetails" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d05f9d4c-00df-4acd-8f0d-0830979d374e" name="Default Changelist" comment="" />
+      <created>1580362918574</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580362918574</updated>
+    </task>
+    <task id="LOCAL-00001" summary="vcs commit">
+      <created>1581667811962</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581667811962</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/ToyAssure" />
+    </ignored-roots>
+    <MESSAGE value="vcs commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="vcs commit" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="278" y="59" width="800" height="684" key="#Project_Structure" timestamp="1582190818796">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="278" y="59" width="800" height="684" key="#Project_Structure/0.27.1366.741@0.27.1366.741" timestamp="1582190818796" />
+    <state x="229" y="52" width="898" height="697" key="#Unnamed" timestamp="1580818979578">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="229" y="52" width="898" height="697" key="#Unnamed/0.27.1366.741@0.27.1366.741" timestamp="1580818979578" />
+    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581935349708">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1581935349708" />
+    <state x="100" y="127" width="1166" height="541" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1582267748055">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="100" y="127" width="1166" height="541" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.27.1366.741@0.27.1366.741" timestamp="1582267748055" />
+    <state x="491" y="84" width="544" height="633" key="#com.intellij.ide.util.MemberChooser" timestamp="1582015217043">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="491" y="84" width="544" height="633" key="#com.intellij.ide.util.MemberChooser/0.27.1366.741@0.27.1366.741" timestamp="1582015217043" />
+    <state x="366" y="125" width="624" height="551" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581488431252">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="366" y="125" width="624" height="551" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.27.1366.741@0.27.1366.741" timestamp="1581488431252" />
+    <state x="281" y="325" width="793" height="152" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1582183054684">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="281" y="325" width="793" height="152" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.27.1366.741@0.27.1366.741" timestamp="1582183054684" />
+    <state x="419" y="248" width="484" height="297" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582173253789">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="393" y="234" width="494" height="297" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1280.693@0.27.1280.693" timestamp="1581328687492" />
+    <state x="419" y="248" width="484" height="297" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1366.741@0.27.1366.741" timestamp="1582173253789" />
+    <state x="436" y="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1582183036035">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="436" y="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.27.1366.741@0.27.1366.741" timestamp="1582183036035" />
+    <state x="438" y="227" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1581775938689">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="438" y="227" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.27.1366.741@0.27.1366.741" timestamp="1581775938689" />
+    <state x="6" y="27" width="1343" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581573122637">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="6" y="27" width="1343" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1366.741@0.27.1366.741" timestamp="1581573122637" />
+    <state x="416" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581571638840">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="416" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1366.741@0.27.1366.741" timestamp="1581571638840" />
+    <state x="441" y="50" key="#xdebugger.evaluate" timestamp="1582192504360">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="441" y="50" key="#xdebugger.evaluate/0.27.1366.741@0.27.1366.741" timestamp="1582192504360" />
+    <state x="287" y="27" width="782" height="741" key="CommitChangelistDialog2" timestamp="1581667876503">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="287" y="27" width="782" height="741" key="CommitChangelistDialog2/0.27.1366.741@0.27.1366.741" timestamp="1581667876503" />
+    <state x="100" y="127" width="1166" height="541" key="DiffContextDialog" timestamp="1581225763432">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="100" y="127" width="1166" height="541" key="DiffContextDialog/0.27.1366.741@0.27.1366.741" timestamp="1581225763432" />
+    <state x="466" y="155" width="495" height="498" key="FileChooserDialogImpl" timestamp="1581846949024">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="466" y="155" width="495" height="498" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1581846949024" />
+    <state width="1320" height="195" key="GridCell.Tab.0.bottom" timestamp="1582279026658">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1320" height="132" key="GridCell.Tab.0.bottom/0.27.1280.693/0.27.1280.693@0.27.1280.693" timestamp="1582134157705" />
+    <state width="1320" height="195" key="GridCell.Tab.0.bottom/0.27.1280.693@0.27.1280.693" timestamp="1582279026658" />
+    <state width="1320" height="168" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1582274586840" />
+    <state width="1320" height="195" key="GridCell.Tab.0.center" timestamp="1582279026657">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1320" height="132" key="GridCell.Tab.0.center/0.27.1280.693/0.27.1280.693@0.27.1280.693" timestamp="1582134157705" />
+    <state width="1320" height="195" key="GridCell.Tab.0.center/0.27.1280.693@0.27.1280.693" timestamp="1582279026657" />
+    <state width="1320" height="168" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1582274586840" />
+    <state width="1320" height="195" key="GridCell.Tab.0.left" timestamp="1582279026657">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1320" height="132" key="GridCell.Tab.0.left/0.27.1280.693/0.27.1280.693@0.27.1280.693" timestamp="1582134157705" />
+    <state width="1320" height="195" key="GridCell.Tab.0.left/0.27.1280.693@0.27.1280.693" timestamp="1582279026657" />
+    <state width="1320" height="168" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1582274586839" />
+    <state width="1320" height="195" key="GridCell.Tab.0.right" timestamp="1582279026658">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1320" height="132" key="GridCell.Tab.0.right/0.27.1280.693/0.27.1280.693@0.27.1280.693" timestamp="1582134157705" />
+    <state width="1320" height="195" key="GridCell.Tab.0.right/0.27.1280.693@0.27.1280.693" timestamp="1582279026658" />
+    <state width="1320" height="168" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1582274586840" />
+    <state width="1320" height="195" key="GridCell.Tab.1.bottom" timestamp="1582279026659">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1320" height="195" key="GridCell.Tab.1.bottom/0.27.1280.693@0.27.1280.693" timestamp="1582279026659" />
+    <state width="1320" height="195" key="GridCell.Tab.1.bottom/0.27.1366.741@0.27.1366.741" timestamp="1582274141997" />
+    <state width="1320" height="195" key="GridCell.Tab.1.center" timestamp="1582279026658">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1320" height="195" key="GridCell.Tab.1.center/0.27.1280.693@0.27.1280.693" timestamp="1582279026658" />
+    <state width="1320" height="195" key="GridCell.Tab.1.center/0.27.1366.741@0.27.1366.741" timestamp="1582274141996" />
+    <state width="1320" height="195" key="GridCell.Tab.1.left" timestamp="1582279026658">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1320" height="195" key="GridCell.Tab.1.left/0.27.1280.693@0.27.1280.693" timestamp="1582279026658" />
+    <state width="1320" height="195" key="GridCell.Tab.1.left/0.27.1366.741@0.27.1366.741" timestamp="1582274141996" />
+    <state width="1320" height="195" key="GridCell.Tab.1.right" timestamp="1582279026658">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1320" height="195" key="GridCell.Tab.1.right/0.27.1280.693@0.27.1280.693" timestamp="1582279026658" />
+    <state width="1320" height="195" key="GridCell.Tab.1.right/0.27.1366.741@0.27.1366.741" timestamp="1582274141997" />
+    <state x="216" y="55" width="924" height="691" key="Maven.ArtifactSearchDialog" timestamp="1581490059497">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="216" y="55" width="924" height="691" key="Maven.ArtifactSearchDialog/0.27.1366.741@0.27.1366.741" timestamp="1581490059497" />
+    <state x="172" y="31" width="1022" height="737" key="SettingsEditor" timestamp="1582192667949">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="172" y="31" width="1022" height="737" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1582192667949" />
+    <state x="100" y="127" width="1166" height="541" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581225713759">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="100" y="127" width="1166" height="541" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.27.1366.741@0.27.1366.741" timestamp="1581225713759" />
+    <state x="100" y="127" width="1166" height="541" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582174210825">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="100" y="127" width="1166" height="541" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.1366.741@0.27.1366.741" timestamp="1582174210825" />
+    <state x="307" y="74" width="869" height="646" key="find.popup" timestamp="1582278547951">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state x="307" y="74" width="869" height="646" key="find.popup/0.27.1280.693/0.27.1280.693@0.27.1280.693" timestamp="1582124741444" />
+    <state x="307" y="74" width="869" height="646" key="find.popup/0.27.1280.693@0.27.1280.693" timestamp="1582278547951" />
+    <state x="343" y="122" width="869" height="646" key="find.popup/0.27.1366.741@0.27.1366.741" timestamp="1582179325942" />
+    <state x="0" y="95" width="1356" height="612" key="new project wizard" timestamp="1581505621711">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="0" y="95" width="1356" height="612" key="new project wizard/0.27.1366.741@0.27.1366.741" timestamp="1581505621711" />
+    <state x="379" y="27" width="598" height="741" key="refactoring.ChangeSignatureDialog" timestamp="1580447185281">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="379" y="27" width="598" height="741" key="refactoring.ChangeSignatureDialog/0.27.1366.741@0.27.1366.741" timestamp="1580447185281" />
+    <state x="325" y="164" key="run.anything.popup" timestamp="1582278790660">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state x="325" y="164" key="run.anything.popup/0.27.1280.693@0.27.1280.693" timestamp="1582278790660" />
+    <state x="347" y="174" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1582178720182" />
+    <state x="273" y="62" width="800" height="684" key="scopes" timestamp="1581569485854">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="273" y="62" width="800" height="684" key="scopes/0.27.1366.741@0.27.1366.741" timestamp="1581569485854" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1582192264972">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1582192264972" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Channel/src/test/java/com/increff/assure/dto/ChannelDtoTest.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Server/src/main/java/com/increff/assure/dto/OrderDto.java</url>
+          <line>167</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/Channel/src/test/java/com/increff/assure/dto/ChannelDtoTest.java</url>
+          <line>30</line>
+          <properties field="restTemplate" class="com.increff.assure.dto.ChannelDtoTest" />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Channel/src/test/java/com/increff/assure/dto/ChannelDtoTest.java</url>
+          <line>57</line>
+          <properties class="com.increff.assure.dto.ChannelDtoTest" method="testGetClients">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testGetCheckValid.ic" NAME="ProductServiceTest.testGetCheckValid Coverage Results" MODIFIED="1580813330652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberServiceTest.ic" NAME="MemberServiceTest Coverage Results" MODIFIED="1582125503458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testGetCheckBinSkuIdInvalid.ic" NAME="BinServiceTest.testGetCheckBinSkuIdInvalid Coverage Results" MODIFIED="1582126644095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testAdd.ic" NAME="ProductServiceTest.testAdd Coverage Results" MODIFIED="1582124026257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testValidateForm.ic" NAME="BinDtoTest.testValidateForm Coverage Results" MODIFIED="1581229417720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testAddChannelInvalid.ic" NAME="ChannelDtoTest.testAddChannelInvalid Coverage Results" MODIFIED="1582213505971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testGetCheckBinSkuId.ic" NAME="BinServiceTest.testGetCheckBinSkuId Coverage Results" MODIFIED="1582126554007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testCheckOrderedItemInvalid.ic" NAME="OrderDtoTest.testCheckOrderedItemInvalid Coverage Results" MODIFIED="1582262221334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testCheckPresenceOfClient.ic" NAME="ProductDtoTest.testCheckPresenceOfClient Coverage Results" MODIFIED="1580816317865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testCreateBin.ic" NAME="BinDtoTest.testCreateBin Coverage Results" MODIFIED="1582165676115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testAddChannelListingSameListing.ic" NAME="ChannelDtoTest.testAddChannelListingSameListing Coverage Results" MODIFIED="1582215407964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderServiceTest_testPlaceOrder.ic" NAME="OrderServiceTest.testPlaceOrder Coverage Results" MODIFIED="1582221011051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderServiceTest_testHalfAllocate.ic" NAME="OrderServiceTest.testHalfAllocate Coverage Results" MODIFIED="1582274169823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testGetByClientIdAndClientSku.ic" NAME="ProductServiceTest.testGetByClientIdAndClientSku Coverage Results" MODIFIED="1580814292979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$InventoryServiceTest_testGetValid.ic" NAME="InventoryServiceTest.testGetValid Coverage Results" MODIFIED="1582131162233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$InventoryServiceTest_testAddOrUpdate.ic" NAME="InventoryServiceTest.testAddOrUpdate Coverage Results" MODIFIED="1582130864750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest.ic" NAME="ProductServiceTest Coverage Results" MODIFIED="1582125347674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testCheckBinId.ic" NAME="BinServiceTest.testCheckBinId Coverage Results" MODIFIED="1581227126109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testUpdate.ic" NAME="BinServiceTest.testUpdate Coverage Results" MODIFIED="1581227339679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testPlaceOrderCustomerInvalid.ic" NAME="OrderDtoTest.testPlaceOrderCustomerInvalid Coverage Results" MODIFIED="1582259615783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberServiceTest_testGetAll.ic" NAME="MemberServiceTest.testGetAll Coverage Results" MODIFIED="1580642910555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberDtoTest_testGetAll.ic" NAME="MemberDtoTest.testGetAll Coverage Results" MODIFIED="1580643500398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testGetByNameInvalid.ic" NAME="ChannelServiceTest.testGetByNameInvalid Coverage Results" MODIFIED="1582132230297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testAddChannelListingInvalid.ic" NAME="ChannelServiceTest.testAddChannelListingInvalid Coverage Results" MODIFIED="1582132996425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testAddChannel.ic" NAME="ChannelServiceTest.testAddChannel Coverage Results" MODIFIED="1582131639905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testAddChannelDefault1.ic" NAME="ChannelDtoTest.testAddChannelDefault1 Coverage Results" MODIFIED="1582213703537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testAddChannelListing.ic" NAME="ChannelDtoTest.testAddChannelListing Coverage Results" MODIFIED="1582214983123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testGetProductInfo.ic" NAME="BinServiceTest.testGetProductInfo Coverage Results" MODIFIED="1582127198202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest.ic" NAME="BinServiceTest Coverage Results" MODIFIED="1582127340766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testAddChannelListingInvalid.ic" NAME="ChannelDtoTest.testAddChannelListingInvalid Coverage Results" MODIFIED="1582215218939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testCheckOrderedItemQuantityLess.ic" NAME="OrderDtoTest.testCheckOrderedItemQuantityLess Coverage Results" MODIFIED="1582274348138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testGetListingByParamsInvalid.ic" NAME="ChannelServiceTest.testGetListingByParamsInvalid Coverage Results" MODIFIED="1582133357081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberDtoTest_testGetClients.ic" NAME="MemberDtoTest.testGetClients Coverage Results" MODIFIED="1580643509958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$com_increff_assure_service_in_server.ic" NAME="com.increff.assure.service in server Coverage Results" MODIFIED="1581228518373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$All_in_server.ic" NAME="All in server Coverage Results" MODIFIED="1582113994898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testValidateFormInvalidClientId.ic" NAME="BinDtoTest.testValidateFormInvalidClientId Coverage Results" MODIFIED="1581229364372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testAddInvalid.ic" NAME="ProductServiceTest.testAddInvalid Coverage Results" MODIFIED="1580722663388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testAddInvalid.ic" NAME="ProductDtoTest.testAddInvalid Coverage Results" MODIFIED="1582125220825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testGet.ic" NAME="ProductDtoTest.testGet Coverage Results" MODIFIED="1580817181447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberServiceTest_testGetClients.ic" NAME="MemberServiceTest.testGetClients Coverage Results" MODIFIED="1580642847349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testGetProductInfo1.ic" NAME="BinDtoTest.testGetProductInfo1 Coverage Results" MODIFIED="1582212823036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testUpdateBinInvalid.ic" NAME="BinDtoTest.testUpdateBinInvalid Coverage Results" MODIFIED="1582211514528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testGetProductInfoBinIdAndGlobalSkuId.ic" NAME="BinServiceTest.testGetProductInfoBinIdAndGlobalSkuId Coverage Results" MODIFIED="1581228225483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testGetByName.ic" NAME="ChannelServiceTest.testGetByName Coverage Results" MODIFIED="1582132219480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$channelDtoTest.ic" NAME="ChannelDtoTest Coverage Results" MODIFIED="1582194730269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testAddChannel.ic" NAME="ChannelDtoTest.testAddChannel Coverage Results" MODIFIED="1582213849785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testPlaceOrderInvalidProduct.ic" NAME="OrderDtoTest.testPlaceOrderInvalidProduct Coverage Results" MODIFIED="1582259969759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testGetDefaultChannel.ic" NAME="ChannelServiceTest.testGetDefaultChannel Coverage Results" MODIFIED="1582133436742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testAddChannelListing.ic" NAME="ChannelServiceTest.testAddChannelListing Coverage Results" MODIFIED="1582132823424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testPlaceOrder.ic" NAME="OrderDtoTest.testPlaceOrder Coverage Results" MODIFIED="1582259513022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberDtoTest_testAdd.ic" NAME="MemberDtoTest.testAdd Coverage Results" MODIFIED="1580643309896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testCreateBins.ic" NAME="BinServiceTest.testCreateBins Coverage Results" MODIFIED="1581226268674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testPlaceOrderChannel.ic" NAME="OrderDtoTest.testPlaceOrderChannel Coverage Results" MODIFIED="1582261212434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberDtoTest_testAddInvalid.ic" NAME="MemberDtoTest.testAddInvalid Coverage Results" MODIFIED="1580643346494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testPlaceOrderClientInvalid.ic" NAME="OrderDtoTest.testPlaceOrderClientInvalid Coverage Results" MODIFIED="1582259671526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testGetProductInfo3.ic" NAME="BinDtoTest.testGetProductInfo3 Coverage Results" MODIFIED="1582212870194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testGetProducts.ic" NAME="BinServiceTest.testGetProducts Coverage Results" MODIFIED="1582127327841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest.ic" NAME="BinDtoTest Coverage Results" MODIFIED="1582212882401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$channelDtoTest_testGetCustomers.ic" NAME="channelDtoTest.testGetCustomers Coverage Results" MODIFIED="1582191268830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testGetAllByClientId.ic" NAME="ProductDtoTest.testGetAllByClientId Coverage Results" MODIFIED="1580818216234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testValidateChannelIdAndChannelOrderIdInvalid.ic" NAME="OrderDtoTest.testValidateChannelIdAndChannelOrderIdInvalid Coverage Results" MODIFIED="1582274568766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testUploadInventoryInvalid.ic" NAME="BinDtoTest.testUploadInventoryInvalid Coverage Results" MODIFIED="1582202516099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testAddInvalidClientId.ic" NAME="ProductServiceTest.testAddInvalidClientId Coverage Results" MODIFIED="1580812940090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testGetProductInfoGlobalSkuId.ic" NAME="BinServiceTest.testGetProductInfoGlobalSkuId Coverage Results" MODIFIED="1582126087954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testAddChannelInvalid.ic" NAME="ChannelServiceTest.testAddChannelInvalid Coverage Results" MODIFIED="1582131687342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberServiceTest_testAddInvalid.ic" NAME="MemberServiceTest.testAddInvalid Coverage Results" MODIFIED="1581225027997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testGetUpdate.ic" NAME="ProductServiceTest.testGetUpdate Coverage Results" MODIFIED="1580813714266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testUploadInventoryForm.ic" NAME="BinDtoTest.testUploadInventoryForm Coverage Results" MODIFIED="1582202198520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$channelDtoTest_testGetClients.ic" NAME="channelDtoTest.testGetClients Coverage Results" MODIFIED="1582190427675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testUpdateBin.ic" NAME="BinDtoTest.testUpdateBin Coverage Results" MODIFIED="1582211597820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$com_increff_assure_dto_in_Server.ic" NAME="com.increff.assure.dto in Server Coverage Results" MODIFIED="1582262538425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testAddChannelListingRepeated.ic" NAME="ChannelServiceTest.testAddChannelListingRepeated Coverage Results" MODIFIED="1582133032776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testAllocate.ic" NAME="OrderDtoTest.testAllocate Coverage Results" MODIFIED="1582273237107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testGetCheckByParams.ic" NAME="ProductServiceTest.testGetCheckByParams Coverage Results" MODIFIED="1582124562836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$InventoryServiceTest_testAddOrUpdateDuplicate.ic" NAME="InventoryServiceTest.testAddOrUpdateDuplicate Coverage Results" MODIFIED="1582131080455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testcheckClientIdAndClientSkuInvalid.ic" NAME="ProductDtoTest.testcheckClientIdAndClientSkuInvalid Coverage Results" MODIFIED="1580818254743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testUpdate.ic" NAME="ProductDtoTest.testUpdate Coverage Results" MODIFIED="1580819320145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testFormNormalize.ic" NAME="ProductDtoTest.testFormNormalize Coverage Results" MODIFIED="1580816559373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$All_in_Server.ic" NAME="All in Server Coverage Results" MODIFIED="1582274586612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberServiceTest_testGet.ic" NAME="MemberServiceTest.testGet Coverage Results" MODIFIED="1580642717624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testCheckBinIdInValid.ic" NAME="BinServiceTest.testCheckBinIdInValid Coverage Results" MODIFIED="1581227136065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$InventoryServiceTest_testGetInValid.ic" NAME="InventoryServiceTest.testGetInValid Coverage Results" MODIFIED="1582131204067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest.ic" NAME="ChannelDtoTest Coverage Results" MODIFIED="1582268837299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest.ic" NAME="ChannelServiceTest Coverage Results" MODIFIED="1582133117046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testUpdateInventory.ic" NAME="BinServiceTest.testUpdateInventory Coverage Results" MODIFIED="1581226879922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testUpdateInvalid.ic" NAME="BinServiceTest.testUpdateInvalid Coverage Results" MODIFIED="1581227385142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testGetAll.ic" NAME="OrderDtoTest.testGetAll Coverage Results" MODIFIED="1582261727959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testGetClients.ic" NAME="ChannelDtoTest.testGetClients Coverage Results" MODIFIED="1582268627232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$com_increff_assure_service_in_Server.ic" NAME="com.increff.assure.service in Server Coverage Results" MODIFIED="1582262616705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderServiceTest_testAllocate.ic" NAME="OrderServiceTest.testAllocate Coverage Results" MODIFIED="1582253900897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testGetProductInfoBinId.ic" NAME="BinServiceTest.testGetProductInfoBinId Coverage Results" MODIFIED="1582126216823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testAddChannelDefault2.ic" NAME="ChannelDtoTest.testAddChannelDefault2 Coverage Results" MODIFIED="1582213826498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testAddChannelDefault.ic" NAME="ChannelDtoTest.testAddChannelDefault Coverage Results" MODIFIED="1582213649742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest.ic" NAME="OrderDtoTest Coverage Results" MODIFIED="1582273651480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testCheckPresenceInvalid.ic" NAME="ChannelServiceTest.testCheckPresenceInvalid Coverage Results" MODIFIED="1582131912487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testGetAllByClientId.ic" NAME="ProductServiceTest.testGetAllByClientId Coverage Results" MODIFIED="1582124348156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testGetProductInfo.ic" NAME="BinDtoTest.testGetProductInfo Coverage Results" MODIFIED="1582212464679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testGetOrderDetails.ic" NAME="OrderDtoTest.testGetOrderDetails Coverage Results" MODIFIED="1582274055584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testGetProductInfo2.ic" NAME="BinDtoTest.testGetProductInfo2 Coverage Results" MODIFIED="1582212695925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testAdd.ic" NAME="ProductDtoTest.testAdd Coverage Results" MODIFIED="1580816217168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testCheckOrderedItem.ic" NAME="OrderDtoTest.testCheckOrderedItem Coverage Results" MODIFIED="1582263454092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testGetAllChannels.ic" NAME="ChannelServiceTest.testGetAllChannels Coverage Results" MODIFIED="1582132272705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinDtoTest_testValidateFormInvalidClientIdAndSku.ic" NAME="BinDtoTest.testValidateFormInvalidClientIdAndSku Coverage Results" MODIFIED="1581229315918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testGetListingByParams.ic" NAME="ChannelServiceTest.testGetListingByParams Coverage Results" MODIFIED="1582133315804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelDtoTest_testGetAllChannel.ic" NAME="ChannelDtoTest.testGetAllChannel Coverage Results" MODIFIED="1582214013904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$MemberDtoTest.ic" NAME="MemberDtoTest Coverage Results" MODIFIED="1582212936050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest.ic" NAME="ProductDtoTest Coverage Results" MODIFIED="1582212970674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testPlaceOrderItemDuplicate.ic" NAME="OrderDtoTest.testPlaceOrderItemDuplicate Coverage Results" MODIFIED="1582259763595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ChannelServiceTest_testCheckPresenceValid.ic" NAME="ChannelServiceTest.testCheckPresenceValid Coverage Results" MODIFIED="1582131996544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$BinServiceTest_testAddOrUpdateInventory.ic" NAME="BinServiceTest.testAddOrUpdateInventory Coverage Results" MODIFIED="1581226512160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$OrderDtoTest_testPlaceOrderChannelInvalidProduct.ic" NAME="OrderDtoTest.testPlaceOrderChannelInvalidProduct Coverage Results" MODIFIED="1582261368930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductServiceTest_testAddINvalid.ic" NAME="ProductServiceTest.testAddINvalid Coverage Results" MODIFIED="1580722650063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Toy_Assure$ProductDtoTest_testCheckClientIdAndClientSkuInvalid.ic" NAME="ProductDtoTest.testCheckClientIdAndClientSkuInvalid Coverage Results" MODIFIED="1580818533026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.increff.assure.dto.*</FILTER>
+    </SUITE>
+  </component>
+</project>

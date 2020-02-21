@@ -23,25 +23,25 @@
 //        if (response.getStatusCode().series() == HttpStatus.Series.SERVER_ERROR) {
 //            // handle 5xx errors
 //            // raw http status code e.g `500`
-//            System.out.println(response.getRawStatusCode());
+//            System.out.prIntegerln(response.getRawStatusCode());
 //
-//            // http status code e.g. `500 INTERNAL_SERVER_ERROR`
-//            System.out.println(response.getStatusCode());
+//            // http status code e.g. `500 IntegerERNAL_SERVER_ERROR`
+//            System.out.prIntegerln(response.getStatusCode());
 //
 //        } else if (response.getStatusCode().series() == HttpStatus.Series.CLIENT_ERROR) {
 //            // handle 4xx errors
 //            // raw http status code e.g `404`
-//            System.out.println(response.getRawStatusCode());
+//            System.out.prIntegerln(response.getRawStatusCode());
 //
 //            // http status code e.g. `404 NOT_FOUND`
-//            System.out.println(response.getStatusCode());
+//            System.out.prIntegerln(response.getStatusCode());
 //
 //            // get response body
-//            System.out.println(response.getBody().toString());
+//            System.out.prIntegerln(response.getBody().toString());
 //            // get http headers
 //            HttpHeaders headers = response.getHeaders();
-//            System.out.println(headers.get("Content-Type"));
-//            System.out.println(headers.get("Server"));
+//            System.out.prIntegerln(headers.get("Content-Type"));
+//            System.out.prIntegerln(headers.get("Server"));
 //        }
 //    }
 //}

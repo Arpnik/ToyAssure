@@ -13,23 +13,22 @@ public class InventoryService {
     private InventoryDao dao;
 
     @Transactional
-    public void addOrUpdateInventory(InventoryPojo pojo)
-    {
-        InventoryPojo existing=dao.getInventoryByGlobalSku(pojo.getGlobalSkuId());
-        if(existing!=null)
-        {
-            existing.setAvailableQuantity(existing.getAvailableQuantity()+pojo.getAvailableQuantity());
+    public void addOrUpdateInventory(InventoryPojo pojo) {
+        InventoryPojo existing = dao.getInventoryByGlobalSku(pojo.getGlobalSkuId());
+        if (existing != null) {
+            existing.setAllocatedQuantity(new Long(0));
+            existing.setFulfilledQuantity(new Long(0));
+            existing.setAvailableQuantity(existing.getAvailableQuantity() + pojo.getAvailableQuantity());
             return;
         }
         dao.insert(pojo);
     }
 
     @Transactional(readOnly = true)
-    public InventoryPojo getByGlobalSkuId(long globalSkuId) throws ApiException {
-        InventoryPojo pojo=dao.getInventoryByGlobalSku(globalSkuId);
-        if(pojo==null)
-        {
-            throw new ApiException("Product is unavaliable / out of stock");
+    public InventoryPojo getByGlobalSkuId(Long globalSkuId) throws ApiException {
+        InventoryPojo pojo = dao.getInventoryByGlobalSku(globalSkuId);
+        if (pojo == null) {
+            throw new ApiException("Product is unavailable / out of stock");
         }
         return pojo;
     }

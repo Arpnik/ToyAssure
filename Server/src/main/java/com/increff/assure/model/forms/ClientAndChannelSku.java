@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
+
 @Getter @Setter
 public class ClientAndChannelSku {
     @NotBlank(message = "Client Sku is not valid")
