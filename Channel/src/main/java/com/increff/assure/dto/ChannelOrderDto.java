@@ -43,7 +43,6 @@ public class ChannelOrderDto {
     }
 
     public List<MemberData> getClients() {
-        System.out.println(properties.getServerUri() + "member/client");
         return Arrays.asList(restTemplate.getForObject(properties.getServerUri() + "member/client", MemberData[].class));
     }
 

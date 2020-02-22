@@ -28,7 +28,7 @@ public class ChannelService {
     public void addChannel(ChannelPojo pojo) throws ApiException {
         ChannelPojo existing = channelDao.selectByName(pojo.getName());
         if (existing != null) {
-            throw new ApiException("Channel with same name already exists");
+            throw new ApiException("Channel with name:"+pojo.getName()+" already exists");
         }
         channelDao.insert(pojo);
     }

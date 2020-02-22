@@ -28,7 +28,7 @@ function fillChannelDropDown()
 {
 	selectedOption=$('#selectChannel option:selected').val()
 	$('#selectChannel').empty();
-	$('#selectChannel').append("<option hidden disabled>select channel</option>");
+	$('#selectChannel').append("<option selected hidden disabled>Select name</option>");
 	
 	let url=getChannelUrl();
 	$.ajax({
@@ -63,17 +63,22 @@ var processCount = 0;
 function displayUploadData(){
 	let clientId=$('#selectClient option:selected').val();
 	let channelId=$('#selectChannel option:selected').val();
-	if(clientId.startsWith("select"))
+	console.log(clientId);
+	console.log(channelId);
+	console.log(clientId);
+	console.log(channelId);
+	if(clientId.startsWith("Select"))
 	{
-		callWarnToast('select an appropriate client');
+		callWarnToast('Select an appropriate client');
 		return;
 	}
-	if(channelId.startsWith("select"))
+	if(channelId.startsWith("Select"))
 	{
-		callWarnToast('select an appropriate channel');
+		callWarnToast('Select an appropriate channel');
 		return;
 	}
 	resetUploadDialog(); 	
+	$('#download-errors').attr('disabled',true);
 	$('#upload-channel-modal').modal('toggle');
 }
 
@@ -92,6 +97,11 @@ function resetUploadDialog(){
 
 function processData(){
 	var file = $('#channelFile')[0].files[0];
+	if(file == undefined)
+	{
+		callWarnToast("Select a file to upload");
+		return false;
+	}
 	readFileData(file, readFileDataCallback);
 }
 
@@ -117,6 +127,7 @@ function uploadRows(){
 	requestBody["clientId"]=Number($('#selectClient option:selected').val());
 	var json = JSON.stringify(requestBody);
 	var url = getChannelUrl()+'/listing';
+	console.log(json);
 	//Make ajax call
 	$.ajax({
 	   url: url,
@@ -130,48 +141,11 @@ function uploadRows(){
 	   },
 	   error:function(response)
 	   {
+	   		$('download-errors').attr('disabled',true);
 	   		CsvHandlError(response,fileData);
 	   }
 	});
 }
-
-// function handleErrorsInCSV(response)
-// {
-// 	let res=JSON.parse(response.responseText)["message"];
-//     callAlertToast("Download Errors");
-//     if(!res.startsWith("\n"))
-//     {
-//         errorData.push(JSON.parse(response.responseText));
-//         updateUploadDialog();
-//         return false;
-//     }
-//     res=res.split("\n")
-//     for(row in res)
-//         {
-//             if(res[row].trim().length!=0)
-//             {
-//                 var result=res[row].split(":");
-//                 var index=result[0];
-//                 if(index.includes('.'))
-//                 {	
-//                 	index=index.split('.')[0];
-//                 	index=index[index.length-2];
-//                 }
-//                 var createdError=fileData[Number(index)];
-//                 createdError["message"]=result.slice(1).join(' ');
-//             }
-//         }
-//         for(let row=0;row<fileData.length;row++)
-//         {
-//             var error=fileData[row];
-//             if(error.hasOwnProperty("message"))
-//             {
-//                 errorCount++;
-//                 errorData.push(error);
-//             }
-//         }
-//         updateUploadDialog();
-// }
 
 function downloadErrors(){
 	writeFileData(errorData);
@@ -189,6 +163,13 @@ function addChannel()
 	var json = toJson($form);
 	var url = getChannelUrl();
 	console.log(json);
+	console.log(typeof(json));
+	let name=JSON.parse(json)['name'];
+	if( name.trim().length==0)
+	{
+		callWarnToast("Enter valid channel name");
+		return false;
+	}
 	$.ajax({
 	   url: url,
 	   type: 'POST',
@@ -222,6 +203,17 @@ function init()
 	$('#process-data').click(processData);
 	$('#download-errors').click(downloadErrors);
     $('#channelFile').on('change', updateFileName);
+
+    $('#channel-form').keypress(function(e) {
+    	console.log("inside");
+    if (e.which == 13) {
+    	console.log("inside");
+        var tagName = e.target.tagName.toLowerCase(); 
+        if (tagName !== "button") {
+            return false;
+        }
+    }
+});
 }
 
 

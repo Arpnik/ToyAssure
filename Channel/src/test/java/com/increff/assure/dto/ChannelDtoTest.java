@@ -56,9 +56,7 @@ public class ChannelDtoTest extends AbstractUnitTest {
 
     @Test
     public void testGetClients() {
-//        when(properties.getServerUri()).thenReturn("http://localhost:9000/assure/api/");
         when(restTemplate.getForObject(properties.getServerUri() + "member/client", MemberData[].class)).thenReturn(memberList);
-        //  when(restTemplate.getForObject(properties.getServerUri()+"member/client", MemberData[].class)).thenReturn(memberList);
         List<MemberData> dataList = dto.getClients();
         assertEquals(2, dataList.size());
     }

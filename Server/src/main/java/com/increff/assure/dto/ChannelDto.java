@@ -93,7 +93,7 @@ public class ChannelDto {
 
     protected void normalizeAndSetDefaults(ChannelForm form)
     {
-        form.setName(Optional.ofNullable(StringUtil.toUpperCase(form.getName())).orElse(properties.getDefaultName()));
+        form.setName(Optional.ofNullable(StringUtil.toUpperCase(form.getName())).orElse(properties.getDefaultChannelName()));
         form.setInvoiceType(Optional.ofNullable(form.getInvoiceType()).orElse(properties.getDefaultType()));
     }
 

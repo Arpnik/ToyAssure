@@ -9,30 +9,99 @@ body {
 
 
 table {
-	text-align: center;
+	text-align: left;
 }
 
+/*.heading
+{
+    color:;
+}
+*/
 .scrollable-menu {
     height: auto;
     max-height: 80px;
     overflow-x: hidden;
 }
 
+#toast-body{
+	z-index: 99999;
+}
 .toast{
-	z-index: 100;
+  z-index:99999;
+}
+#toast-header{
+  z-index: 99999;
 }
 
+
+
 .footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 60px; /* Set the fixed height of the footer here */
-	line-height: 60px; /* Vertically center the text there */
-	text-align: center;
-	background-color: #f5f5f5;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 35px; /* Set the fixed height of the footer here */
+  line-height: 40px; /* Vertically center the text there */
+  text-align: center;
+  color: rgba(255,255,255,.5);
+  background-color: #1d2124;
 }
 
 
 .fas{
     font-size: 4rem;
 }
+
+
+.sidebar-icons ul {
+    margin: 0;
+    padding: 5px;
+}
+
+.sidebar-icons li {
+	  text-align: center;
+    width: 31.9%;
+    margin: auto 2px auto 2px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    display: inline-block;
+    font-size: 10px;
+    padding:0;
+}
+
+.sidebar-icons i {
+  display: block;
+  margin: auto auto 10px auto;
+	width: 32px;
+    height: 32px;
+    margin: 10px auto 0;
+    line-height: 22px;
+    text-align: center;
+    font-size: 4rem;
+    color: #444444;
+  margin-top:0;
+  padding-top:5px;
+}
+.sidebar-icons a{
+  text-decoration:none;
+  width:100%;
+  height:100%;
+  text-align: center;
+  display:block;
+  margin:0;
+  padding:0;
+}
+
+.sidebar-icons a span{
+  color:black;
+  font-size:15px;
+  padding:15px 0 10px 40px;
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.sidebar-icons a:hover i.fa-user { color: #00ABE3; }
+.sidebar-icons a:hover i.fa-gifts { color:#00ABE3; }
+.sidebar-icons a:hover i.fa-inbox { color:#00ABE3 }
+.sidebar-icons a:hover i.fa-truck { color:#00ABE3 }
+.sidebar-icons a:hover i.fa-cart-plus { color:#00ABE3 }

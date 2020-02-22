@@ -14,10 +14,7 @@ public class ApplicationProperties {
     @Value("${app.baseUrl}")
     private String baseUrl;
 
-    @Value("${defaultMember.name}")
-    private String defaultName;
-
-    @Value("${defaultMember.invoiceType}")
+    @Value("${defaultChannel.invoiceType}")
     private InvoiceType defaultType;
 
     @Value("${channel.uri}")

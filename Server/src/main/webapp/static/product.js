@@ -53,6 +53,7 @@ function uploadProducts()
 	}
 	resetTable();
 	resetUploadDialog(); 	
+	$('#download-errors').attr('disabled',true);
 	$('#upload-product-modal').modal('toggle');
 }
 
@@ -83,6 +84,11 @@ function updateFileName(){
 
 function processData(){
 	var file = $('#productFile')[0].files[0];
+	if(file == undefined)
+	{
+		callWarnToast("Select a file to upload");
+		return false;
+	}
 	readFileData(file, readFileDataCallback);
 
 }
@@ -105,9 +111,10 @@ function uploadRows(){
 	}
 	
 	requestBody={};
-	requestBody["requestBody"]=products;
+	requestBody["productList"]=products;
 	var json = JSON.stringify(requestBody);
 	var url = getProductUrl()+'/'+($('#selectClient option:selected').val());
+	console.log(json);
 
 	//Make ajax call
 	$.ajax({
@@ -122,7 +129,9 @@ function uploadRows(){
 	   },
 	   error:function(response)
 	   {
+	   		$('#download-errors').attr('disabled',false);
 	   		CsvHandlError(response,fileData);
+
 	   }
 	});
 }
@@ -184,7 +193,7 @@ function displayProductList(data){
 	$tbody.empty();
 	for(var i in data){
 		var e = data[i];
-		var buttonHtml = ' <button class="btn btn-primary" onclick="displayEditProduct(' + e.globalSkuId + ')">edit</button>'
+		var buttonHtml = ' <button class="btn btn-outline-primary btn-sm" onclick="displayEditProduct(' + e.globalSkuId + ')">Edit</button>'
 		var row = '<tr>'
 		+ '<td>' + e.clientSkuId + '</td>'
 		+ '<td>' + e.name + '</td>'
@@ -257,6 +266,16 @@ function init()
 	$('#display-products').click(getProductsById);
 	$('#update-product').click(updateProduct);
 	$('#download-errors').click(downloadErrors);
+	$("#product-form").keypress(function(e) {
+    	console.log("inside");
+    if (e.which == 13) {
+    	console.log("inside");
+        var tagName = e.target.tagName.toLowerCase(); 
+        if (tagName !== "button") {
+            return false;
+        }
+    }
+});
 }
 
 $(document).ready(init);

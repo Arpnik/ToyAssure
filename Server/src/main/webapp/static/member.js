@@ -69,6 +69,16 @@ function displayMemberList(data){
 
 function init(){
 	$('#add-member').click(addMember);
+    $("#member-form").keypress(function(e) {
+    	console.log("inside");
+    if (e.which == 13) {
+    	console.log("inside");
+        var tagName = e.target.tagName.toLowerCase(); 
+        if (tagName !== "button") {
+            return false;
+        }
+    }
+});
 }
 
 

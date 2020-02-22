@@ -16,11 +16,11 @@ public class InventoryService {
     public void addOrUpdateInventory(InventoryPojo pojo) {
         InventoryPojo existing = dao.getInventoryByGlobalSku(pojo.getGlobalSkuId());
         if (existing != null) {
-            existing.setAllocatedQuantity(new Long(0));
-            existing.setFulfilledQuantity(new Long(0));
             existing.setAvailableQuantity(existing.getAvailableQuantity() + pojo.getAvailableQuantity());
             return;
         }
+        pojo.setAllocatedQuantity(new Long(0));
+        pojo.setFulfilledQuantity(new Long(0));
         dao.insert(pojo);
     }
 

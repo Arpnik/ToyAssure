@@ -18,9 +18,9 @@ function fillDropDowns()
 	$('#selectChannel').empty();
 	$('#selectClient').empty();
 	$('#selectCustomer').empty();
-	$('#selectChannel').append('<option selected hidden disabled value="">select channel</option>');
-	$('#selectCustomer').append('<option selected hidden disabled value="">select customer</option>');
-	$('#selectClient').append('<option selected hidden disabled value="">select client</option>');
+	$('#selectChannel').append('<option selected hidden disabled value="">Select name</option>');
+	$('#selectCustomer').append('<option selected hidden disabled value="">Select name</option>');
+	$('#selectClient').append('<option selected hidden disabled value="">Select name</option>');
 
 	var url=getChannelUrl();
 
@@ -68,20 +68,20 @@ function validate()
 {
 	if($('#selectChannel option:selected').val()=="")
 	{
-		callWarnToast('Select appropriate Channel');
+		callWarnToast('Select appropriate channel');
 		return false;
 	}
 
 
 	if($('#selectCustomer option:selected').val()=="")
 	{
-		callWarnToast('Select appropriate Customer');
+		callWarnToast('Select appropriate customer');
 		return false;
 	}
 
 	if($('#selectClient option:selected').val()=="")
 	{
-		callWarnToast('Select appropriate Client');
+		callWarnToast('Select appropriate client');
 		return false;
 	}
 
@@ -102,13 +102,21 @@ function validateItem()
 
 	if(qty<=0)
 	{
-		callWarnToast("Ordered Quantity cannot be less than equal to 0");
+		callWarnToast("Ordered quantity cannot be less than equal to 0");
 		return false;
 	}
 	
-	if(!Number.isIntegereger(qty))
+	if(!Number.isInteger(qty))
 	{	
-	 	callWarnToast("Quantity is not Integereger");
+	 	callWarnToast("Quantity is not integer");
+	 	return false;
+	}
+
+	console.log(mrp);
+	console.log(isNaN(Number(mrp)));
+	if(isNaN(mrp))
+	{	
+	 	callWarnToast("MRP is not integer");
 	 	return false;
 	}
 
@@ -143,8 +151,31 @@ function addInCart()
 	json['channelId']=channelId;
 	json['channelSkuId']=channelSkuId;
 	json['quantity']=qty;
+	console.log(Object.keys(cart).length)
+	if(Object.keys(cart).length==0)
+	{
+		createUiTable();
+	}
 	checkCart(json);
 	checkItem(json);
+
+}
+
+function createUiTable()
+{
+	var row='<tr>'+
+            '<th scope="col">S.No.</th>'+
+            '<th scope="col">Product Name</th>'+
+            '<th scope="col">Brand ID</th>'+
+            '<th scope="col">Channel SKU ID</th>'+
+            '<th scope="col">Quantity</th>'+
+            '<th scope="col">MRP</th>'+
+            '<th scope="col">Total price</th>'+
+            '<th scope="col">Actions</th>'+
+        '</tr>';
+    var $thead=$('#order-table').find('thead');
+    	$thead.empty();
+    	$thead.append(row);
 
 }
 
@@ -206,8 +237,8 @@ function displayItems()
 	let sno=1;
 	for(row in cart)
 	{
-		var buttonHtml = '<button class=\"btn btn-primary\" onclick=\'deleteItem(\"' + row + '\")\'>Delete</button>';
-		buttonHtml += ' <button class=\"btn btn-primary\" onclick=\'displayEditOrder(\"' + row + '\")\'>Edit</button>';
+		var buttonHtml = '<button class=\"btn btn-outline-warning btn-sm\" onclick=\'deleteItem(\"' + row + '\")\'>Delete</button>';
+		buttonHtml += ' <button class=\"btn btn-outline-info btn-sm\" onclick=\'displayEditOrder(\"' + row + '\")\'>Edit</button>';
 
 		var item = '<tr>'
 		+ '<td>'  + sno + '</td>'
@@ -215,16 +246,17 @@ function displayItems()
 		+ '<td>' + cart[row][1]+ '</td>'
 		+ '<td>' + row + '</td>'
 		+ '<td>'  + cart[row][2] + '</td>'
-		+ '<td>'  + cart[row][3] + '</td>'
-		+ '<td>'  + cart[row][4] + '</td>'
+		+ '<td>'  + (Math.round(cart[row][3] * 100) / 100) + '</td>'
+		+ '<td>'  + (Math.round(cart[row][4] * 100) / 100) + '</td>'
 		+ '<td>' + buttonHtml + '</td>'
 		+ '</tr>';
 
         $tbody.append(item);
         sno+=1;
-	    bill+=(cart[row][4]);
+        bill+=Math.round(cart[row][4] * 100) / 100;
+	    console.log(Number(bill));
 	}
-    $('#totalPrice').val(bill);
+    $('#totalPrice').val(Number(bill));
 
 }
 
@@ -283,7 +315,7 @@ function validateChannelOrderId()
 	console.log(channelOrderId);
 	if(!channelOrderId ||channelOrderId.trim().length==0)
 	{
-		callWarnToast("Enter valid Channel Order ID");
+		callWarnToast("Enter valid channel order ID");
 		return false;
 	}
 	return true;
@@ -323,7 +355,7 @@ function placeOrder()
 	json['items']=processed();
 	if(json.items.length==0)
 	{
-		callWarnToast("Add some Items in Order");
+		callWarnToast("Add some items in order");
 		return;
 	}
 
@@ -335,7 +367,7 @@ function placeOrder()
        	'Content-Type': 'application/json'
        },	   
 	   success: function(response) {
-	   		 callConfirmToast('added to cart');
+	   		 callConfirmToast('Order placed successfully');
 	   		 resetUi();
 	   },
 	   error: function(response)
@@ -349,11 +381,13 @@ function placeOrder()
 function resetUi()
 {
 	$('#order-table').find('tbody').empty();
+	$('#order-table').find('thead').empty();
 	$('#order-form').trigger('reset');
 	fillDropDowns();
 	$('#order-table').find('tbody').empty();
-	$('#totalPrice').val(0);
+	$('#totalPrice').val("");
 	$('#channelOrderId').val("");
+	cart={};
 	   		 
 }
 

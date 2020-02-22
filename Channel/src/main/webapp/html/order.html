@@ -11,27 +11,27 @@
 
 <div class="container">
 
-    <h3>Place Channel Order</h3>
+    <h3>Order</h3>
 
     <div class="row">
         <div class="col-12">
             <div class="form-row">
                 <div class="form-group col-md-4" id="channel-DropDown">
-                    <label for="selectChannel">Select Channel Name</label>
-                    <select class="form-control" id="selectChannel" name='channelId'>
-                        <option disabled hidden selected>select channel</option>
+                    <label for="selectChannel"><strong> Channel </strong></label>
+                    <select class="form-control form-control-sm" id="selectChannel" name='channelId'>
+                        <option disabled hidden selected>Select name</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4" id="client-DropDown">
-                    <label for="selectClient">Select Client Name</label>
-                    <select class="form-control" id="selectClient" name='clientId'>
-                        <option disabled hidden selected>select client</option>
+                    <label for="selectClient"><strong> Client</strong></label>
+                    <select class="form-control form-control-sm" id="selectClient" name='clientId'>
+                        <option disabled hidden selected>select name</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4" id="customer-DropDown">
-                    <label for="selectCustomer">Select Customer Name</label>
-                    <select class="form-control" id="selectCustomer" name='customerId'>
-                        <option disabled hidden selected>select customer</option>
+                    <label for="selectCustomer"><strong>Customer </strong></label>
+                    <select class="form-control form-control-sm" id="selectCustomer" name='customerId'>
+                        <option disabled hidden selected>select name</option>
                     </select>
                 </div>
             </div>
@@ -40,24 +40,25 @@
     <form id="order-form">
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="channelSkuId">Channel SKU ID</label>
-                <input class="form-control" name="channelSkuId" type="text">
+                <label for="channelSkuId"><strong>Channel SKU ID</strong></label>
+                <input class="form-control form-control-sm" name="channelSkuId" type="text">
             </div>
             <div class="form-group col-md-4">
-                <label for="quantity">Quantity</label>
-                <input class="form-control" name="quantity" type="text">
+                <label for="quantity"><strong>Quantity</strong></label>
+                <input class="form-control form-control-sm" name="quantity" type="text">
             </div>
-            <div class="form-group col-md-4">
-                <label for="sellingPricePerUnit">MRP</label>
-                <div class="input-group-prepend">
+            <div class="form-group col-md-3 input-group-sm ">
+                <label for="sellingPricePerUnit"><strong>MRP</strong></label>
+                <div class="input-group-prepend input-group-sm">
                     <span class="input-group-text">₹</span>
                     <input class="form-control" id="Mrp" name="sellingPricePerUnit" type="text">
                 </div>
             </div>
+            <div class="col-auto">
+            <button class="btn btn-outline-primary btn-sm mb-2" id="add-order" type="button" style="margin-top:2rem">Add</button>
         </div>
-        <div class="col-auto">
-            <button class="btn btn-primary mb-2" id="add-order" type="button">Add</button>
         </div>
+        
     </form>
 
 
@@ -65,54 +66,43 @@
     <div class="row">
         &nbsp;
     </div>
-
-    <table class="table table-striped" id="order-table">
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-hover" id="order-table">
         <thead>
-        <tr>
-            <th scope="col">S.No.</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Brand ID</th>
-            <th scope="col">Channel SKU ID</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">MRP</th>
-            <th scope="col">Total price</th>
-            <th scope="col">Actions</th>
-        </tr>
+            <!--dynamically add-->
         </thead>
         <tbody>
         <!-- dynamic generation of rows-->
         </tbody>
     </table>
+</div>
 
     <!-- Blank Row -->
     <div class="row">
         &nbsp;
     </div>
-    <div class="row">
-        &nbsp;
-    </div>
-
 
     <div class="row">
         <div class="col-12">
             <div class="form-row">
-                <div class="form-group col-md-4" id="total-Price">
-                    <label for="channelOrderId">Total Amount:</label>
-                    <input class="form-control" id="totalPrice" readonly type="text">
+                <div style="margin-top:2rem;">
+                    <button class="btn btn-outline-primary btn-sm mb-2" id="afresh" type="button">Start Fresh</button>
+                </div>
+                <div class="form-group col-md-4" id="total-Price" style="float: right;">
+                    <label for="channelOrderId form-control-sm"><strong>Total Amount </strong></label>
+                    <input class="form-control form-control-sm" id="totalPrice" readonly type="text">
                 </div>
                 <div class="form-group col-md-4" style="float: right;">
-                    <label for="channelOrderId">Channel Order ID</label>
-                    <input class="form-control" id="channelOrderId" name="channelOrderId" type="text">
+                    <label for="channelOrderId"><strong>Channel Order ID</strong></label>
+                    <input class="form-control form-control-sm" id="channelOrderId" name="channelOrderId" type="text">
+                </div>
+                <div style="margin-top:2rem; float: right;">
+                    &nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-outline-success btn-sm mb-2" id="confirm" type="button">Confirm Order</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        &nbsp;
-    </div>
-
-    <button class="btn btn-primary mb-2" id="afresh" type="button">Start Fresh</button>
-    <button class="btn btn-primary mb-2" id="confirm" style="float: right;" type="button">Confirm Order</button>
 
 
     <div class="modal" id="edit-order-modal" role="dialog" tabindex="-1">
@@ -151,8 +141,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
-                    <button class="btn btn-primary" id="update-order" type="button">Update</button>
+                    <button class="btn btn-outline-secondary btn-sm" data-dismiss="modal" type="button">Cancel</button>
+                    <button class="btn btn-outline-primary btn-sm" id="update-order" type="button">Update</button>
                 </div>
             </div>
         </div>

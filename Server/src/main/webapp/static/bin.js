@@ -29,8 +29,8 @@ function processClient(data)
 {
 	$('#selectClient').empty();
 	$('#selectClientId').empty();
-	$('#selectClient').append('<option selected="" hidden="" disabled="" value="">Select Client Name</option>');
-	$('#selectClientId').append('<option selected="" value="">Select Client Name</option>');
+	$('#selectClient').append('<option selected="" hidden="" disabled="" value="">Select client name</option>');
+	$('#selectClientId').append('<option selected="" value="0">Select client name</option>');
 	fillAnyDropdown('#selectClient',data);
 	fillAnyDropdown('#selectClientId',data);
 }
@@ -51,17 +51,17 @@ function createBins()
 	let num=Number($('#inputBins').val());
 	if(isNaN(num))
 	{
-		callWarnToast('Please enter a valid Integereger number');
+		callWarnToast('Enter a valid positive integer');
 		return;
 	}
 	if(num<1)
 	{
-		callWarnToast("Number of Bins cannot be less than 1, Enter a valid Integereger number");
+		callWarnToast("Number of bins cannot be less than 1");
 		return;
 	}
-	if(!Number.isIntegereger(num))
+	if(!Number.isInteger(num))
 	{
-		callWarnToast('Number of bins has to be Integereger');
+		callWarnToast('Number of bins has to be integer');
 		return;
 	}
 	var json={}
@@ -131,7 +131,7 @@ function fillDisplayModal(data)
 	    		console.log('inside');
 	    		continue;
 	    	}
-		let buttonHtml = ' <button class="btn btn-primary" onclick="displayEditQuantity(' + data[d].binSkuId+','+(sno+1) + ')" >edit</button>'
+		let buttonHtml = ' <button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + data[d].binSkuId+','+(sno+1) + ')" >edit</button>'
 	    	row='<tr>'
 		+ '<td>' + data[d].name + '</td>'
 		+ '<td>'  + data[d].clientSkuId + '</td>'
@@ -150,7 +150,7 @@ function displayEditQuantity(binSkuId,sno)
 {
 	var value = $("#filter-table tr:nth-child("+sno+")" ).find('td')[2].innerHTML;
 	$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=true style="outline:2px solid Blue;" >'+value+'</td>');
-	$("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith('<td><button class="btn btn-success" onclick="saveEditQuantity(' + binSkuId+','+sno+','+value+')">Save</button></td>');
+	$("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith('<td><button class="btn btn-outline-success btn-sm" onclick="saveEditQuantity(' + binSkuId+','+sno+','+value+')">Save</button></td>');
 	
 }
 
@@ -162,16 +162,16 @@ function saveEditQuantity(binSkuId,sno,IntegerialValue)
 	console.log(Number(value));
 	if(isNaN(value))
 	{
-		callWarnToast('Enter a valid Integereger quantity');
+		callWarnToast('Enter a valid Integer quantity');
 		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
-	   	 $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   	 $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
 	   	 return;
 	}
-	if(!Number.isIntegereger(value))
+	if(!Number.isInteger(value))
 	{
-		callWarnToast('Enter a valid Integereger quantity');
+		callWarnToast('Enter a valid Integer quantity');
 		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
-	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
 		return;
 	}
 	var json={}
@@ -186,19 +186,19 @@ function saveEditQuantity(binSkuId,sno,IntegerialValue)
 	   success: function(response) {   
 	   		callConfirmToast("Updated Product Successfully");
 	   		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+value+'</td>');
-	   		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
 	   },		
 	   error:function(response){
 	   	    handleAjaxError(response);
 	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
-	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-primary" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
 	   	}
 	});
 }
 
 function resetFilter()
 {
-
+	console.log("h");
 	$('#filter-form input[name=clientSkuId]').val("");
 	$('#filter-form input[name=binId]').val("");
 	fillDropDown();
@@ -209,10 +209,7 @@ function getProductInfo()
 {
 	var $form = $("#filter-form");
 	var json = JSON.parse(toJson($form));
-	if(!json.hasOwnProperty('clientSkuId'))
-	{
-		json['clientSkuId']="";
-	}
+	console.log(json);
 	let url=getBinUrl()+'/product';
 	$.ajax({
 	   url: url,
@@ -224,6 +221,7 @@ function getProductInfo()
 	   success: function(response) {
 	   callConfirmToast("Information fetched Successfully");
 	   fillDisplayModal(response);
+	   resetFilter();
 	   },
 	   error: handleAjaxError
 	});
@@ -268,6 +266,11 @@ var processCount = 0;
 
 function processData(){
 	var file = $('#binFile')[0].files[0];
+	if(file == undefined)
+	{
+		callWarnToast("Select a file to upload");
+		return false;
+	}
 	readFileData(file, readFileDataCallback);
 }
 
@@ -289,7 +292,7 @@ function uploadRows(){
 	}
 	
 	requestBody={};
-	requestBody["requestBody"]=binData;
+	requestBody["binList"]=binData;
 	var json = JSON.stringify(requestBody);
 	var url = getBinUrl()+'/client/'+($('#selectClient option:selected').val());
 	console.log(json);
@@ -305,6 +308,7 @@ function uploadRows(){
 	   		callConfirmToast("Added Successfully");
 	   },
 	   error: function(response){
+	   		$("#download-errors").attr("disabled",false);
 	   		CsvHandlError(response,fileData);
 	   }
 	});
@@ -321,7 +325,8 @@ function displayUploadData(){
 		callWarnToast("Select an appropriate client");
 		return;
 	}
- 	resetUploadDialog(); 	
+ 	resetUploadDialog();
+ 	$('#download-errors').attr('disabled',true);
 	$('#upload-bin-modal').modal('toggle');
 }
 
@@ -357,6 +362,16 @@ function init(){
 	$('#download-errors').click(downloadErrors);
     $('#binFile').on('change', updateFileName);
     $('#get-productInfo').click(getProductInfo);
+    $("#bin-form").keypress(function(e) {
+    	console.log("inside");
+    if (e.which == 13) {
+    	console.log("inside");
+        var tagName = e.target.tagName.toLowerCase(); 
+        if (tagName !== "button") {
+            return false;
+        }
+    }
+});
 }
 
 $(document).ready(init);

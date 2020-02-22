@@ -10,25 +10,23 @@
 	<div th:replace="snippets.html :: toast_box"></div>
 
 	<div class="container">
-		<h3>Customer/Client</h3>
+		<h3><span class="heading">Member</span></h3>
 		<form class="form-inline" id="member-form">
 			<div class="form-group">
-			    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" name="name" id="inputName" placeholder="enter name">
+			    <label for="inputName"><strong>Name:</strong></label>
+			    <div class="col-md-3">
+			      <input type="text" class="form-control form-control-sm" name="name" id="inputName" placeholder="Enter name">
 			    </div>
 			  </div>
-			  Type of Membership:   
-			<div class="custom-control custom-radio custom-control-inline">
-			  &nbsp;
-			  <input type="radio" id="customRadioInline1" name="type"  value="CLIENT" class="custom-control-input">
-			  <label class="custom-control-label" for="customRadioInline1" checked>Client</label>
+			  <label for="selectClientName" ><strong>Type:</strong></label>
+			  <div class="col-md-2" id="client-DropDown">
+			     		<select class="form-control form-control-sm"  id="selectClient" name='type' style="width:100%">
+						<option selected hidden disabled>Select type</option>
+						<option  value="CLIENT">Client</option>
+						<option value="CUSTOMER">Customer</option>
+					</select>
 			</div>
-			<div class="custom-control custom-radio custom-control-inline">
-			  <input type="radio" id="customRadioInline2" name="type" value="CUSTOMER" class="custom-control-input">
-			  <label class="custom-control-label" for="customRadioInline2">Customer</label>
-			</div>		
-			<button type="button" class="btn btn-primary" id="add-member">Add</button>
+			<button type="button" class="btn btn-outline-primary btn-sm" id="add-member">Add</button>
 	</form>
 
 
@@ -43,8 +41,8 @@
 
  <!-- Table -->
  <div class="col-12">
-	<table class="table table-striped" id="member-table">
-	  <thead>
+	<table class="table table-hover" style="width:80%" id="member-table">
+	  <thead class="thead-light">
 	    <tr>
 	      <th scope="col">S.No.</th>
 	      <th scope="col">Name</th>

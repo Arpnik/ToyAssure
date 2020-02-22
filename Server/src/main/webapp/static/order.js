@@ -14,8 +14,8 @@ function fillDropDowns()
 //	$('#inputOrderId').val()="";
 	$('#selectClient').empty();
 	$('#selectCustomer').empty();
-	$('#selectClient').append('<option selected hidden disabled value="">Select Client</option>');
-	$('#selectCustomer').append('<option selected hidden disabled value="">Select Customer</option>');
+	$('#selectClient').append('<option selected hidden disabled value="">Select name</option>');
+	$('#selectCustomer').append('<option selected hidden disabled value="">Select name</option>');
 	let url=getMemberUrl()+'/client';
 	   $.ajax({
 	   url: url,
@@ -80,9 +80,9 @@ function showOrders(data)
 	for (let i = 0; i < data.length; i++)
 	{
 		let date=data[i].createdDate;
-		var actions=' <button class="btn btn-primary" onclick="showOrderDetails(' + data[i].orderId + ')">Show</button>';
-		actions+=' <button  class="btn btn-primary" onclick="allocateOrder(' + data[i].orderId + ')">Allocate</button>';
-		actions+=' <button  class="btn btn-primary" onclick="generateInvoice(' + data[i].orderId + ')">FullFill</button>';
+		var actions=' <button class="btn btn-outline-primary btn-sm" onclick="showOrderDetails(' + data[i].orderId + ')">Show</button>';
+		actions+=' <button  class="btn btn-outline-info btn-sm" onclick="allocateOrder(' + data[i].orderId + ')">Allocate</button>';
+		actions+=' <button  class="btn btn-outline-success btn-sm" onclick="generateInvoice(' + data[i].orderId + ')">FullFill</button>';
 		var row='<tr>'
 		+ '<td>' + data[i].orderId + '</td>'
 		+ '<td>' + data[i].channelOrderId + '</td>'
@@ -204,6 +204,7 @@ function uploadProducts()
 	console.log(channelOrderId);
 	resetUploadDialog(); 	
 	console.log(channelOrderId);
+	$('#download-errors').attr('disabled',true);
 	$('#upload-order-modal').modal('toggle');
 }
 
@@ -235,6 +236,11 @@ function updateUploadDialog(){
 
 function processData(){
 	var file = $('#orderFile')[0].files[0];
+	if(file == undefined)
+	{
+		callWarnToast("Select a file to upload");
+		return false;
+	}
 	readFileData(file, readFileDataCallback);
 
 }
@@ -285,6 +291,7 @@ function uploadRows(){
 	   },
 	   error:function(response)
 	   {
+	   		$('#download-errors').attr('disabled',false);
 	   		CsvHandlError(response,fileData);
 	   		fillDropDowns();
 	   		fillTable();
@@ -305,6 +312,16 @@ function init()
 	$('#orderFile').on('change', updateFileName);
 	$('#process-data').click(processData);
 	$('#download-errors').click(downloadErrors);
+	$('#order-form').keypress(function(e) {
+    	console.log("inside");
+    if (e.which == 13) {
+    	console.log("inside");
+        var tagName = e.target.tagName.toLowerCase(); 
+        if (tagName !== "button") {
+            return false;
+        }
+    }
+});
 }
 
 

@@ -10,22 +10,22 @@
 <div th:replace="snippets.html :: toast_box"></div>
 <div class="container">
 
-<h3>Upload Product Details</h3>
+<h3>Product</h3>
 
 <div class="row">
 	 <div class="col-12">
 	 	<div class="form-inline">
-				  <div class="form-group col-lg-6" id="brand-DropDown">
-				      Select the Client Name 
-				      &nbsp;
-						<select class="form-control"  id="selectClient" name='clientName'>
-							<option selected hidden disabled value="">select name</option>
+				  <div class="form-group col-lg-12" id="brand-DropDown">
+				    <strong> Client </strong>
+				      &nbsp; &nbsp;
+						<select class="form-control form-control-sm col-md-2"  id="selectClient" name='clientName'>
+							<option selected hidden disabled value="">Select name</option>
 						</select>
+					&nbsp; &nbsp;
+					<button type="button" class="btn btn-outline-primary btn-sm" id="upload-products">Upload</button>
+					 &nbsp; &nbsp;
+					<button type="button" class="btn btn-outline-primary btn-sm" id="display-products">Display</button>
 					</div>
-					&nbsp;
-					<button type="button" class="btn btn-primary" id="upload-products">Upload</button>
-					 &nbsp;
-					<button type="button" class="btn btn-primary" id="display-products">Display</button>
 		</div>
 	</div>
 </div>
@@ -35,8 +35,8 @@
 	&nbsp;
 </div>
 
-<table class="table table-striped" id="product-table" style ="overflow-y:auto">
-  <thead>
+<table class="table table-hover" id="product-table" style ="overflow-y:auto">
+  <thead class="thead-light">
     <!--dynamically filled when display clicked-->
   </thead>
   <tbody >
@@ -69,9 +69,9 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="process-data">Upload</button>
-        <button type="button" class="btn btn-warning" id="download-errors">Download Errors</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-primary btn-sm" id="process-data">Upload</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" id="download-errors" disabled>Download Errors</button>
       </div>
     </div>
   </div>
@@ -89,7 +89,7 @@
         </button>
       </div>
       <div class="modal-body">
-			<form class="form-horizontal" id="product-edit-form">
+			<form class="form-horizontal text-secondary" id="product-edit-form">
 			  <div class="form-group">
 			    <label for="name" class="col-4">Product Name:</label>
 			    <div class="col-sm-8">
@@ -116,8 +116,8 @@
 			</form>      
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="update-product">Update</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-primary" id="update-product">Update</button>
       </div>
     </div>
   </div>

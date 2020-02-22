@@ -14,20 +14,18 @@
 
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-1" th:fragment="name_site_navbar">
+<nav class="navbar navbar-expand-lg navbar-default bg-dark mb-1" th:fragment="name_site_navbar">
   <a class="navbar-brand" th:href="@{/}">
     <img th:src="@{/static/logo.jpg}" class="d-inline-block align-top" alt="">
   </a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
   <div class="collapse navbar-collapse" id="navbarNav">
  
   </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light  mb-1" th:fragment="name_app_navbar">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light  mb-1" th:fragment="name_app_navbar">
   <a class="navbar-brand" th:href="@{/}">
     <img th:src="@{/static/logo.jpg}" class="d-inline-block align-top" alt="">
   </a>
@@ -74,12 +72,14 @@
 
 
 <footer class="footer  mt-1" th:fragment="name_footer">
-	Toy Assure @ Copyright Increff 2019
-	&nbsp;
+	 &copy; Copyright Increff 2020
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script th:src="@{/static/app.js}"/></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <script th:src="@{/static/app.js}"/></script>
 	<script th:src="@{/static/papaparse.min.js}"/></script>
+
 	
 </footer>
 

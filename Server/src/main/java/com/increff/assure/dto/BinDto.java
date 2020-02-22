@@ -71,7 +71,7 @@ public class BinDto {
         List<BinSkuPojo> pojoList = new ArrayList<>();
         List<ErrorData> errorList = new ArrayList<>();
 
-        Integer sno = -1;
+        int sno = -1;
         for (BinInventoryForm form : formList) {
             sno += 1;
             form.setClientSkuId(form.getClientSkuId().trim());
