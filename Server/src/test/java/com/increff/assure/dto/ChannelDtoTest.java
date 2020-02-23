@@ -85,7 +85,7 @@ public class ChannelDtoTest extends AbstractUnitTest {
         dto.addChannel(form);
         assertEquals(1, service.getAllChannels().size());
         ChannelPojo returned = service.getAllChannels().get(0);
-        assertEquals(properties.getDefaultName(), returned.getName());
+        assertEquals(properties.getDefaultChannelName(), returned.getName());
         assertEquals(properties.getDefaultType(), returned.getInvoiceType());
     }
 
@@ -96,7 +96,7 @@ public class ChannelDtoTest extends AbstractUnitTest {
         dto.addChannel(form);
         assertEquals(1, service.getAllChannels().size());
         ChannelPojo returned = service.getAllChannels().get(0);
-        assertEquals(properties.getDefaultName(), returned.getName());
+        assertEquals(properties.getDefaultChannelName(), returned.getName());
         assertEquals(properties.getDefaultType(), returned.getInvoiceType());
     }
 

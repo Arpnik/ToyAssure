@@ -127,13 +127,13 @@ function showItems(data)
 		+ '<td>' + data[i].brandId + '</td>'
 		+ '<td>' + (Math.round((data[i].orderedQuantity + Number.EPSILON) * 100) / 100) + '</td>'
 		+ '<td>' + (Math.round((data[i].allocatedQuantity + Number.EPSILON) * 100) / 100) + '</td>'
-		+ '<td>'  + data[i].sellingPricePerUnit + '</td>'
-		+ '<td>'  + (Math.round((amount + Number.EPSILON) * 100) / 100) + '</td>'
+		+ '<td>'  + Number(data[i].sellingPricePerUnit).toFixed(2) + '</td>'
+		+ '<td>'  + (Math.round((amount + Number.EPSILON) * 100) / 100).toFixed(2) + '</td>'
 		+ '</tr>';
         $tbody.append(row);
         sum+=Number(data[i].orderedQuantity)*Number(data[i].sellingPricePerUnit);
 	}
-	$('#totalBill').text('Total Amount: ₹'+Math.round((sum + Number.EPSILON) * 100) / 100);
+	$('#totalBill').text('Total Amount: ₹'+(Math.round((sum + Number.EPSILON) * 100) / 100).toFixed(2));
 }
 
 function allocateOrder(orderId)

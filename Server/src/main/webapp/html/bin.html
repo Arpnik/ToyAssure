@@ -42,33 +42,37 @@
 			&nbsp;
 		</div>
 
-<h3>Product Information</h3>
 
+<h3>Search</h3>
 <div class="row">
-	 <div class="col-12">
-	 	<form class="form-inline" id="filter-form">
-				<div class="form-group " id="client-DropDown">
-						<select class="form-control form-control-sm"  id="selectClientId" name='clientId'>
+	 <div class="col-lg-6">
+	 	<h5>Product-Wise</h5>
+	 	<form class="row" id="product-filter-form">
+	 		<div class="col-lg-4" >
+			      <select class="form-control form-control-sm"  id="selectClientId" name='clientId'>
 							<option selected value="">Select client name</option>
-						</select>
-				</div>
-				&nbsp;
-				&nbsp;
-				<div class="form-group " id="clientSku">
-						<input type="text" id="ClientSkuId" class="form-control form-control-sm" name="clientSkuId" placeholder="Enter client SKU">
+					</select>
 			</div>
-			&nbsp;
-			&nbsp;
-			<div class="form-group" id="clientSku">
-				      <input type="text" id="BinId" class="form-control form-control-sm" name="binId" placeholder="Enter bin ID">
+			<div class="col-lg-4">
+			       	<input type="text" id="ClientSkuId" class="form-control form-control-sm" name="clientSkuId" placeholder="Enter client SKU">
 			</div>
-			&nbsp;
-			&nbsp;
-			<button type="button" class="btn btn-outline-primary btn-sm" id="get-productInfo">Search</button>
+			<button type="button" class="btn btn-outline-primary btn-sm" id="product-search">Search</button>
 		</form>
-		</div>		
 	</div>
+
+		<div class="col-lg-6">
+		<h5>Bin-Wise</h5>
+		<form class="form-inline" id="bin-filter-form">
+			       <input type="text" class="form-control form-control-sm col-sm-5" name="binId" id="binFilter" placeholder="Enter bin ID">
+			       &nbsp; &nbsp;
+			       <button type="button" class="btn btn-outline-primary btn-sm" id="bin-search">Search</button>
+		</form>		
+	</div>
+
 </div>
+
+
+
 
 </div><!--container end-->
 
@@ -87,7 +91,7 @@
       <div class="modal-body">
       	<div class="product-file">
 		  <input type="file" class="custom-file-input" id="binFile">
-		  <label class="custom-file-label" for="productFile" id="binFileName">Choose file</label>
+		  <label class="custom-file-label" for="binFile" id="binFileName">Choose file</label>
 		</div>
 		<a th:href="@{/sample/bin.csv}" target="_blank">Download Sample</a> 
 		<br>

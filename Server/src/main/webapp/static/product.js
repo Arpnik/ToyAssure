@@ -125,7 +125,7 @@ function uploadRows(){
        	'Content-Type': 'application/json'
        },	   
 	   success: function(response) {
-	   		callConfirmToast("Added Successfully");
+	   		callConfirmToast("Added successfully");
 	   },
 	   error:function(response)
 	   {
@@ -148,6 +148,12 @@ function downloadErrors(){
 	writeFileData(errorData);
 }
 
+function getProducts()
+{
+	getProductsById();
+    callConfirmToast('Successfully fetched');
+
+}
 //edit products by clientId
 function getProductsById()
 {
@@ -181,7 +187,6 @@ function getProductsById()
        },	   
 	   success: function(response) {
 	   displayProductList(response);
-	   callConfirmToast('Successfully fetched');
 	   },
 	   error: handleAjaxError
 	});
@@ -198,7 +203,7 @@ function displayProductList(data){
 		+ '<td>' + e.clientSkuId + '</td>'
 		+ '<td>' + e.name + '</td>'
 		+ '<td>' + e.brandId + '</td>'
-		+ '<td>'  + e.mrp + '</td>'
+		+ '<td>'  + Number(e.mrp).toFixed(2) + '</td>'
 		+ '<td>'  + e.description + '</td>'
 		+ '<td>' + buttonHtml + '</td>'
 		+ '</tr>';
@@ -222,7 +227,8 @@ function displayProduct(data)
 {
 	$("#product-edit-form input[name=name]").val(data.name);	
 	$("#product-edit-form input[name=brandId]").val(data.brandId);	
-	$("#product-edit-form input[name=mrp]").val(data.mrp);
+	$("#product-edit-form input[name=clientSku]").val(data.clientSkuId);	
+	$("#product-edit-form input[name=mrp]").val(Number(data.mrp).toFixed(2));
 	$("#product-edit-form input[name=globalSkuId]").val(data.globalSkuId);
 	$("textarea#Description").val(data.description);
 	$('#edit-product-modal').modal('toggle');
@@ -230,6 +236,7 @@ function displayProduct(data)
 
 function updateProduct()
 {
+
 	$('#edit-product-modal').modal('toggle');
 	var id = $("#product-edit-form input[name=globalSkuId]").val();	
 	var url = getProductUrl() + "/" + id;
@@ -237,6 +244,18 @@ function updateProduct()
 	//Set the values to update
 	var $form = $("#product-edit-form");
 	var json = toJson($form);
+	let mrp=Number(JSON.parse(json)['mrp']);
+	if(isNaN(mrp))
+	{	
+	 	callWarnToast("MRP is not a number");
+	 	return false;
+	}
+
+	if(mrp<=0)
+	{
+		callWarnToast("MRP cannot be less than equal to 0");
+		return false;
+	}
 
 	$.ajax({
 	   url: url,
@@ -247,7 +266,7 @@ function updateProduct()
        },	   
 	   success: function(response) {
 	   		getProductsById();   
-	   		callConfirmToast("Updated Product Successfully");
+	   		callConfirmToast("Updated product successfully");
 	   },
 	   error: handleAjaxError
 	});
@@ -263,7 +282,7 @@ function init()
 	$('#upload-products').click(uploadProducts);
 	$('#productFile').on('change', updateFileName);
 	$('#process-data').click(processData);
-	$('#display-products').click(getProductsById);
+	$('#display-products').click(getProducts);
 	$('#update-product').click(updateProduct);
 	$('#download-errors').click(downloadErrors);
 	$("#product-form").keypress(function(e) {

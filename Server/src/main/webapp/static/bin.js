@@ -82,7 +82,7 @@ function createBins()
 	});
 }
 
-function fillDisplayModal(data)
+function fillDisplayModalProduct(data)
 {	
 	var $thead=$('#filter-table').find('thead');
 	var $tbody=$('#filter-table').find('tbody');
@@ -91,8 +91,6 @@ function fillDisplayModal(data)
 	let sno=0;
 	var clientSkuId=$('#filter-form input[name=clientSkuId]').val();
 	var binId=Number($('#filter-form input[name=binId]').val());
-	if(binId==0 || (clientSkuId && clientSkuId.trim().length!=0 && binId!=0))
-	{
 		var row='<tr>'+
 	      '<th scope="col">Bin ID</th>'+
 	      '<th scope="col">Quantity</th>'+
@@ -101,48 +99,18 @@ function fillDisplayModal(data)
 
 	    for(d in data)
 	    {
-//	    	if(Number(data[d].quantity)<=0)
-//	    	{
-//	    		continue;
-//	    	}
+	    	if(Number(data[d].quantity)<=0)
+	    	{
+	    		continue;
+	    	}
 	    	row='<tr>'
 			+ '<td>' + data[d].binId + '</td>'
-			+ '<td contenteditable="false">'  + data[d].quantity + '</td>'
+			+ '<td>'  + data[d].quantity + '</td>'
 			+ '</tr>';
 			$tbody.append(row);
 			sno+=1;
 		}
 	    $('#bin-modal').modal('toggle');
-	    resetFilter();
-		return;
-	}
-
-	var row='<tr>'+
-	      '<th scope="col">Client Name</th>'+
-	      '<th scope="col">Client Sku ID</th>'+
-	      '<th scope="col">Quantity</th>'+
-	      '<th scope="col">Actions</th>'+
-	      '</tr>'
-	$thead.append(row);
-	for(d in data)
-	{
-		if(Number(data[d].quantity)<=0)
-	    {
-	    		console.log('inside');
-	    		continue;
-	    	}
-		let buttonHtml = ' <button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + data[d].binSkuId+','+(sno+1) + ')" >edit</button>'
-	    	row='<tr>'
-		+ '<td>' + data[d].name + '</td>'
-		+ '<td>'  + data[d].clientSkuId + '</td>'
-		+ '<td contenteditable="false">'  + data[d].quantity + '</td>'
-		+ '<td>' + buttonHtml + '</td>'
-		+ '</tr>';
-		$tbody.append(row);
-		sno+=1;
-	}
-	$('#bin-modal').modal('toggle');
-	resetFilter();
 
 }
 
@@ -164,14 +132,14 @@ function saveEditQuantity(binSkuId,sno,IntegerialValue)
 	{
 		callWarnToast('Enter a valid Integer quantity');
 		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
-	   	 $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   	 $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >Edit</button></td>');
 	   	 return;
 	}
 	if(!Number.isInteger(value))
 	{
 		callWarnToast('Enter a valid Integer quantity');
 		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
-	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >Edit</button></td>');
 		return;
 	}
 	var json={}
@@ -186,28 +154,27 @@ function saveEditQuantity(binSkuId,sno,IntegerialValue)
 	   success: function(response) {   
 	   		callConfirmToast("Updated Product Successfully");
 	   		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+value+'</td>');
-	   		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   		$("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >Edit</button></td>');
 	   },		
 	   error:function(response){
 	   	    handleAjaxError(response);
 	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(3)").replaceWith('<td contenteditable=false>'+IntegerialValue+'</td>');
-	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >edit</button></td>');
+	   	    $("#filter-table tbody tr:nth-child("+sno+") :nth-child(4)").replaceWith(' <td><button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + binSkuId+','+sno + ')" >Edit</button></td>');
 	   	}
 	});
 }
 
-function resetFilter()
+function resetProductFilter()
 {
 	console.log("h");
-	$('#filter-form input[name=clientSkuId]').val("");
-	$('#filter-form input[name=binId]').val("");
+	$('#product-filter-form input[name=clientSkuId]').val("");
 	fillDropDown();
 
 }
 
 function getProductInfo()
 {
-	var $form = $("#filter-form");
+	var $form = $("#product-filter-form");
 	var json = JSON.parse(toJson($form));
 	console.log(json);
 	let url=getBinUrl()+'/product';
@@ -220,8 +187,8 @@ function getProductInfo()
        },	   
 	   success: function(response) {
 	   callConfirmToast("Information fetched Successfully");
-	   fillDisplayModal(response);
-	   resetFilter();
+	   fillDisplayModalProduct(response);
+	   resetProductFilter();
 	   },
 	   error: handleAjaxError
 	});
@@ -355,13 +322,88 @@ function updateFileName(){
 	$('#binFileName').html(fileName);
 }
 
+
+function validateBinId(id)
+{
+	if(isNaN(Number(id)) || Number.isInteger(Number(id)) || Number(id)<=0)
+	{
+		callWarnToast("Bin ID should be a postive integer");
+		return false;
+	}
+
+	return true;
+}
+
+function binProducts()
+{
+	var json=toJson($('#bin-filter-form'));
+	console.log(json);
+	if(!validateBinId(JSON.parse(json)['binId']))
+	{
+		return;
+	}
+	let url=getBinUrl()+'/product';
+	$.ajax({
+	   url: url,
+	   type: 'POST',
+	   data:json,
+	   headers: {
+       	'Content-Type': 'application/json'
+       },	   
+	   success: function(response) {
+	   callConfirmToast("Information fetched Successfully");
+	   fillDisplayModalBin(response);
+	   $('#bin-filter-form').trigger('reset');
+	   },
+	   error: handleAjaxError
+	});
+
+
+}
+
+function fillDisplayModalBin(data)
+{
+	var $thead=$('#filter-table').find('thead');
+	var $tbody=$('#filter-table').find('tbody');
+	$thead.empty();
+	$tbody.empty();
+	let sno=0;
+	
+	var row='<tr>'+
+	      '<th scope="col">Client Name</th>'+
+	      '<th scope="col">Client Sku ID</th>'+
+	      '<th scope="col">Quantity</th>'+
+	      '<th scope="col">Actions</th>'+
+	      '</tr>'
+	$thead.append(row);
+	for(d in data)
+	{
+		if(Number(data[d].quantity)<=0)
+	    {
+	    		console.log('inside');
+	    		continue;
+	    	}
+		let buttonHtml = ' <button class="btn btn-outline-primary btn-sm" onclick="displayEditQuantity(' + data[d].binSkuId+','+(sno+1) + ')" >Edit</button>'
+	    	row='<tr>'
+		+ '<td>' + data[d].name + '</td>'
+		+ '<td>'  + data[d].clientSkuId + '</td>'
+		+ '<td contenteditable="false">'  + data[d].quantity + '</td>'
+		+ '<td>' + buttonHtml + '</td>'
+		+ '</tr>';
+		$tbody.append(row);
+		sno+=1;
+	}
+	$('#bin-modal').modal('toggle');
+}
+
 function init(){
+	$('#bin-search').click(binProducts);
+	$('#product-search').click(getProductInfo);
 	$('#create-bin').click(createBins);
 	$('#upload-data').click(displayUploadData);
 	$('#process-data').click(processData);
 	$('#download-errors').click(downloadErrors);
     $('#binFile').on('change', updateFileName);
-    $('#get-productInfo').click(getProductInfo);
     $("#bin-form").keypress(function(e) {
     	console.log("inside");
     if (e.which == 13) {

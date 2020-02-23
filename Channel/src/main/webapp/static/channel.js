@@ -156,21 +156,33 @@ function addInCart()
 	{
 		createUiTable();
 	}
-	checkCart(json);
+	if(!checkCart(json))
+		return;
 	checkItem(json);
 
+}
+
+function checkAdd()
+{
+	let channelSkuId = $('#order-form input[name=channelSkuId]').val();
+	let qty = ($('#order-form input[name=quantity').val());
+	let mrp=($('#order-form input[name=sellingPricePerUnit').val());
+	if(channelSkuId && channelSkuId.trim().length!=0 && mrp && qty)
+	{
+		$('#add-order').prop('disabled',false);
+	}
 }
 
 function createUiTable()
 {
 	var row='<tr>'+
             '<th scope="col">S.No.</th>'+
-            '<th scope="col">Product Name</th>'+
-            '<th scope="col">Brand ID</th>'+
-            '<th scope="col">Channel SKU ID</th>'+
+            '<th scope="col">Product</th>'+
+            '<th scope="col">Brand</th>'+
+            '<th scope="col">Channel SKU</th>'+
             '<th scope="col">Quantity</th>'+
-            '<th scope="col">MRP</th>'+
-            '<th scope="col">Total price</th>'+
+            '<th scope="col">Selling Price</th>'+
+            '<th scope="col">Total Price</th>'+
             '<th scope="col">Actions</th>'+
         '</tr>';
     var $thead=$('#order-table').find('thead');
@@ -184,8 +196,12 @@ function checkCart(json)
 	var channelSkuId=json['channelSkuId'];
 	if(cart.hasOwnProperty(channelSkuId))
     { 
-    	json['quantity']=cart[channelSkuId][2]+json['quantity'];
+    	callWarnToast('Item already present, please edit the quantity from ordered list');
+    	$('#order-form').trigger('reset');
+    	$('#add-order').prop('disabled',true);
+    	return false;
     }	
+    return true;
 }
 
 
@@ -198,11 +214,11 @@ function makeCart(data)
 	if(!cart.hasOwnProperty(channelSkuId))
 	{
 
-    	cart[channelSkuId]=[data.productName,data.brandId,qty,mrp,mrp*qty];	
+    	cart[channelSkuId]=[data.productName,data.brandId,qty,mrp.toFixed(2),(mrp*qty).toFixed(2)];	
     	return;
 	}
 	var existing=cart[channelSkuId];
-   	cart[channelSkuId]=[existing[0],existing[1],existing[2]+qty,existing[3],existing[3]*(existing[2]+qty)];
+   	cart[channelSkuId]=[existing[0],existing[1],existing[2]+qty,existing[3].toFixed(2),(existing[3]*(existing[2]+qty)).toFixed(2)];
 }
 
 function checkItem(json)
@@ -218,12 +234,14 @@ function checkItem(json)
 	   		 makeCart(response);
 	   		 displayItems();
 	   		 $('#order-form').trigger('reset');
+	   		 $('#add-order').prop('disabled',true);
 	   		 callConfirmToast('added to cart');
 	   },
 	   error: function(response){
 	   		console.log(response);
 	   		handleAjaxError(response);
 	   		$('#order-form').trigger('reset');
+	   		$('#add-order').prop('disabled',true);
 	   }
 	});
 }
@@ -237,8 +255,8 @@ function displayItems()
 	let sno=1;
 	for(row in cart)
 	{
-		var buttonHtml = '<button class=\"btn btn-outline-warning btn-sm\" onclick=\'deleteItem(\"' + row + '\")\'>Delete</button>';
-		buttonHtml += ' <button class=\"btn btn-outline-info btn-sm\" onclick=\'displayEditOrder(\"' + row + '\")\'>Edit</button>';
+		var buttonHtml = '<button class=\"btn btn-outline-info btn-sm\" onclick=\'displayEditOrder(\"' + row + '\")\'>Edit</button>'; 
+		buttonHtml += '  <button class=\"btn btn-outline-danger btn-sm\" onclick=\'deleteItem(\"' + row + '\")\'>Delete</button>';'<button class=\"btn btn-outline-danger btn-sm\" onclick=\'deleteItem(\"' + row + '\")\'>Delete</button>';
 
 		var item = '<tr>'
 		+ '<td>'  + sno + '</td>'
@@ -246,8 +264,8 @@ function displayItems()
 		+ '<td>' + cart[row][1]+ '</td>'
 		+ '<td>' + row + '</td>'
 		+ '<td>'  + cart[row][2] + '</td>'
-		+ '<td>'  + (Math.round(cart[row][3] * 100) / 100) + '</td>'
-		+ '<td>'  + (Math.round(cart[row][4] * 100) / 100) + '</td>'
+		+ '<td>'  + (Math.round(cart[row][3] * 100) / 100).toFixed(2) + '</td>'
+		+ '<td>'  + (Math.round(cart[row][4] * 100) / 100).toFixed(2) + '</td>'
 		+ '<td>' + buttonHtml + '</td>'
 		+ '</tr>';
 
@@ -256,7 +274,7 @@ function displayItems()
         bill+=Math.round(cart[row][4] * 100) / 100;
 	    console.log(Number(bill));
 	}
-    $('#totalPrice').val(Number(bill));
+    $('#totalPrice').val(Number(bill).toFixed(2));
 
 }
 
@@ -298,6 +316,7 @@ function updateOrderItem()
 	   		console.log(response);
 	   		handleAjaxError(response);
 	   		$('#order-form').trigger('reset');
+	   		$('#add-order').prop('disabled',true);
 	   }
 	});
 
@@ -377,7 +396,11 @@ function placeOrder()
 	});
 
 }
-
+function callReset()
+{
+	resetUi();
+	$('#confirmation-modal').modal('toggle');
+}
 function resetUi()
 {
 	$('#order-table').find('tbody').empty();
@@ -388,7 +411,14 @@ function resetUi()
 	$('#totalPrice').val("");
 	$('#channelOrderId').val("");
 	cart={};
+	$('#add-order').prop('disabled',true);
 	   		 
+}
+
+function confirmation()
+{
+	$('#confirmation-modal').modal('toggle');
+
 }
 
 function init()
@@ -396,8 +426,33 @@ function init()
 	fillDropDowns();
 	$('#add-order').click(addInCart);
 	$('#confirm').click(placeOrder);
-	$('#afresh').click(resetUi);
+	$('#afresh').click(confirmation);
 	$('#update-order').click(updateOrderItem);
+	$('#confirm-reset').click(callReset);
+	var previous1;
+	var previous2;
+
+    $("#selectClient").on('focus', function () {
+        previous1 = this.value;
+    }).change(function() {
+    	if(previous1!="")
+    	{
+    		confirmation();
+    	}
+        // Make sure the previous value is updated
+        previous1 = this.value;
+    });
+
+    $("#selectChannel").on('focus', function () {
+        previous2 = this.value;
+    }).change(function() {
+    	if(previous2!="")
+    	{
+    		confirmation();
+    	}
+        // Make sure the previous value is updated
+        previous2 = this.value;
+    });
 }
 
 

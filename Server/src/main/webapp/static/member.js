@@ -10,13 +10,13 @@ function addMember()
 	let name=$("#member-form input[name=name]").val();	
 	if( !name ||name.trim().length==0)
 	{
-		callWarnToast("Enter valid Client/Customer NAME");
+		callWarnToast("Enter valid name");
 		return false;
 	}
 	var json = toJson($form);
 	if(!JSON.parse(json).hasOwnProperty("type"))
 	 {
-	 	callWarnToast("Select Client/Customer TYPE");
+	 	callWarnToast("Select appropriate type");
 	 	return false;
 	 }
 	var url = getMemberUrl();
@@ -30,7 +30,7 @@ function addMember()
 	   success: function(response) {
 	   		getMemberList();
 	   		$form[0].reset();
-	   		callConfirmToast("Added Successfully");
+	   		callConfirmToast("Added successfully");
 	   },
 	   error: handleAjaxError
 	});
