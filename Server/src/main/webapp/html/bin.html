@@ -16,21 +16,21 @@
 	 <div class="col-lg-6">
 	 	<h3>Bin Creation</h3>
 	 	<form class="form-inline" id="bin-form">
-			      <strong>Bin</strong>&nbsp;&nbsp;
+			      <label for="inputBins" class="font-weight-bold">Bin</label>&nbsp;&nbsp;
 			       <input type="text" class="form-control form-control-sm col-sm-5" name="numberOfBins" id="inputBins" placeholder="Enter number of bins">
 			       &nbsp; &nbsp;
-			       <button type="button" class="btn btn-outline-primary btn-sm float-right" id="create-bin">Create</button>
+			       <button type="button" class="btn btn-outline-primary btn-sm" id="create-bin">Create</button>
 		</form>
 	</div>
 	<div class="col-lg-6">
 		<h3>Bin-Wise Inventory</h3>
 		<form class="form-inline" id="client-DropDown">
-					<strong>Client</strong>&nbsp;&nbsp;
+					<label for="selectClient" class="font-weight-bold">Client</label>&nbsp;&nbsp;
 					<select class="form-control form-control-sm col-sm-5"  id="selectClient" name='clientName'>
 						<option selected hidden disabled value="">Select name</option>
 					</select>
-					&nbsp;&nbsp;
-				  <button type="button" class="btn btn-outline-primary  btn-sm" id="upload-data">Upload</button>
+					&nbsp; &nbsp;
+				  <button type="button" class="btn btn-outline-primary btn-sm" id="upload-data">Upload</button>
 			</form>
 	</div>
 </div>
@@ -63,7 +63,7 @@
 		<div class="col-lg-6">
 		<h5>Bin-Wise</h5>
 		<form class="form-inline" id="bin-filter-form">
-			       <input type="text" class="form-control form-control-sm col-sm-5" name="binId" id="binFilter" placeholder="Enter bin ID">
+			       <input type="number" class="form-control form-control-sm col-sm-5" name="binId" id="binFilter" placeholder="Enter bin ID">
 			       &nbsp; &nbsp;
 			       <button type="button" class="btn btn-outline-primary btn-sm" id="bin-search">Search</button>
 		</form>		

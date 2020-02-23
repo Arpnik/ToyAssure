@@ -7,6 +7,7 @@ import com.increff.assure.model.data.OrderDetailsData;
 import com.increff.assure.model.data.OrderDisplayData;
 import com.increff.assure.model.form.ChannelItemCheckForm;
 import com.increff.assure.model.form.ChannelOrderForm;
+import com.increff.assure.model.forms.OrderFilterForm;
 import com.increff.assure.model.forms.OrderForm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -67,6 +68,12 @@ public class OrderController {
         return dto.createInvoice(orderId);
     }
 
+    @ApiOperation(value="fetch order between dates")
+    @RequestMapping(path="/date",method = RequestMethod.POST)
+    public List<OrderDisplayData> getByDates(@RequestBody OrderFilterForm form)
+    {
+        return dto.getOrderByDate(form);
+    }
 
 
 }

@@ -16,9 +16,7 @@
             <fo:page-sequence master-reference="simpleA4">
                 <fo:flow flow-name="xsl-region-body">
                     <fo:block space-after="5mm">
-                        <fo:external-graphic
-                                src="https://bsmedia.business-standard.com/_media/bs/img/article/2017-07/30/full/1501437790-9307.jpg"
-                                content-height="scale-to-fit" height="3cm" content-width="6cm" scaling="non-uniform"/>
+                        <fo:external-graphic src="https://cdn.skillenza.com/files/60f1ed0d-2b2f-4514-9e89-fa84bb23cb80/increff_community_card_banner.png" content-height="scale-to-fit" height="3cm"  content-width="6cm" scaling="non-uniform" />
                         <fo:inline font-size="32pt" font-family="Helvetica" font-weight="bold" text-align="center">
                             &#160; &#160; &#160; Order Invoice-<xsl:value-of select="Id"/>
                         </fo:inline>

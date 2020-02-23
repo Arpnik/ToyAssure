@@ -415,8 +415,9 @@ function resetUi()
 	   		 
 }
 
-function confirmation()
+function confirmation(selector,value)
 {
+	$(selector).val(value);
 	$('#confirmation-modal').modal('toggle');
 
 }
@@ -437,7 +438,7 @@ function init()
     }).change(function() {
     	if(previous1!="")
     	{
-    		confirmation();
+    		confirmation("#selectClient",previous1);
     	}
         // Make sure the previous value is updated
         previous1 = this.value;
@@ -448,7 +449,7 @@ function init()
     }).change(function() {
     	if(previous2!="")
     	{
-    		confirmation();
+    		confirmation("#selectChannel",previous2);
     	}
         // Make sure the previous value is updated
         previous2 = this.value;

@@ -40,15 +40,15 @@
     <form id="order-form">
         <div class="form-row">
             <div class="form-group col-md-4 font-weight-bold">
-                <label for="channelSkuId">Channel SKU </label>
-                <input class="form-control form-control-sm" oninput="checkAdd()" name="channelSkuId" type="text" placeholder="Enter channel SKU">
+                <label for="channelSKU">Channel SKU </label>
+                <input class="form-control form-control-sm" oninput="checkAdd()" name="channelSkuId" id="channelSKU" type="text" placeholder="Enter channel SKU">
             </div>
             <div class="form-group col-md-4 font-weight-bold">
-                <label for="quantity">Quantity</label>
-                <input class="form-control form-control-sm" oninput="checkAdd()" name="quantity" type="text" placeholder="Enter a positive integer">
+                <label for="qty">Quantity</label>
+                <input class="form-control form-control-sm" oninput="checkAdd()" id="qty" name="quantity" type="text" placeholder="Enter a positive integer">
             </div>
             <div class="form-group col-md-3 input-group-sm font-weight-bold ">
-                <label for="sellingPricePerUnit">MRP</label>
+                <label for="Mrp">Selling Price</label>
                 <div class="input-group-prepend input-group-sm">
                     <span class="input-group-text">₹</span>
                     <input class="form-control" id="Mrp" name="sellingPricePerUnit" oninput="checkAdd()" type="text" placeholder="Enter positive number">
@@ -89,7 +89,7 @@
                     <button class="btn btn-outline-primary btn-sm mb-2" id="afresh" type="button">Start Fresh</button>
                 </div>
                 <div class="form-group col-md-4 font-weight-bold" id="total-Price" style="float: right;">
-                    <label for="channelOrderId form-control-sm">Total Amount </label>
+                    <label for="totalPrice">Total Amount </label>
                     <input class="form-control form-control-sm" id="totalPrice" readonly type="text">
                 </div>
                 <div class="form-group col-md-4 font-weight-bold" style="float: right;">
@@ -115,7 +115,7 @@
         </button>
       </div>
       <div class="modal-body">
-            All the changes made would be lost. Are you sure you?
+            All the changes made would be lost. Are you sure?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">No</button>

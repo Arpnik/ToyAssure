@@ -10,16 +10,16 @@
 <div th:replace="snippets.html :: toast_box"></div>
 
 <div class="container">
-	<h3>Channel</h3>
+	<h3>Create Channel</h3>
 		<form class="form-inline" id="channel-form">
 			<div class="form-group">
-			    <strong>Name</strong>
+			    <label for="inputName" class="font-weight-bold">Name</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control form-control-sm" name="name" id="inputName" placeholder="Enter name">
 			    </div>
 			  </div>  
 			<div class="form-group " id="Invoice-DropDown">
-				     <strong> Invoice Type </strong>
+				     <label for="selectInvoice" class="font-weight-bold"> Invoice Type </label>
 				      &nbsp;
 				      &nbsp;
 						<select class="form-control form-control-sm"  id="selectInvoice" name='invoiceType'>
@@ -37,30 +37,27 @@
 	&nbsp;
 </div>
 
-<h3>Channel Listing</h3>
+<h3>Add Channel Listing</h3>
 <div class="row">
 	 <div class="col-12">
-	 	<div class="form-row">
-				  <div class="form-group col-md-2" id="client-DropDown">
-				     <strong> Client </strong>
-						<select class="form-control form-control-sm"  id="selectClient" name='clientId'>
+	 	<div class="form-inline">
+	 		<label for="selectClient" class="font-weight-bold"> Client </label>
+				  <div class="form-group col-md-3" id="client-DropDown">   
+						<select class="form-control form-control-sm col-11"  id="selectClient" name='clientId'>
 							<option selected hidden disabled val="">Select name</option>
 						</select>
 					  </div>
 
-				 <div class="form-group col-md-2" id="channel-Dropdown">
-				      <strong> Channel </strong>
-				      <select class="form-control form-control-sm"  id="selectChannel" name='channelId'>
+					<label for="selectChannel" class="font-weight-bold"> Channel </label>
+				 <div class="form-group col-md-4" id="channel-Dropdown">
+				      <select class="form-control form-control-sm col-8"  id="selectChannel" name='channelId'>
 							<option selected hidden disabled val="">Select name</option>
 						</select>
+						
+					  &nbsp;
+					  &nbsp;	
+						<button type="button" class="btn btn-outline-primary btn-sm" id="upload-channels">Upload</button>   
 				  </div>
-				  <div class="col-md-2">
-				  	<div class="row">
-						&nbsp;
-					</div>
-
-			 <button type="button" class="btn btn-outline-primary btn-sm" id="upload-channels">Upload</button>   
-		</div>
 		</div>
 	</div>
 </div>

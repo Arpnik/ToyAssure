@@ -8,6 +8,7 @@ import com.increff.assure.model.data.*;
 import com.increff.assure.model.form.ChannelItemCheckForm;
 import com.increff.assure.model.form.ChannelOrderForm;
 import com.increff.assure.model.form.ChannelOrderLineItem;
+import com.increff.assure.model.forms.OrderFilterForm;
 import com.increff.assure.model.forms.OrderForm;
 import com.increff.assure.model.forms.OrderLineItemForm;
 import com.increff.assure.pojo.*;
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
@@ -188,12 +191,25 @@ public class OrderDto {
         return makeChannelData(product, inventoryPojo);
     }
 
+    public List<OrderDisplayData> getOrderByDate(OrderFilterForm form)
+    {
+        List<OrderDisplayData> dataList = new ArrayList<>();
+        List<OrderPojo> pojoList = orderService.getByDates(ZonedDateTime.ofInstant(form.getStartDate().toInstant(), ZoneId.systemDefault()),ZonedDateTime.ofInstant(form.getEndDate().toInstant(),ZoneId.systemDefault()));
+        for (OrderPojo pojo : pojoList) {
+            OrderDisplayData data = ConvertGeneric.convert(pojo, OrderDisplayData.class);
+            data.setOrderId(pojo.getId());
+            dataList.add(data);
+        }
+        return dataList;
+    }
+
     public static ChannelItemCheckData makeChannelData(ProductPojo product, InventoryPojo inventoryPojo) {
         ChannelItemCheckData data = ConvertGeneric.convert(product, ChannelItemCheckData.class);
         data.setProductName(product.getName());
         data.setOrderedQuantity(inventoryPojo.getAvailableQuantity());
         return data;
     }
+
 
     public void allocateOrder(Long orderId) throws ApiException {
         orderService.allocateOrder(orderId);

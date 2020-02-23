@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Service
@@ -122,7 +123,13 @@ public class OrderService {
 
     @Transactional(readOnly = true)
     public OrderPojo getByParams(Long channelId, String channelOrderId) {
-        return dao.getBychannelIdAndChannelOrderId(channelId, channelOrderId);
+        return dao.getByParams(channelId, channelOrderId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<OrderPojo> getByDates(ZonedDateTime startDate, ZonedDateTime endDate)
+    {
+        return dao.selectByDate(startDate,endDate);
     }
 
     @Transactional(readOnly = true)

@@ -325,7 +325,7 @@ function updateFileName(){
 
 function validateBinId(id)
 {
-	if(isNaN(Number(id)) || Number.isInteger(Number(id)) || Number(id)<=0)
+	if(isNaN(Number(id)) || !Number.isInteger(Number(id)) || Number(id)<=0)
 	{
 		callWarnToast("Bin ID should be a postive integer");
 		return false;
